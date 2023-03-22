@@ -1,28 +1,36 @@
-# ONLY TO INIT PROJECT
-from typing import Union
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+import CRUD
+import models
+import schemas
+from database import SessionLocal, engine
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-
+models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Union[bool, None] = None
-
+#Dependency
+def getDB():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "test"}\
+
+@app.get("/category/", response_model = list[schemas.Category])
+def read_category(skip: int = 0, limit: int = 100, db: Session = Depends(getDB)):
+    category = CRUD.getCategory(db,skip,limit)
+    if category is None:
+        raise HTTPException(status_code=404, detail="Category not found")
+    return category
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
-
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"item_name": item.name, "item_id": item_id}
+@app.post("/category/", response_model= schemas.Category)
+def create_category(name:schemas.CategoryCreate, db: Session = Depends(getDB)):
+    category = CRUD.createCategory(db,name)
+    if category:
+        raise HTTPException(status_code=400, detail="Category existed")
+    return CRUD.createCategory(db = db, category=name)
