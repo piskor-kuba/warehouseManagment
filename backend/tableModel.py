@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 from typing import List, Optional
 
 class CategoryBase(BaseModel):
@@ -10,6 +10,7 @@ class ProductBase(BaseModel):
     describe: Optional[str] = None
 
 class ProductAmountBase(BaseModel):
+    id_product: int
     amount: int
 
 class PersonsBase(BaseModel):
@@ -20,7 +21,6 @@ class PersonsBase(BaseModel):
 
 class ClientsBase(BaseModel):
     id_persons: int
-    id_product: int
     amount: int
 
 class ClientProductBase(BaseModel):
@@ -39,6 +39,5 @@ class EmployeesBase(BaseModel):
     id_role:int
 
 class LoginDataBase(BaseModel):
-    id_employee:int
     login: str
     password: str

@@ -1,6 +1,7 @@
 from sqlalchemy import  Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from database import Base
+import passlib.hash as hash
 
 class Category(Base):
     __tablename__ = "Category"
@@ -89,3 +90,6 @@ class LoginData(Base):
     password = Column(String)
 
     loginData_employee = relationship("Employees", uselist=False, back_populates="employee_loginData")
+
+    def verify_password(self, password:str):
+        return hash.bcrypt.verify(password, self.password)
