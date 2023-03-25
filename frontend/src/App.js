@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource } from 'react-admin';
+import { authProvider } from './provider/authProvider';
+import { Layout, LoginPage } from './layout';
+import Posts from './view/Posts';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<Admin authProvider={authProvider} loginPage={LoginPage} layout={Layout}>
+			<Resource name='posts' {...Posts} />
+		</Admin>
+	);
+};
 
 export default App;
