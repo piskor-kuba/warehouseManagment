@@ -1,4 +1,4 @@
-from sqlalchemy import  Column, ForeignKey, Integer, String
+from sqlalchemy import  Column, ForeignKey, Integer, String, Boolean
 from sqlalchemy.orm import relationship
 from database import Base
 import passlib.hash as hash
@@ -88,6 +88,7 @@ class LoginData(Base):
     id_employee = Column(Integer, ForeignKey("Employees.id"))
     login = Column(String)
     password = Column(String)
+    disabled = Column(Boolean, default = False)
 
     loginData_employee = relationship("Employees", uselist=False, back_populates="employee_loginData")
 

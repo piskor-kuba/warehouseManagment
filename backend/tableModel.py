@@ -41,3 +41,4 @@ class EmployeesBase(BaseModel):
 class LoginDataBase(BaseModel):
     login: str
     password: str
+    disabled: bool

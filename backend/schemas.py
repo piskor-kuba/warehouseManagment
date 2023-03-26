@@ -87,17 +87,7 @@ class Employees(tableModel.EmployeesBase):
         orm_mode = True
 
 class LoginData(tableModel.LoginDataBase):
-    id:int
     id_employee: int
     class Config:
         orm_mode = True
 
-class AccountCreate(tableModel.LoginDataBase):
-    pass
-    class Config:
-        orm_mode = True
-
-class Account(tableModel.LoginDataBase):
-    pass
-    class Config:
-        orm_mode = True

@@ -101,3 +101,5 @@ def getRole(db: Session, skip: int = 0, limit: int = 100):
 def getEmployees(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Employees).offset(skip).limit(limit).all()
 
+def get_user(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.LoginData).offset(skip).limit(limit).all()
