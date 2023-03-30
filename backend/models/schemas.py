@@ -13,12 +13,27 @@ class CategoryCreate(tableModel.CategoryBase):
     class Config:
         orm_mode = True
 
+class CategoryUpdate(tableModel.CategoryBase):
+    name: Optional[str] = None
+    class Config:
+        orm_mode = True
+
+class CategoryDelete(tableModel.CategoryBase):
+    pass
+    class Config:
+        orm_mode = True
+
 class Product(tableModel.ProductBase):
     id:int
     class Config:
         orm_mode = True
 
-class ProductCreate(tableModel.ProductBase):
+class ProductCreate(Product):
+    amount:str
+    class Config:
+        orm_mode = True
+
+class ProductDelete(tableModel.ProductBase):
     pass
     class Config:
         orm_mode = True
@@ -39,6 +54,15 @@ class ProductAmountCreate(tableModel.ProductAmountBase):
     pass
     class Config:
         orm_mode = True
+class ProductAmountDelete(tableModel.ProductAmountBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class ProductAmountUpdate(tableModel.ProductAmountBase):
+    amount: Optional[int] = None
+    class Config:
+        orm_mode = True
 
 class Persons(tableModel.PersonsBase):
     id:int
@@ -47,6 +71,18 @@ class Persons(tableModel.PersonsBase):
 
 class PersonsCreate(tableModel.PersonsBase):
     pass
+    class Config:
+        orm_mode = True
+class PersonsDelete(tableModel.PersonsBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class PersonsUpdate(tableModel.PersonsBase):
+    name: Optional[str] = None
+    surname: Optional[str] = None
+    phone: Optional[str] = None
+    address: Optional[str] = None
     class Config:
         orm_mode = True
 
@@ -60,6 +96,16 @@ class ClientCreate(tableModel.ClientsBase):
     class Config:
         orm_mode = True
 
+class ClientDelete(tableModel.ClientsBase):
+    pass
+    class Config:
+        orm_mode = True
+class ClientUpdate(tableModel.ClientsBase):
+    id_person: Optional[int] = None
+    amount: Optional[str] = None
+    class Config:
+        orm_mode = True
+
 class ClientProduct(tableModel.ClientProductBase):
     id:int
     class Config:
@@ -70,8 +116,34 @@ class ClientProductCreate(tableModel.ClientProductBase):
     class Config:
         orm_mode = True
 
+class ClientProductDelete(tableModel.ClientProductBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class ClientProductUpdate(tableModel.ClientProductBase):
+    id_product: Optional[int] = None
+    id_client: Optional[int] = None
+    class Config:
+        orm_mode = True
+
 class Workplace(tableModel.WorkplaceBase):
     id:int
+    class Config:
+        orm_mode = True
+
+class WorkplaceCreate(tableModel.WorkplaceBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class WorkplaceDelete(tableModel.WorkplaceBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class WorkplaceUpdate(tableModel.WorkplaceBase):
+    name: Optional[str] = None
     class Config:
         orm_mode = True
 
@@ -81,8 +153,40 @@ class Role(tableModel.RoleBase):
     class Config:
         orm_mode = True
 
+class RoleCreate(tableModel.RoleBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class RoleUpdate(tableModel.RoleBase):
+    name: Optional[str] = None
+    class Config:
+        orm_mode = True
+
+class RoleDelete(tableModel.RoleBase):
+    pass
+    class Config:
+        orm_mode = True
+
 class Employees(tableModel.EmployeesBase):
     id:int
+    class Config:
+        orm_mode = True
+
+class EmployeesCreate(tableModel.EmployeesBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class EmployeesUpdate(tableModel.EmployeesBase):
+    id_person: Optional[int] = None
+    id_workplace: Optional[int] = None
+    id_role: Optional[int] = None
+    class Config:
+        orm_mode = True
+
+class EmployeesDelete(tableModel.EmployeesBase):
+    pass
     class Config:
         orm_mode = True
 

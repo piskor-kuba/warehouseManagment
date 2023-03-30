@@ -2,18 +2,19 @@ from fastapi import FastAPI
 import uvicorn
 from database.database import engine
 from database import models
-from routers import items, users
+from routers import users,product,person,employee,category,client,workplace,role
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.include_router(users.router)
-app.include_router(items.router)
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "test"}
+app.include_router(category.router)
+app.include_router(product.router)
+app.include_router(person.router)
+app.include_router(employee.router)
+app.include_router(client.router)
+app.include_router(workplace.router)
+app.include_router(role.router)
 
 
 if __name__ == "__main__":
