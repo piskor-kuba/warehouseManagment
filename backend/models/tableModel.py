@@ -42,3 +42,7 @@ class LoginDataBase(BaseModel):
     login: str
     password: str
     disabled: bool
+
+class OtpBase(BaseModel):
+    login: str
+    otp_code: str

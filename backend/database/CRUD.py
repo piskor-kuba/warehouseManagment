@@ -253,3 +253,19 @@ def updateEmployee(db: Session, employee: schemas.EmployeesUpdate, employee_id:i
 def delEmployee(db: Session, employee: schemas.EmployeesDelete):
     db.delete(employee)
     db.commit()
+
+##################################################__OTP__##################################################
+def getOtpByLogin(db: Session, login:str):
+    return db.query(models.Otp).filter(models.Otp.login == login).first()
+
+def createOtpRecord(db: Session, otp:str, login:str):
+    db_otp = models.Otp(login = login, otp_code = otp)
+    db.add(db_otp)
+    db.commit()
+    db.refresh(db_otp)
+    return db_otp
+
+def delOtp(db: Session, login: str):
+    db_otp = getOtpByLogin(db,login)
+    db.delete(db_otp)
+    db.commit()
