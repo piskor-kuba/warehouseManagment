@@ -7,7 +7,7 @@ const Menu = ({ onMenuClick, logout }) => {
 
 	return (
 		<div>
-			{resources.map((resource) => (
+			{resources?.map((resource) => (
 				<MenuItemLink
 					key={resource.name}
 					to={`/${resource.name}`}
