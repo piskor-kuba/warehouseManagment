@@ -3,7 +3,7 @@ from fastapi import Depends,APIRouter,HTTPException,status
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordRequestForm
 from models import schemas
-from authorization.auth import get_current_active_user, create_access_token, Token, authenticate_user, getAccessTokenExpireMinutes, create_user, send_otp_code
+from authorization.auth import get_current_active_user, create_access_token, Token, Otp,authenticate_user, getAccessTokenExpireMinutes, create_user, send_otp_code, get_user
 from dependencies import getDB
 from sqlalchemy.orm import Session
 router = APIRouter(prefix="/users", tags=["users"])
@@ -34,7 +34,8 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return token
 
 @router.post("/OTP_code", status_code=200)
-def OTP_code(login: str, password: str, db: Session = Depends(getDB)):
-    code = send_otp_code(db, login, password)
+def OTP_code(data: Otp, db: Session = Depends(getDB)):
+    code = send_otp_code(db, data.username, data.password)
     if code is False:
         raise HTTPException(status_code=404, detail="Incorrect username or password")
+
