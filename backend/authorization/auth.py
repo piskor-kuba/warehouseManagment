@@ -14,8 +14,15 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
+class Otp(BaseModel):
+    username: str
+    password: str
+    class Config:
+        orm_mode = True
+
 class TokenData(BaseModel):
     username: str | None = None
+
 
 
 __SECRET_KEY = "e06d1c3cff8a63fa08adc863b66d18c62ad06cd8eab65f51b41ab603c047dfaf"
@@ -73,7 +80,7 @@ def authenticate_user(db: Session, username: str, password: str, otp_code:str):
     user = __get_user(db = db, username = username)
     if user is None or __verify_password(password, user.password) is False or totp_verify(db=db, login=username, otp_code = otp_code) is False:
         return False
-    release_otp(db=db, login=username)
+    #release_otp(db=db, login=username)
     return user
 
 def send_otp_code(db: Session, username: str, password: str):
@@ -83,7 +90,11 @@ def send_otp_code(db: Session, username: str, password: str):
     totp_generate(db=db, login=username)
     return True
 
-
+def get_user(db: Session, username: str, password: str):
+    user = __get_user(db=db, username=username)
+    if user is None or __verify_password(password, user.password) is False:
+        return False
+    return user
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
