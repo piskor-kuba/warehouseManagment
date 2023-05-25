@@ -94,3 +94,9 @@ class LoginData(Base):
 
     def verify_password(self, password:str):
         return hash.bcrypt.verify(password, self.password)
+
+class Otp(Base):
+    __tablename__ = "Otp"
+    id = Column(Integer, primary_key=True, index=True)
+    login = Column(String)
+    otp_code = Column(String)

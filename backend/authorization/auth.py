@@ -8,6 +8,7 @@ from database.models import LoginData as Model
 from models.schemas import LoginData
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
+from .F2A import totp_generate, totp_verify, release_otp
 
 class Token(BaseModel):
     access_token: str
@@ -68,11 +69,22 @@ def create_user(db: Session, user: LoginData):
     db.refresh(db_user)
     return db_user
 
-def authenticate_user(db: Session, username: str, password: str):
+def authenticate_user(db: Session, username: str, password: str, otp_code:str):
     user = __get_user(db = db, username = username)
-    if user is None or __verify_password(password, user.password) is None:
+    if user is None or __verify_password(password, user.password) is False or totp_verify(db=db, login=username, otp_code = otp_code) is False:
         return False
+    release_otp(db=db, login=username)
     return user
+
+def send_otp_code(db: Session, username: str, password: str):
+    user = __get_user(db=db, username=username)
+    if user is None or __verify_password(password, user.password) is False:
+        return False
+    totp_generate(db=db, login=username)
+    return True
+
+
+
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()

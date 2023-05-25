@@ -195,3 +195,17 @@ class LoginData(tableModel.LoginDataBase):
     class Config:
         orm_mode = True
 
+class Otp(tableModel.OtpBase):
+    id:int
+    class Config:
+        orm_mode = True
+
+class OtpCreate(tableModel.OtpBase):
+    pass
+    class Config:
+        orm_mode = True
+
+class OtpDelete(tableModel.OtpBase):
+    pass
+    class Config:
+        orm_mode = True
