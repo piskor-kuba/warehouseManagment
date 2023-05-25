@@ -1,12 +1,26 @@
 import { Admin, Resource } from 'react-admin';
 import { authProvider } from './provider/authProvider';
 import { Layout, LoginPage } from './layout';
-import Posts from './view/Posts';
+import Category from './view/Category';
+import Clients from './view/Clients';
+import Employees from './view/Employees';
+import Persons from './view/Employees';
+import Product from './view/Product';
+import ProductAmount from './view/ProductAmount';
+import Role from './view/Role';
+import Workplace from './view/Workplace';
 
 const App = () => {
 	return (
 		<Admin authProvider={authProvider} loginPage={LoginPage} layout={Layout}>
-			<Resource name='posts' {...Posts} />
+			<Resource name='Category' {...Category} />
+			<Resource name='Clients' {...Clients} />
+			<Resource name='Employees' {...Employees} />
+			<Resource name='Persons' {...Persons} />
+			<Resource name='Product' {...Product} />
+			<Resource name='ProductAmount' {...ProductAmount} />
+			<Resource name='Role' {...Role} />
+			<Resource name='Workplace' {...Workplace} />
 		</Admin>
 	);
 };

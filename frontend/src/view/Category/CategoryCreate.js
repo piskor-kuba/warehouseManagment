@@ -1,10 +1,6 @@
-import {
-	SimpleForm,
-	TextInput,
-	Create,
-} from 'react-admin';
+import { SimpleForm, TextInput, Create } from 'react-admin';
 
-export const PostCreate = (props) => (
+export const CategoryCreate = (props) => (
 	<Create {...props}>
 		<SimpleForm>
 			<TextInput source='title' />
