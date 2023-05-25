@@ -17,5 +17,5 @@ websockets==10.4
 SQLAlchemy~=2.0.7
 PyJWT~=2.6.0
 passlib~=1.7.4
-jose~=1.0.0
+python-jose~=3.3.0
 pyotp~=2.8.0

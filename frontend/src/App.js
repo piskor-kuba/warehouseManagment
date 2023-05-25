@@ -1,5 +1,6 @@
 import { Admin, Resource } from 'react-admin';
 import { authProvider } from './provider/authProvider';
+import dataProvider from './provider/dataProvider';
 import { Layout, LoginPage } from './layout';
 import Category from './view/Category';
 import Clients from './view/Clients';
@@ -12,7 +13,7 @@ import Workplace from './view/Workplace';
 
 const App = () => {
 	return (
-		<Admin authProvider={authProvider} loginPage={LoginPage} layout={Layout}>
+		<Admin dataProvider={dataProvider} loginPage={LoginPage} layout={Layout} authProvider={authProvider}>
 			<Resource name='Category' {...Category} />
 			<Resource name='Clients' {...Clients} />
 			<Resource name='Employees' {...Employees} />

@@ -2,7 +2,6 @@ import {
 	GET_LIST,
 	GET_ONE,
 	GET_MANY,
-	GET_MANY_REFERENCE,
 	CREATE,
 	UPDATE,
 	DELETE,
@@ -53,19 +52,6 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 		case GET_MANY: {
 			const query = {
 				filter: JSON.stringify({ id: params.ids }),
-			};
-			return { url: `${API_URL}/${resource}?${stringify(query)}` };
-		}
-		case GET_MANY_REFERENCE: {
-			const { page, perPage } = params.pagination;
-			const { field, order } = params.sort;
-			const query = {
-				sort: JSON.stringify([field, order]),
-				range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-				filter: JSON.stringify({
-					...params.filter,
-					[params.target]: params.id,
-				}),
 			};
 			return { url: `${API_URL}/${resource}?${stringify(query)}` };
 		}
@@ -142,10 +128,10 @@ const convertHTTPResponseToDataProvider = (
 	try {
 		let { json, headers } = response;
 
-		if (json === undefined) {
-			localStorage.removeItem('mwlToken');
-			window.location.href = '#/login';
-		}
+		// if (json === undefined) {
+		// 	localStorage.removeItem('mwlToken');
+		// 	window.location.href = '#/login';
+		// }
 		switch (type) {
 			case GET_LIST:
 				return {

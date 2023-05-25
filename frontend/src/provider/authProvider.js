@@ -2,6 +2,8 @@ import endpoint from '../endpoint';
 
 export const authProvider = {
 	login: ({ username, password }) => {
+		//localStorage.setItem('token', 1234);
+		//return Promise.resolve();
 		const request = new Request(endpoint.baseUrl, {
 			method: 'POST',
 			body: JSON.stringify({ username, password }),
