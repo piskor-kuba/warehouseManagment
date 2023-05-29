@@ -1,35 +1,34 @@
 // Menu.js
 import React from 'react';
-import { MenuItemLink, useGetList } from 'react-admin';
+import { MenuItemLink } from 'react-admin';
 
-const Menu = ({ onMenuClick, logout }) => {
-	const { data: resources } = useGetList('resources', { perPage: -1 });
-	console.log(resources);
-
+const Menu = ({ onMenuClick }) => {
 	return (
 		<div>
-			{/* {resources?.map((resource) => (
-				<MenuItemLink
-					key={resource.name}
-					to={`/${resource.name}`}
-					primaryText={resource.options.label}
-					onClick={onMenuClick}
-				/>
-			))} */}
+			{/* <MenuItemLink
+				to='/dashboard'
+				primaryText='Dashboard'
+				onClick={onMenuClick}
+			/> */}
 			<MenuItemLink
-				to='/Category'
+				to='/category'
 				primaryText='Category'
 				onClick={onMenuClick}
 			/>
-			<MenuItemLink to='/Clients' primaryText='Clients' onClick={onMenuClick} />
+			<MenuItemLink to='/clients' primaryText='Clients' onClick={onMenuClick} />
 			<MenuItemLink
-				to='/Employees'
+				to='/employees'
 				primaryText='Employees'
 				onClick={onMenuClick}
 			/>
-			<MenuItemLink to='/Persons' primaryText='Persons' onClick={onMenuClick} />
-			<MenuItemLink to='/Product' primaryText='Product' onClick={onMenuClick} />
-			<MenuItemLink to='/logout' primaryText='Logout' onClick={logout} />
+			<MenuItemLink to='/persons' primaryText='Persons' onClick={onMenuClick} />
+			<MenuItemLink to='/product' primaryText='Product' onClick={onMenuClick} />
+			<MenuItemLink
+				to='/workplace'
+				primaryText='Workplace'
+				onClick={onMenuClick}
+			/>
+			<MenuItemLink to='/role' primaryText='Role' onClick={onMenuClick} />
 		</div>
 	);
 };

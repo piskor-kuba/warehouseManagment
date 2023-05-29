@@ -4,19 +4,51 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { cloudy } from '../assets/bgImage/cloudySVG';
+import OtpInput from 'react-otp-input';
+
+import axios from 'axios';
+import endpoint from '../endpoint';
 
 const LoginPage = () => {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
+	const [otp, setOtp] = React.useState('');
+	const [codeOpen, setCodeOpen] = React.useState(false);
+	const [disabled, setDisabled] = React.useState(false);
+
 	const login = useLogin();
 	const notify = useNotify();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		login({ username, password }).catch(() =>
-			notify('Invalid username or password')
-		);
+		setDisabled(true);
+
+		axios
+			.post(endpoint.baseUrl + '/users/OTP_code', {
+				username: username,
+				password: password,
+			})
+			.then(() => {
+				setCodeOpen(true);
+			})
+			.catch(() => {
+				setDisabled(false);
+				notify('Invalid username or password');
+			});
 	};
+
+	React.useEffect(() => {
+		if (otp.length === 6) {
+			login({ otp, username, password })
+				.then(() => {
+					notify('Hello my friend :)');
+				})
+				.catch(() => {
+					notify('Invalid code');
+				});
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [otp]);
 
 	return (
 		<Root>
@@ -32,6 +64,7 @@ const LoginPage = () => {
 						margin='normal'
 						required
 						value={username}
+						disabled={disabled}
 						onChange={(e) => setUsername(e.target.value)}
 					/>
 					<LoginInput
@@ -42,9 +75,28 @@ const LoginPage = () => {
 						type='password'
 						required
 						value={password}
+						disabled={disabled}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-					<LoginButton variant='contained' color='primary' type='submit'>
+					{codeOpen ? (
+						<>
+							<div>Client code:</div>
+							<OtpInput
+								value={otp}
+								onChange={setOtp}
+								numInputs={6}
+								renderSeparator={<span>&nbsp;&nbsp;</span>}
+								renderInput={(props) => (
+									<input {...props} style={{ width: 20, height: 30 }} />
+								)}
+							/>
+						</>
+					) : null}
+					<LoginButton
+						variant='contained'
+						color='primary'
+						type='submit'
+						disabled={disabled}>
 						Sign In
 					</LoginButton>
 				</LoginForm>

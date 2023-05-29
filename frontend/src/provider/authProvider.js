@@ -1,30 +1,40 @@
+import axios from 'axios';
 import endpoint from '../endpoint';
 
 export const authProvider = {
-	login: ({ username, password }) => {
-		//localStorage.setItem('token', 1234);
-		//return Promise.resolve();
-		const request = new Request(endpoint.baseUrl, {
-			method: 'POST',
-			body: JSON.stringify({ username, password }),
-			headers: new Headers({ 'Content-Type': 'application/json' }),
-		});
-		return fetch(request)
-			.then((response) => {
-				if (response.status < 200 || response.status >= 300) {
-					throw new Error(response.statusText);
-				}
-				return response.json();
+	login: async ({ otp, username, password }) => {
+		const headers = {
+			accept: 'application/json',
+			'Content-Type': 'application/x-www-form-urlencoded',
+		};
+		const data = new URLSearchParams();
+		data.append('grant_type', '');
+		data.append('username', username);
+		data.append('password', password);
+		data.append('scope', '');
+		data.append('client_id', '');
+		data.append('client_secret', otp);
+
+		axios
+			.post(endpoint.baseUrl + '/users/token', data, { headers })
+			.then(({ data }) => {
+				localStorage.setItem('token', data.access_token);
+				// window.location.href = '#/dashboard';
+				return Promise.resolve();
 			})
-			.then(({ token }) => {
-				localStorage.setItem('token', token);
-			});
+			.catch(() => {});
 	},
 	logout: () => {
 		localStorage.removeItem('token');
 		return Promise.resolve();
 	},
-	checkError: () => Promise.resolve(),
+	checkError: ({ status }) => {
+		if (status === 401 || status === 403) {
+			localStorage.removeItem('token');
+			return Promise.reject();
+		}
+		return Promise.resolve();
+	},
 	checkAuth: () => {
 		return localStorage.getItem('token') ? Promise.resolve() : Promise.reject();
 	},

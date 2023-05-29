@@ -3,8 +3,8 @@ import { ProductEdit } from './ProductEdit';
 import { ProductList } from './ProductList';
 
 const Product = {
+	list: ProductList,
 	create: ProductCreate,
 	edit: ProductEdit,
-	list: ProductList,
 };
 export default Product;

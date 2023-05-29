@@ -3,8 +3,8 @@ import { PersonsEdit } from './PersonsEdit';
 import { PersonsList } from './PersonsList';
 
 const Persons = {
+	list: PersonsList,
 	create: PersonsCreate,
 	edit: PersonsEdit,
-	list: PersonsList,
 };
 export default Persons;

@@ -16,45 +16,57 @@ const API_URL = endpoint.baseUrl;
 const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 	switch (type) {
 		case GET_LIST: {
-			const { page, perPage } = params.pagination;
-			const { field, order } = params.sort;
-			const query = {
-				pageNumber: page - 1,
-				pageSize: perPage === 1000 ? 10000 : perPage,
-				filterHelper: params.filter,
-				filteringEnabled:
-					Object.keys(params.filter).length === 0 &&
-					params.filter.constructor === Object
-						? false
-						: true,
-				sortableFieldName: field,
-				order: order,
-			};
+			const query = { skip: 0, limit: 100 };
 			let addressUrl = '';
-			let urlParams = {};
 
+			if (resource === 'category') {
+				addressUrl = `${API_URL}/category/?${stringify(query)}`;
+			}
+			if (resource === 'clients') {
+				addressUrl = `${API_URL}/client/?${stringify(query)}`;
+			}
+			if (resource === 'employees') {
+				addressUrl = `${API_URL}/employee/?${stringify(query)}`;
+			}
+			if (resource === 'persons') {
+				addressUrl = `${API_URL}/person/?${stringify(query)}`;
+			}
 			if (resource === 'product') {
-				addressUrl = `${API_URL}/product`;
-				urlParams = { method: 'POST', body: JSON.stringify(query) };
+				addressUrl = `${API_URL}/product/?${stringify(query)}`;
 			}
 			return {
 				url: addressUrl,
-				options: urlParams,
+				options: { method: 'GET' },
 			};
 		}
 		case GET_ONE:
 			let urlGet = `${API_URL}/${resource}/${params.id}`;
 
-			if (resource === 'product') {
-				urlGet = `${API_URL}/product/${params.id}`;
-			}
+			// if (resource === 'Category') {
+			// 	console.log(resource);
+			// 	urlGet = `${API_URL}/category/${params.id}`;
+			// }
+			// if (resource === 'Clients') {
+			// 	urlGet = `${API_URL}/client/${params.id}`;
+			// }
+			// if (resource === 'Employee') {
+			// 	urlGet = `${API_URL}/employee/${params.id}`;
+			// }
+			// if (resource === 'Persons') {
+			// 	urlGet = `${API_URL}/person/${params.id}`;
+			// }
+			// if (resource === 'Product') {
+			// 	urlGet = `${API_URL}/product/${params.id}`;
+			// }
 			return { url: urlGet };
+
 		case GET_MANY: {
 			const query = {
 				filter: JSON.stringify({ id: params.ids }),
 			};
 			return { url: `${API_URL}/${resource}?${stringify(query)}` };
 		}
+
 		case UPDATE:
 			let addressUrlUpdate = `${API_URL}/${resource}/${params.id}`;
 
@@ -80,17 +92,21 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			let addressUrlCreate = `${API_URL}/${resource}`;
 
 			if (resource === 'product') {
-				addressUrlCreate = `${API_URL}/product`;
+				addressUrlCreate = `${API_URL}/product/`;
+			}
+			if (resource === 'category') {
+				addressUrlCreate = `${API_URL}/category/`;
 			}
 			return {
 				url: addressUrlCreate,
 				options: { method: 'POST', body: JSON.stringify(params.data) },
 			};
+
 		case DELETE:
 			let addressUrlDelete = `${API_URL}/${resource}/${params.id}`;
 
-			if (resource === 'product') {
-				addressUrlDelete = `${API_URL}/product/${params.id}`;
+			if (resource === 'category') {
+				addressUrlDelete = `${API_URL}/category/${params.id}`;
 			}
 
 			return {
@@ -99,16 +115,13 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			};
 
 		case DELETE_MANY:
-			const query = {
-				filter: JSON.stringify({ id: params.ids }),
-			};
-
-			let addressUrlDeleteMany = `${API_URL}/${resource}?${stringify(query)}`;
-
-			if (resource === 'product') {
-				addressUrlDeleteMany = `${API_URL}/product/?${stringify(query)}`;
+			
+			let addressUrlDeleteMany = `${API_URL}/${resource}?${params.id}`;
+			
+			if (resource === 'category') {
+				addressUrlDeleteMany = `${API_URL}/category/${params.id}`;
 			}
-
+		
 			return {
 				url: addressUrlDeleteMany,
 				options: { method: 'DELETE' },
@@ -129,17 +142,18 @@ const convertHTTPResponseToDataProvider = (
 		let { json, headers } = response;
 
 		// if (json === undefined) {
-		// 	localStorage.removeItem('mwlToken');
+		// 	localStorage.removeItem('token');
 		// 	window.location.href = '#/login';
 		// }
+
 		switch (type) {
 			case GET_LIST:
 				return {
-					data: json.items.map((x) => x),
-					total: json.totalCount,
+					data: json,
+					total: json.length,
 				};
 			case GET_ONE:
-				if (json.idInvoice) json.id = json.idInvoice;
+				// 	if (json.idInvoice) json.id = json.idInvoice;
 				return {
 					data: json,
 				};
@@ -160,7 +174,7 @@ const dataProvider = async (type, resource, params) => {
 
 	const token = localStorage.getItem('token');
 
-	const headers = new Headers({ authorization: token });
+	const headers = new Headers({ authorization: `Bearer ${token}` });
 
 	const optionsWithToken = { ...options, headers };
 

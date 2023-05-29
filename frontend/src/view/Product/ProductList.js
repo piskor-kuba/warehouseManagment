@@ -4,7 +4,9 @@ export const ProductList = (props) => (
 	<List {...props}>
 		<Datagrid>
 			<TextField source='id' />
-			<TextField source='title' />
+			<TextField source='name' />
+			<TextField source='describe' />
+			<TextField source='id_category' />
 			<EditButton />
 		</Datagrid>
 	</List>

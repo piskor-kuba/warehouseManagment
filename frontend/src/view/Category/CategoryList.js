@@ -4,7 +4,7 @@ export const CategoryList = (props) => (
 	<List {...props}>
 		<Datagrid>
 			<TextField source='id' />
-			<TextField source='title' />
+			<TextField source='name' />
 			<EditButton />
 		</Datagrid>
 	</List>
