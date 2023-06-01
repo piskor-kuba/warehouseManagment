@@ -1,48 +1,48 @@
-from pydantic import BaseModel, EmailStr, Field
-from typing import List, Optional
+from pydantic import BaseModel, StrictStr, StrictInt
+from typing import Optional
 
 class CategoryBase(BaseModel):
-    name: str
+    name: StrictStr
 
 class ProductBase(BaseModel):
-    id_category: int
-    name: str
-    describe: Optional[str] = None
+    id_category: StrictInt
+    name: StrictStr
+    describe: Optional[StrictStr] = None
 
 class ProductAmountBase(BaseModel):
-    id_product: int
-    amount: int
+    id_product: StrictInt
+    amount: StrictInt
 
 class PersonsBase(BaseModel):
-    name: str
-    surname: str
-    phone: str
-    address:str
+    name: StrictStr
+    surname: StrictStr
+    phone: StrictStr
+    address:StrictStr
 
 class ClientsBase(BaseModel):
-    id_persons: int
-    amount: int
+    id_persons: StrictInt
+    amount: StrictInt
 
 class ClientProductBase(BaseModel):
-    id_client:int
-    id_product:int
+    id_client:StrictInt
+    id_product:StrictInt
 
 class WorkplaceBase(BaseModel):
-    name: str
+    name: StrictStr
 
 class RoleBase(BaseModel):
-    name: str
+    name: StrictStr
 
 class EmployeesBase(BaseModel):
-    id_person:int
-    id_workplace:int
-    id_role:int
+    id_person:StrictInt
+    id_workplace:StrictInt
+    id_role:StrictInt
 
 class LoginDataBase(BaseModel):
-    login: str
-    password: str
+    login: StrictStr
+    password: StrictStr
     disabled: bool
 
 class OtpBase(BaseModel):
-    login: str
-    otp_code: str
+    login: StrictStr
+    otp_code: StrictStr
