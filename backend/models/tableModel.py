@@ -43,6 +43,10 @@ class LoginDataBase(BaseModel):
     password: StrictStr
     disabled: bool
 
+class CreateUser(BaseModel):
+    login: StrictStr
+    password: StrictStr
+
 class OtpBase(BaseModel):
     login: StrictStr
     otp_code: StrictStr

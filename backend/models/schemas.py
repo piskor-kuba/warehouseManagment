@@ -195,6 +195,11 @@ class LoginData(tableModel.LoginDataBase):
     class Config:
         orm_mode = True
 
+class CreateUser(tableModel.CreateUser):
+    id_employee: int
+    class Config:
+        orm_mode = True
+
 class Otp(tableModel.OtpBase):
     id:int
     class Config:

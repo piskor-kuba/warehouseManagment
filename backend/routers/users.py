@@ -12,12 +12,10 @@ router = APIRouter(prefix="/users", tags=["users"])
 async def read_users(current_user: str = Depends(get_current_active_user)):
     return current_user
 
-@router.post("/create")
-def create_user_account(user: schemas.LoginData, db: Session = Depends(getDB)):
+@router.post("/create", status_code=201)
+def create_user_account(user: schemas.CreateUser, db: Session = Depends(getDB)):
     created_user = create_user(db = db, user = user)
-    token_data = {"sub": jsonable_encoder(created_user)}
-    access_token = create_access_token(token_data)
-    return Token(access_token = access_token, token_type = "bearer")
+    return created_user
 
 @router.post("/token", response_model = Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(getDB)):
