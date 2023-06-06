@@ -1,4 +1,4 @@
-from sqlalchemy import  Column, ForeignKey, Integer, String, Boolean
+from sqlalchemy import  Column, ForeignKey, Integer, String, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from database.database import Base
 import passlib.hash as hash
@@ -100,3 +100,12 @@ class Otp(Base):
     id = Column(Integer, primary_key=True, index=True)
     login = Column(String)
     otp_code = Column(String)
+
+class AttemptBlocker(Base):
+    __tablename__ = "AttemptBlocker"
+    id = Column(Integer, primary_key=True, index=True)
+    login = Column(String)
+    attempts = Column(Integer)
+    time = Column(DateTime)
+
+

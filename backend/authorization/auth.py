@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from .F2A import totp_generate, totp_verify, release_otp
 import re
+from .authAttemptBlocker import AuthAttemptBlocker
 
 class Token(BaseModel):
     access_token: str
@@ -31,6 +32,7 @@ __ALGORITHM = "HS256"
 __PWD_CONTEXT = CryptContext(schemes = ["bcrypt"], deprecated= "auto")
 
 __OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl = "users/token")
+__AUTH_ATTEMPT_BLOCKER = AuthAttemptBlocker()
 
 def __get_password_hash(password):
     return __PWD_CONTEXT.hash(password)
@@ -48,7 +50,7 @@ def __verify_email(email):
 def __get_user(username: str, db: Session):
     user = db.query(Model).filter(Model.login == username).first()
     if user is None:
-        raise HTTPException(status_code = 404, detail = "User not found")
+        return
     return user
 
 async def __get_current_user(token: str = Depends(__OAUTH2_SCHEME), db: Session = Depends(getDB)):
@@ -87,17 +89,25 @@ def create_user(db: Session, user: CreateUser):
     return "New user created"
 
 def authenticate_user(db: Session, username: str, password: str, otp_code:str):
+    __AUTH_ATTEMPT_BLOCKER.block_user_if_needed(username=username, db=db)
     user = __get_user(db = db, username = username)
     if user is None or __verify_password(password, user.password) is False or totp_verify(db=db, login=username, otp_code = otp_code) is False:
-        return False
+        if user is not None:
+            __AUTH_ATTEMPT_BLOCKER.register_failed_attempt(username= username,db = db)
+        raise HTTPException(status_code=400, detail="Invalid data")
     release_otp(db=db, login=username)
+    __AUTH_ATTEMPT_BLOCKER.reset_attempts(username= username,db = db)
     return user
 
 def send_otp_code(db: Session, username: str, password: str):
+    __AUTH_ATTEMPT_BLOCKER.block_user_if_needed(username=username, db=db)
     user = __get_user(db=db, username=username)
     if user is None or __verify_password(password, user.password) is False:
-        return False
+        if user is not None:
+            __AUTH_ATTEMPT_BLOCKER.register_failed_attempt(username= username,db = db)
+        raise HTTPException(status_code=400, detail="invalid login or password")
     totp_generate(db=db, login=username)
+    __AUTH_ATTEMPT_BLOCKER.reset_attempts(username = username, db = db)
     return True
 
 def get_user(db: Session, username: str, password: str):

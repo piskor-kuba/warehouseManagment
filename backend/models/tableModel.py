@@ -1,5 +1,6 @@
 from pydantic import BaseModel, StrictStr, StrictInt
 from typing import Optional
+from datetime import datetime
 
 class CategoryBase(BaseModel):
     name: StrictStr
@@ -50,3 +51,8 @@ class CreateUser(BaseModel):
 class OtpBase(BaseModel):
     login: StrictStr
     otp_code: StrictStr
+
+class AttemptBlockerBase(BaseModel):
+    login: StrictStr
+    attempts: StrictInt
+    time: datetime

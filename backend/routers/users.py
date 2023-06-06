@@ -36,4 +36,5 @@ def OTP_code(data: Otp, db: Session = Depends(getDB)):
     code = send_otp_code(db, data.username, data.password)
     if code is False:
         raise HTTPException(status_code=404, detail="Incorrect username or password")
+    return "Token generated"
 
