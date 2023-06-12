@@ -5,6 +5,15 @@ from database import models
 
 ##################################################__CATEGORY__##################################################
 def createCategory(db: Session, category: schemas.CategoryCreate):
+    """Create a new category in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        category (schemas.CategoryCreate): The category information used to create the new category.
+
+    Returns:
+        models.Category: The newly created category object.
+    """
     db_category = models.Category(name = category.name)
     db.add(db_category)
     db.commit()
@@ -12,16 +21,54 @@ def createCategory(db: Session, category: schemas.CategoryCreate):
     return db_category
 
 def getCategory(db: Session, skip: int = 0, limit: int = 100):
+    """Get a list of categories from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int): The number of categories to skip (used for pagination). Defaults to 0.
+        limit (int): The maximum number of categories to retrieve (used for pagination). Defaults to 100.
+
+    Returns:
+        List[models.Category]: A list of category objects.
+        """
     return db.query(models.Category).offset(skip).limit(limit).all()
 
 def getCategoryById(db: Session, category_id:int):
+    """Get a category from the database by its ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        category_id (int): The ID of the category to retrieve.
+
+    Returns:
+        models.Category: The category object with the specified ID.
+    """
     return db.query(models.Category).filter(models.Category.id == category_id).first()
 
 def delCategory(db: Session, category: schemas.CategoryDelete):
+    """Delete a category from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        category (schemas.CategoryDelete): The category object to be deleted.
+
+    Returns:
+        None
+    """
     db.delete(category)
     db.commit()
 
 def updateCategory(db: Session, category: schemas.CategoryUpdate, category_id:int):
+    """Update a category in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        category (schemas.CategoryUpdate): The updated category information.
+        category_id (int): The ID of the category to be updated.
+
+    Returns:
+        models.Category: The updated category object.
+    """
     db_category = getCategoryById(db,category_id)
     if db_category is None:
         return None
@@ -35,6 +82,15 @@ def updateCategory(db: Session, category: schemas.CategoryUpdate, category_id:in
 
 ##################################################__PRODUCT__##################################################
 def createProduct(db: Session, product: schemas.ProductCreate):
+    """Create a new product in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product (schemas.ProductCreate): The product information used to create the new product.
+
+    Returns:
+        models.Product: The newly created product object.
+    """
     db_product = models.Product(id_category = product.id_category, name = product.name, describe = product.describe)
     db.add(db_product)
     db.commit()
@@ -42,12 +98,41 @@ def createProduct(db: Session, product: schemas.ProductCreate):
     return db_product
 
 def getProductById(db: Session, product_id:int):
+    """Get a product from the database by its ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product_id (int): The ID of the product to retrieve.
+
+    Returns:
+        models.Product: The product object with the specified ID.
+    """
     return db.query(models.Product).filter(models.Product.id == product_id).first()
 
 def getProduct(db: Session, skip: int = 0, limit: int = 100):
+    """Get a list of products from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int): The number of products to skip (used for pagination). Defaults to 0.
+        limit (int): The maximum number of products to retrieve (used for pagination). Defaults to 100.
+
+    Returns:
+        List[models.Product]: A list of product objects.
+    """
     return db.query(models.Product).offset(skip).limit(limit).all()
 
 def updateProduct(db: Session, product: schemas.ProductUpdate, product_id:int):
+    """Update a product in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product (schemas.ProductUpdate): The updated product information.
+        product_id (int): The ID of the product to be updated.
+
+    Returns:
+        models.Product: The updated product object.
+    """
     db_product = getProductById(db,product_id)
     if db_product is None:
         return None
@@ -60,6 +145,15 @@ def updateProduct(db: Session, product: schemas.ProductUpdate, product_id:int):
     return db_product
 
 def delProduct(db: Session, product: schemas.ProductDelete):
+    """Delete a product from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product (schemas.ProductDelete): The product object to be deleted.
+
+    Returns:
+        schemas.ProductDelete: The deleted product object.
+        """
     db.delete(product)
     db.commit()
     return product
@@ -67,9 +161,28 @@ def delProduct(db: Session, product: schemas.ProductDelete):
 
 ##################################################__PRODUCT-AMOUNT__##################################################
 def getProductAmount(db: Session, skip: int = 0, limit: int = 100):
+    """Get a list of product amounts from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int): The number of product amounts to skip (used for pagination). Defaults to 0.
+        limit (int): The maximum number of product amounts to retrieve (used for pagination). Defaults to 100.
+
+    Returns:
+        List[models.ProductAmount]: A list of product amount objects.
+    """
     return db.query(models.ProductAmount).offset(skip).limit(limit).all()
 
 def createProductAmount(db: Session, product: schemas.ProductCreate):
+    """Create a new product amount in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product (schemas.ProductCreate): The product information used to create the new product amount.
+
+    Returns:
+        models.ProductAmount: The newly created product amount object.
+    """
     db_product_amount = models.ProductAmount(id_product=product.id, amount=product.amount)
     db.add(db_product_amount)
     db.commit()
@@ -77,6 +190,16 @@ def createProductAmount(db: Session, product: schemas.ProductCreate):
     return db_product_amount
 
 def updateProductAmount(db: Session, product_amount: schemas.ProductAmountUpdate, product_amount_id:int):
+    """Update a product amount in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product_amount (schemas.ProductAmountUpdate): The updated product amount information.
+        product_amount_id (int): The ID of the product amount to be updated.
+
+    Returns:
+        models.ProductAmount: The updated product amount object.
+    """
     db_product_amount = db.query(models.ProductAmount).filter(models.ProductAmount.id == product_amount_id).first()
     if db_product_amount is None:
         return None
@@ -89,6 +212,12 @@ def updateProductAmount(db: Session, product_amount: schemas.ProductAmountUpdate
     return db_product_amount
 
 def delProductAmount(db: Session, product_id:int):
+    """Delete a product amount from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        product_id (int): The ID of the product amount to be deleted.
+    """
     db_product_amount = db.query(models.ProductAmount).filter(models.ProductAmount.id_product == product_id).first()
     db.delete(db_product_amount)
     db.commit()
@@ -101,6 +230,7 @@ def getPersonById(db: Session, person_id:int):
     return db.query(models.Persons).filter(models.Persons.id == person_id).first()
 
 def createPerson(db: Session, person: schemas.PersonsCreate):
+
     db_person = models.Persons(name = person.name, surname = person.surname, phone = person.phone, address = person.address)
     db.add(db_person)
     db.commit()
