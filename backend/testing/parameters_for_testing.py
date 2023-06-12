@@ -24,4 +24,8 @@ tableModelIncorrectTypeParamsForEmployees = [("1","100",2),(00,1465,""),("X","Y"
 tableModelIncorrectTypeParamsForLoginData = [(100,"100",100),(None,1465,True),("X@login.pl","Yyyy",None),(str,str,bool),(False,True,False)]
 tableModelIncorrectTypeParamsForOtp = [("0",123123),("login",None),(None,str),(False,False)]
 
-#=======================================TEST CRUD=======================================#
+#=======================================TEST ENDPOINTS=======================================#
+
+readCategoryData = [{'name': 'Electronics', 'id': 1}, {'name': 'Books', 'id': 2}, {'name': 'Clothing', 'id': 3}, {'name': 'Home and Garden', 'id': 4}, {'name': 'Beauty', 'id': 5}]
+createCategoryData = [{'name':'Test'}, {'name':'Test with id','id':7}]
+updateCategoryData = {'name':'Test'}
