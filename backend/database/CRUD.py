@@ -5,15 +5,9 @@ from database import models
 
 ##################################################__CATEGORY__##################################################
 def createCategory(db: Session, category: schemas.CategoryCreate):
-    """Create a new category in the database.
-
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        category (schemas.CategoryCreate): The category information used to create the new category.
-
-    Returns:
-        models.Category: The newly created category object.
-    """
+    existed = db.query(models.Category).filter(models.Category.name == category.name).first()
+    if existed is not None:
+        return None
     db_category = models.Category(name = category.name)
     db.add(db_category)
     db.commit()
@@ -98,29 +92,28 @@ def createProduct(db: Session, product: schemas.ProductCreate):
     return db_product
 
 def getProductById(db: Session, product_id:int):
-    """Get a product from the database by its ID.
 
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        product_id (int): The ID of the product to retrieve.
-
-    Returns:
-        models.Product: The product object with the specified ID.
-    """
-    return db.query(models.Product).filter(models.Product.id == product_id).first()
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    category = getCategoryById(db = db, category_id=product.id_category)
+    response = {
+        "category":category.name,
+        "product_name":product.name,
+        "describe":product.describe,
+        "product_id":product.id
+    }
+    return response
 
 def getProduct(db: Session, skip: int = 0, limit: int = 100):
-    """Get a list of products from the database.
+    products = db.query(models.Product).offset(skip).limit(limit).all()
+    response = [
+        {"category":getCategoryById(db = db, category_id=item.id_category).name,
+         "product_name": item.name,
+         "describe": item.describe,
+         "product_id": item.id
+         } for item in products
+    ]
 
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        skip (int): The number of products to skip (used for pagination). Defaults to 0.
-        limit (int): The maximum number of products to retrieve (used for pagination). Defaults to 100.
-
-    Returns:
-        List[models.Product]: A list of product objects.
-    """
-    return db.query(models.Product).offset(skip).limit(limit).all()
+    return response
 
 def updateProduct(db: Session, product: schemas.ProductUpdate, product_id:int):
     """Update a product in the database.
@@ -173,6 +166,9 @@ def getProductAmount(db: Session, skip: int = 0, limit: int = 100):
     """
     return db.query(models.ProductAmount).offset(skip).limit(limit).all()
 
+def getProductAmountById(db: Session, product_amount_id:int):
+    return db.query(models.ProductAmount).filter(models.ProductAmount.id == product_amount_id).first()
+
 def createProductAmount(db: Session, product, amount):
     db_product_amount = models.ProductAmount(id_product=product.id, amount=amount)
     db.add(db_product_amount)
@@ -221,11 +217,19 @@ def getPersonById(db: Session, person_id:int):
     return db.query(models.Persons).filter(models.Persons.id == person_id).first()
 
 def createPerson(db: Session, person: schemas.PersonsCreate):
-
+    existed = db.query(models.Persons).\
+        filter(models.Persons.name == person.name,\
+               models.Persons.surname == person.surname,\
+               models.Persons.phone == person.phone,\
+               models.Persons.address == person.address\
+               ).first()
+    if existed is not None:
+        return None
     db_person = models.Persons(name = person.name, surname = person.surname, phone = person.phone, address = person.address)
     db.add(db_person)
     db.commit()
     db.refresh(db_person)
+    return db_person
 
 def updatePerson(db: Session, person: schemas.PersonsUpdate, person_id:int):
     db_person = getPersonById(db,person_id)
@@ -246,11 +250,35 @@ def delPerson(db: Session, person: schemas.PersonsDelete):
 
 ##################################################__CLIENTS__##################################################
 def getClients(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Clients).offset(skip).limit(limit).all()
+    clients = db.query(models.Clients).offset(skip).limit(limit).all()
+    response = [
+        {
+            "Name": ' '.join([getPersonById(db=db, person_id=item.id_persons).name,
+                              getPersonById(db=db, person_id=item.id_persons).surname]),
+            "Amount":item.amount,
+            "Clinet_id":item.id
+        } for item in clients
+    ]
+
+    return response
 
 def getClientById(db: Session, client_id:int):
-    return db.query(models.Clients).filter(models.Clients.id == client_id).first()
+    client = db.query(models.Clients).filter(models.Clients.id == client_id).first()
+    response = {
+        "Name": ' '.join([getPersonById(db=db, person_id=client.id_persons).name,
+                          getPersonById(db=db, person_id=client.id_persons).surname]),
+        "Amount": client.amount,
+        "Clinet_id": client.id
+    }
+
+    return response
 def createClient(db: Session, client: schemas.ClientCreate):
+    existed = db.query(models.Clients). \
+        filter(models.Clients.id_persons == client.id_persons, \
+               models.Clients.amount == client.amount \
+               ).first()
+    if existed is not None:
+        return None
     db_client = models.Clients(id_persons = client.id_persons, amount = client.amount)
     db.add(db_client)
     db.commit()
@@ -293,6 +321,9 @@ def getWorkplaceById(db: Session, workplace_id:int):
     return db.query(models.Workplace).filter(models.Workplace.id == workplace_id).first()
 
 def createWorkplace(db: Session, workplace: schemas.WorkplaceCreate):
+    existed = db.query(models.Workplace).filter(models.Workplace.name == workplace.name).first()
+    if existed is not None:
+        return None
     db_workplace = models.Workplace(name = workplace.name)
     db.add(db_workplace)
     db.commit()
@@ -323,6 +354,9 @@ def getRoleById(db: Session, role_id:int):
     return db.query(models.Role).filter(models.Role.id == role_id).first()
 
 def createRole(db: Session, role: schemas.RoleCreate):
+    existed = db.query(models.Role).filter(models.Role.name == role.name).first()
+    if existed is not None:
+        return None
     db_role = models.Role(name = role.name)
     db.add(db_role)
     db.commit()
@@ -347,12 +381,35 @@ def delRole(db: Session, role: schemas.RoleDelete):
 
 ##################################################__EMPLOYEES__##################################################
 def getEmployees(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Employees).offset(skip).limit(limit).all()
-
+    employees = db.query(models.Employees).offset(skip).limit(limit).all()
+    response = [
+        {
+        "Name": ' '.join([getPersonById(db=db, person_id= item.id_persons).name, getPersonById(db=db, person_id= item.id_persons).surname]),
+        "Workplace": getWorkplaceById(db=db, workplace_id=item.id_workplace).name,
+        "Role": getRoleById(db=db, role_id=item.id_role).name,
+        "Employee_id":item.id
+        } for item in employees
+    ]
+    return response
 def getEmployeeById(db: Session, employee_id:int):
-    return db.query(models.Employees).filter(models.Employees.id == employee_id).first()
+    employee = db.query(models.Employees).filter(models.Employees.id == employee_id).first()
+    response = {
+        "Name": ' '.join([getPersonById(db=db, person_id=employee.id_persons).name,
+                          getPersonById(db=db, person_id=employee.id_persons).surname]),
+        "Workplace": getWorkplaceById(db=db, workplace_id=employee.id_workplace).name,
+        "Role": getRoleById(db=db, role_id=employee.id_role).name,
+        "Employee_id": employee.id
+    }
+    return response
 
 def createEmployee(db: Session, employee: schemas.EmployeesCreate):
+    existed = db.query(models.Employees). \
+        filter(models.Employees.id_persons == employee.id_persons, \
+               models.Employees.id_workplace == employee.id_workplace, \
+               models.Employees.id_role == employee.id_role \
+               ).first()
+    if existed is not None:
+        return None
     db_employee = models.Employees(id_person = employee.id_person, id_workplace = employee.id_workplace, id_role = employee.id_role)
     db.add(db_employee)
     db.commit()

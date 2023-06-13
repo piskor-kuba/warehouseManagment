@@ -16,17 +16,23 @@ def read_category(skip: int = 0, limit: int = 100, current_user: schemas.LoginDa
 
 @router.get("/{category_id}", response_model= schemas.Category, status_code=200)
 def read_category_by_id(category_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
-    return CRUD.getCategoryById(db = db, category_id = category_id)
+    category = CRUD.getCategoryById(db=db, category_id=category_id)
+    if category is None:
+        raise HTTPException(status_code=404, detail="Category not found")
+    return category
 
 @router.post("/", response_model= schemas.CategoryCreate, status_code=201)
 def create_category(name: schemas.CategoryCreate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
-    category = read_category(db = db)
-    if name in category:
+    category = CRUD.createCategory(db = db, category=name)
+    if category is None:
         raise HTTPException(status_code=400, detail="Category existed")
-    return CRUD.createCategory(db = db, category=name)
+    return category
 
 @router.patch("/{category_id}", response_model= schemas.CategoryUpdate, status_code=200)
-def update_category(category_id: int, category: schemas.CategoryUpdate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+def update_category(category_id:int, category: schemas.CategoryUpdate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    cat = CRUD.getCategoryById(db=db, category_id=category_id)
+    if cat is None:
+        raise HTTPException(status_code=400, detail="Category not existed")
     return CRUD.updateCategory(db = db, category = category, category_id = category_id)
 
 @router.delete("/{category_id}", status_code=204)

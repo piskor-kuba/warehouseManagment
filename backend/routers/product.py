@@ -7,16 +7,19 @@ from authorization.auth import get_current_active_user
 
 router = APIRouter(prefix="/product", tags=["product"])
 
-@router.get("/", response_model = list[schemas.Product])
+@router.get("/", response_model = list[dict])
 def read_product(skip: int = 0, limit: int = 100, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
     product = CRUD.getProduct(db, skip, limit)
     if product is None:
         raise HTTPException(status_code=404, detail="Product not found")
-    return product\
+    return product
 
-@router.get("/{product_id}", response_model= schemas.Product, status_code=200)
+@router.get("/{product_id}", response_model= dict, status_code=200)
 def read_product_by_id(product_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
-    return CRUD.getProductById(db = db, product_id = product_id)
+    product = CRUD.getProductById(db=db, product_id=product_id)
+    if product is None:
+        raise HTTPException(status_code=404, detail="product not found")
+    return product
 
 @router.get("/amount", response_model = list[schemas.ProductAmount])
 def read_amount(skip: int = 0, limit: int = 100, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
@@ -36,10 +39,16 @@ def create_product(product: schemas.ProductCreate, current_user: schemas.LoginDa
 
 @router.patch("/{product_id}", response_model= schemas.ProductUpdate, status_code=200)
 def update_product(product_id: int, product: schemas.ProductUpdate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    pro = CRUD.getProductById(db=db, product_id=product_id)
+    if pro is None:
+        raise HTTPException(status_code=404, detail="Product not found")
     return CRUD.updateProduct(db = db, product = product, product_id = product_id)
 
 @router.patch("/{product_id}", response_model= schemas.ProductAmountUpdate, status_code=200)
 def update_product_amount(product_amount_id: int, product_amount: schemas.ProductAmountUpdate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    pro = CRUD.getProductAmountById(db=db, product_amount_id=product_amount_id)
+    if pro is None:
+        raise HTTPException(status_code=404, detail="Product not found")
     return CRUD.updateProductAmount(db = db, product_amount = product_amount, product_amount_id = product_amount_id)
 
 @router.delete("/{product_id}", status_code=204)

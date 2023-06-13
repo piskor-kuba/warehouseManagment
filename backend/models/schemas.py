@@ -101,7 +101,6 @@ class ClientDelete(tableModel.ClientsBase):
     class Config:
         orm_mode = True
 class ClientUpdate(tableModel.ClientsBase):
-    id_person: Optional[int] = None
     amount: Optional[str] = None
     class Config:
         orm_mode = True
