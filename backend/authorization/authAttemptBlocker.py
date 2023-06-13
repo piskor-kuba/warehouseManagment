@@ -1,9 +1,10 @@
 from datetime import datetime
 from fastapi import HTTPException
 from database.models import AttemptBlocker
+from configuration.config import AuthorizationBlocker
 class AuthAttemptBlocker:
     def __init__(self):
-        pass
+        self.config = AuthorizationBlocker()
     def register_failed_attempt(self, username, db):
         user = db.query(AttemptBlocker).filter(AttemptBlocker.login == username).first()
         if user is None:
@@ -41,15 +42,15 @@ class AuthAttemptBlocker:
         """
         user = db.query(AttemptBlocker).filter(AttemptBlocker.login == username).first()
         if user is not None:
-            if user.attempts < 6:
+            if user.attempts < self.config.attempts:
                 return False
             if datetime.now().day > user.time.day or datetime.now().month > user.time.month or datetime.now().year > user.time.year:
                 self.reset_attempts(username,db)
                 return False
-            if datetime.now().minute - user.time.minute < 5:
+            if datetime.now().minute - user.time.minute < self.config.time:
                 if datetime.now().hour < user.time.hour:
                     return True
-            if datetime.now().minute - user.time.minute > 5:
+            if datetime.now().minute - user.time.minute > self.config.time:
                 self.reset_attempts(username, db)
                 return False
             else:

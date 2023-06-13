@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from .F2A import totp_generate, totp_verify, release_otp
 import re
 from .authAttemptBlocker import AuthAttemptBlocker
-
+from configuration.config import Authorization
 """
 auth.py
 ==========================
@@ -31,10 +31,10 @@ class Otp(BaseModel):
 class TokenData(BaseModel):
     username: str | None = None
 
+config = Authorization()
 
-
-__SECRET_KEY = "e06d1c3cff8a63fa08adc863b66d18c62ad06cd8eab65f51b41ab603c047dfaf"
-__ALGORITHM = "HS256"
+__SECRET_KEY = config.key
+__ALGORITHM = config.algorithm
 __PWD_CONTEXT = CryptContext(schemes = ["bcrypt"], deprecated= "auto")
 
 __OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl = "users/token")
@@ -66,7 +66,7 @@ def __verify_email(email):
         Returns:
             bool: verification status
     """
-    regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+    regex = re.compile(rf'{config.emailRegex}')
     if re.fullmatch(regex, email):
         return True
     else:

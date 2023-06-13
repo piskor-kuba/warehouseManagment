@@ -2,6 +2,13 @@ import json
 import pytest
 from parameters_for_testing import *
 
+#####################################################################################################################
+#                                                                                                                   #
+#                            Ścieżka do pliku config do wykonywania testów jednostkowych                            #
+#       /mnt/d/Studia/programowanie defensywne - projekt/warehouseManagment/backend/configuration/config.yaml       #
+#                                                                                                                   #
+#####################################################################################################################
+
 #=======================================CATEGORY ENDPOINT=======================================#
 
 def test_read_category(client, user_token):

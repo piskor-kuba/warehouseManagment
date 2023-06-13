@@ -1,0 +1,40 @@
+configuration:
+  authors:
+    - inż. Karol Wykrota
+    - inż. Grzegorz Swajda
+  group: 1ID24B
+  projectTheme: Warehouse Managment
+  project: Programowanie defensywne
+  University: Kielce University of Technology
+  date: 28/06/2023
+
+  authorization:
+    secretKey: e06d1c3cff8a63fa08adc863b66d18c62ad06cd8eab65f51b41ab603c047dfaf
+    algorithm: HS256
+    emailRegex: ([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+
+
+  f2a:
+    secretKey: SuperSecretKeyThatEveryoneCanSee
+    password: bgqdvoiwwfuwqjzf
+    email: wykrota.swajda@gmail.com
+    emailBody: | 
+      <html>
+        <body>
+          <p>
+            Twój kod weryfikacyjny to: <b>{code}</b>
+          </p>
+        </body>
+      </html>
+    emailSubject: Kod weryfikacyjny
+    smtpServer: smtp.gmail.com:587
+
+  authorizationBlocker:
+    attempts: 6
+    time: 5
+
+  database:
+    url: sqlite:///./database/warehouseManagment.db
+
+  server:
+    host: localhost
+    port: 8000

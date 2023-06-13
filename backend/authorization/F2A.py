@@ -6,10 +6,13 @@ import pyotp
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from configuration.config import F2a
 
-__SECRET_KEY = "SuperSecretKeyThatEveryoneCanSee" #Musi być kodowane w Base32 czyli litery od A do Z i cyfry od 2 do 7
-__PASSWORD = "bgqdvoiwwfuwqjzf"
-__FROM = "wykrota.swajda@gmail.com"
+config = F2a()
+
+__SECRET_KEY = config.key
+__PASSWORD = config.password
+__FROM = config.email
 
 def __send_email(email,otp):
     """Send an email with a verification code to the specified email address.
@@ -26,13 +29,13 @@ def __send_email(email,otp):
     Returns:
         None
     """
-    emailBody = """<html><body><p>Twój kod weryfikacyjny to: <b>{code}</b></p></body></html>""".format(code=otp.now())
+    emailBody = config.emailBody.format(code=otp.now())
     message = MIMEMultipart('alternative',None,[MIMEText(emailBody,'html')])
-    message['Subject'] = "Kod weryfikacyjny"
+    message['Subject'] = config.emailSubject
     message['From'] = __FROM
     message['To'] = email
     try:
-        server = smtplib.SMTP('smtp.gmail.com:587')
+        server = smtplib.SMTP(config.smtpServer)
         server.ehlo()
         server.starttls()
         server.login(__FROM,__PASSWORD)

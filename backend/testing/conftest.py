@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from database import models
 from dependencies import getDB
 from routers import users,product,person,employee,category,client,workplace,role
-from sqlalchemy.ext.declarative import declarative_base
+
 def get_user(email: str, db: Session):
     user = db.query(models.LoginData).filter(models.LoginData.login == email).first()
     return user
