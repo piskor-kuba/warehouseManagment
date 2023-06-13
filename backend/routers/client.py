@@ -15,7 +15,7 @@ def read_clients(skip: int = 0, limit: int = 100, current_user: schemas.LoginDat
     return clients
 
 @router.get("/{client_id}", response_model= schemas.Clients, status_code=200)
-def read_client_by_id(client_id: int, product: schemas.Clients, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+def read_client_by_id(client_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
     return CRUD.getClientById(db = db, client_id = client_id)
 
 
