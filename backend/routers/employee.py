@@ -14,6 +14,9 @@ def read_employees(skip: int = 0, limit: int = 100, current_user: schemas.LoginD
         raise HTTPException(status_code=404, detail="Employees not found")
     return employee
 
+@router.get("/{employee_id}", response_model= schemas.Employees, status_code=200)
+def read_employee_by_id(employee_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    return CRUD.getEmployeeById(db = db, employee_id = employee_id)
 
 @router.post("/", response_model= schemas.EmployeesCreate, status_code=201)
 def create_employee(emp: schemas.EmployeesCreate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):

@@ -14,6 +14,10 @@ def read_persons(skip: int = 0, limit: int = 100, current_user: schemas.LoginDat
         raise HTTPException(status_code=404, detail="Person not found")
     return persons
 
+@router.get("/{person_id}", response_model= schemas.Persons, status_code=200)
+def read_person_by_id(person_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    return CRUD.getPersonById(db = db, person_id = person_id)
+
 
 @router.post("/", response_model= schemas.PersonsCreate, status_code=201)
 def create_person(name: schemas.PersonsCreate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):

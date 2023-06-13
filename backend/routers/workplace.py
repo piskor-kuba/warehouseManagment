@@ -14,6 +14,9 @@ def read_workplace(skip: int = 0, limit: int = 100, current_user: schemas.LoginD
         raise HTTPException(status_code=404, detail="Workplace not found")
     return workplace
 
+@router.get("/{workplace_id}", response_model= schemas.Workplace, status_code=200)
+def read_workplace_by_id(workplace_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    return CRUD.getWorkplaceById(db = db, workplace_id = workplace_id)
 
 @router.post("/", response_model= schemas.WorkplaceCreate, status_code=201)
 def create_workplace(work: schemas.WorkplaceCreate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):

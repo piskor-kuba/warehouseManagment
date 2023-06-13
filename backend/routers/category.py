@@ -14,6 +14,9 @@ def read_category(skip: int = 0, limit: int = 100, current_user: schemas.LoginDa
         raise HTTPException(status_code=404, detail="Category not found")
     return category
 
+@router.get("/{category_id}", response_model= schemas.Category, status_code=200)
+def read_category_by_id(category_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    return CRUD.getCategoryById(db = db, category_id = category_id)
 
 @router.post("/", response_model= schemas.CategoryCreate, status_code=201)
 def create_category(name: schemas.CategoryCreate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):

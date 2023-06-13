@@ -14,6 +14,10 @@ def read_product(skip: int = 0, limit: int = 100, current_user: schemas.LoginDat
         raise HTTPException(status_code=404, detail="Product not found")
     return product\
 
+@router.get("/{product_id}", response_model= schemas.Product, status_code=200)
+def read_product_by_id(product_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
+    return CRUD.getProductById(db = db, product_id = product_id)
+
 @router.get("/amount", response_model = list[schemas.ProductAmount])
 def read_amount(skip: int = 0, limit: int = 100, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
     product_amount = CRUD.getProductAmount(db, skip, limit)
