@@ -1,10 +1,10 @@
-import { SimpleForm, TextInput, Create } from 'react-admin';
+import { SimpleForm, Create, NumberInput } from 'react-admin';
 
 export const ClientsCreate = (props) => (
 	<Create {...props}>
 		<SimpleForm>
-			<TextInput source='title' />
-			<TextInput multiline source='body' />
+			<NumberInput source='id_persons' />
+			<NumberInput source='amount' />
 		</SimpleForm>
 	</Create>
 );

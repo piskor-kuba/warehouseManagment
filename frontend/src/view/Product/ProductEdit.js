@@ -4,8 +4,9 @@ export const ProductEdit = (props) => (
 	<Edit {...props}>
 		<SimpleForm>
 			<TextInput disabled source='id' />
-			<TextInput source='title' />
-			<TextInput multiline source='body' />
+			<TextInput source='name' />
+			<TextInput multiline source='describe' />
+			<TextInput source='id_category' />
 		</SimpleForm>
 	</Edit>
 );

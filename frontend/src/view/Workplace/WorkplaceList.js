@@ -1,11 +1,18 @@
-import { List, Datagrid, TextField, EditButton } from 'react-admin';
+import {
+	List,
+	Datagrid,
+	TextField,
+	EditButton,
+	DeleteButton,
+} from 'react-admin';
 
 export const WorkplaceList = (props) => (
 	<List {...props}>
 		<Datagrid>
 			<TextField source='id' />
-			<TextField source='title' />
+			<TextField source='name' />
 			<EditButton />
+			<DeleteButton />
 		</Datagrid>
 	</List>
 );

@@ -1,11 +1,12 @@
-import { Edit, SimpleForm, TextInput } from 'react-admin';
+import { Edit, SimpleForm, TextInput, NumberInput } from 'react-admin';
 
 export const EmployeesEdit = (props) => (
 	<Edit {...props}>
 		<SimpleForm>
 			<TextInput disabled source='id' />
-			<TextInput source='title' />
-			<TextInput multiline source='body' />
+			<NumberInput source='id_persons' />
+			<NumberInput source='id_role' />
+			<NumberInput source='id_workplace' />
 		</SimpleForm>
 	</Edit>
 );

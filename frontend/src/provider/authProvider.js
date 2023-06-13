@@ -15,14 +15,17 @@ export const authProvider = {
 		data.append('client_id', '');
 		data.append('client_secret', otp);
 
-		axios
-			.post(endpoint.baseUrl + '/users/token', data, { headers })
-			.then(({ data }) => {
-				localStorage.setItem('token', data.access_token);
-				// window.location.href = '#/dashboard';
-				return Promise.resolve();
-			})
-			.catch(() => {});
+		try {
+			const response = await axios.post(
+				endpoint.baseUrl + '/users/token',
+				data,
+				{ headers }
+			);
+			localStorage.setItem('token', response.data.access_token);
+			return Promise.resolve();
+		} catch (error) {
+			return Promise.reject();
+		}
 	},
 	logout: () => {
 		localStorage.removeItem('token');

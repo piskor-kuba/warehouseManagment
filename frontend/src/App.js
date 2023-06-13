@@ -54,8 +54,8 @@ const App = () => {
 			<Resource name='persons' {...Persons} />
 			<Resource name='product' {...Product} />
 			{/* <Resource name='ProductAmount' {...ProductAmount} /> */}
-			<Resource name='Role' {...Role} />
-			<Resource name='Workplace' {...Workplace} />
+			<Resource name='role' {...Role} />
+			<Resource name='workplace' {...Workplace} />
 		</Admin>
 	);
 };

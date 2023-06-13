@@ -5,7 +5,12 @@ import Menu from './Menu';
 import AppBar from './AppBar';
 
 const Layout = (props) => (
-	<RaLayout {...props} appBar={AppBar} sidebar={Sidebar} menu={Menu} />
+	<RaLayout
+		{...props}
+		appBar={AppBar}
+		sidebar={Sidebar}
+		menu={Menu}
+	/>
 );
 
 export default Layout;

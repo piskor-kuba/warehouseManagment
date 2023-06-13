@@ -4,8 +4,7 @@ export const CategoryEdit = (props) => (
 	<Edit {...props}>
 		<SimpleForm>
 			<TextInput disabled source='id' />
-			<TextInput source='title' />
-			<TextInput multiline source='body' />
+			<TextInput source='name' />
 		</SimpleForm>
 	</Edit>
 );

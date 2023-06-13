@@ -1,4 +1,10 @@
-import { List, Datagrid, TextField, EditButton } from 'react-admin';
+import {
+	List,
+	Datagrid,
+	TextField,
+	EditButton,
+	DeleteButton,
+} from 'react-admin';
 
 export const PersonsList = (props) => {
 	return (
@@ -10,6 +16,7 @@ export const PersonsList = (props) => {
 				<TextField source='phone' />
 				<TextField source='address' />
 				<EditButton />
+				<DeleteButton />
 			</Datagrid>
 		</List>
 	);

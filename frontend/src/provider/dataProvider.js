@@ -14,6 +14,7 @@ import endpoint from '../endpoint';
 const API_URL = endpoint.baseUrl;
 
 const convertDataProviderRequestToHTTP = async (type, resource, params) => {
+	console.log(type);
 	switch (type) {
 		case GET_LIST: {
 			const query = { skip: 0, limit: 100 };
@@ -34,6 +35,12 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			if (resource === 'product') {
 				addressUrl = `${API_URL}/product/?${stringify(query)}`;
 			}
+			if (resource === 'workplace') {
+				addressUrl = `${API_URL}/workplace/?${stringify(query)}`;
+			}
+			if (resource === 'role') {
+				addressUrl = `${API_URL}/role/?${stringify(query)}`;
+			}
 			return {
 				url: addressUrl,
 				options: { method: 'GET' },
@@ -42,23 +49,25 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 		case GET_ONE:
 			let urlGet = `${API_URL}/${resource}/${params.id}`;
 
-			// if (resource === 'Category') {
-			// 	console.log(resource);
-			// 	urlGet = `${API_URL}/category/${params.id}`;
-			// }
-			// if (resource === 'Clients') {
-			// 	urlGet = `${API_URL}/client/${params.id}`;
-			// }
-			// if (resource === 'Employee') {
-			// 	urlGet = `${API_URL}/employee/${params.id}`;
-			// }
-			// if (resource === 'Persons') {
-			// 	urlGet = `${API_URL}/person/${params.id}`;
-			// }
-			// if (resource === 'Product') {
-			// 	urlGet = `${API_URL}/product/${params.id}`;
-			// }
-			return { url: urlGet };
+			if (resource === 'category') {
+				urlGet = `${API_URL}/category/${params.id}`;
+			}
+			if (resource === 'clients') {
+				urlGet = `${API_URL}/client/${params.id}`;
+			}
+			if (resource === 'employees') {
+				urlGet = `${API_URL}/employee/${params.id}`;
+			}
+			if (resource === 'persons') {
+				urlGet = `${API_URL}/person/${params.id}`;
+			}
+			if (resource === 'product') {
+				urlGet = `${API_URL}/product/${params.id}`;
+			}
+			return {
+				url: urlGet,
+				options: { method: 'GET' },
+			};
 
 		case GET_MANY: {
 			const query = {
@@ -70,43 +79,53 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 		case UPDATE:
 			let addressUrlUpdate = `${API_URL}/${resource}/${params.id}`;
 
-			let method = 'POST';
+			let method = 'PATCH';
 
-			switch (resource) {
-				case 'product':
-					method = 'PUT';
-					break;
-				default:
-					method = 'POST';
+			if (resource === 'employees') {
+				addressUrlUpdate = `${API_URL}/employee/${params.id}`;
+			}
+			if (resource === 'clients') {
+				addressUrlUpdate = `${API_URL}/client/${params.id}`;
+			}
+			if (resource === 'persons') {
+				addressUrlUpdate = `${API_URL}/person/${params.id}`;
 			}
 
-			if (resource === 'product') {
-				addressUrlUpdate = `${API_URL}/${resource}/product`;
-			}
 			return {
 				url: addressUrlUpdate,
 				options: { method, body: JSON.stringify(params.data) },
 			};
 
 		case CREATE:
-			let addressUrlCreate = `${API_URL}/${resource}`;
+			let addressUrlCreate = `${API_URL}/${resource}/`;
 
-			if (resource === 'product') {
-				addressUrlCreate = `${API_URL}/product/`;
+			if (resource === 'employees') {
+				addressUrlCreate = `${API_URL}/employee/`;
 			}
-			if (resource === 'category') {
-				addressUrlCreate = `${API_URL}/category/`;
+			if (resource === 'clients') {
+				addressUrlCreate = `${API_URL}/client/`;
 			}
+			if (resource === 'persons') {
+				addressUrlCreate = `${API_URL}/person/`;
+			}
+
 			return {
 				url: addressUrlCreate,
 				options: { method: 'POST', body: JSON.stringify(params.data) },
 			};
 
 		case DELETE:
+			console.log('XXDD');
 			let addressUrlDelete = `${API_URL}/${resource}/${params.id}`;
 
-			if (resource === 'category') {
-				addressUrlDelete = `${API_URL}/category/${params.id}`;
+			if (resource === 'employees') {
+				addressUrlDelete = `${API_URL}/employee/${params.id}`;
+			}
+			if (resource === 'clients') {
+				addressUrlDelete = `${API_URL}/client/${params.id}`;
+			}
+			if (resource === 'persons') {
+				addressUrlDelete = `${API_URL}/person/${params.id}`;
 			}
 
 			return {
@@ -115,13 +134,18 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			};
 
 		case DELETE_MANY:
-			
-			let addressUrlDeleteMany = `${API_URL}/${resource}?${params.id}`;
-			
-			if (resource === 'category') {
-				addressUrlDeleteMany = `${API_URL}/category/${params.id}`;
+			let addressUrlDeleteMany = `${API_URL}/${resource}/${params.ids[0]}`;
+
+			if (resource === 'employees') {
+				addressUrlDeleteMany = `${API_URL}/employee/${params.ids[0]}`;
 			}
-		
+			if (resource === 'clients') {
+				addressUrlDeleteMany = `${API_URL}/client/${params.ids[0]}`;
+			}
+			if (resource === 'persons') {
+				addressUrlDeleteMany = `${API_URL}/person/${params.ids[0]}`;
+			}
+
 			return {
 				url: addressUrlDeleteMany,
 				options: { method: 'DELETE' },
@@ -141,11 +165,6 @@ const convertHTTPResponseToDataProvider = (
 	try {
 		let { json, headers } = response;
 
-		// if (json === undefined) {
-		// 	localStorage.removeItem('token');
-		// 	window.location.href = '#/login';
-		// }
-
 		switch (type) {
 			case GET_LIST:
 				return {
@@ -153,7 +172,6 @@ const convertHTTPResponseToDataProvider = (
 					total: json.length,
 				};
 			case GET_ONE:
-				// 	if (json.idInvoice) json.id = json.idInvoice;
 				return {
 					data: json,
 				};
