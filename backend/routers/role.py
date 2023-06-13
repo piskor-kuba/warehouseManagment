@@ -9,10 +9,10 @@ router = APIRouter(prefix="/role", tags=["role"])
 
 @router.get("/", response_model = list[schemas.Role])
 def read_role(skip: int = 0, limit: int = 100, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
-    employee = CRUD.getEmployees(db, skip, limit)
-    if employee is None:
+    role = CRUD.getRole(db, skip, limit)
+    if role is None:
         raise HTTPException(status_code=404, detail="Role not found")
-    return employee
+    return role
 
 @router.get("/{role_id}", response_model= schemas.Role, status_code=200)
 def read_role_by_id(role_id: int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):

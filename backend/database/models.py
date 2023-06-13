@@ -34,7 +34,7 @@ class Persons(Base):
     id = Column(Integer, primary_key = True, index = True)
     name = Column(String)
     surname = Column(String)
-    phone = Column(Integer)
+    phone = Column(String)
     address = Column(String)
 
     persons_client = relationship("Clients", uselist=False, back_populates="client_persons")

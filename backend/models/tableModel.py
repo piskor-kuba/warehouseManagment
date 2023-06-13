@@ -35,7 +35,7 @@ class RoleBase(BaseModel):
     name: StrictStr
 
 class EmployeesBase(BaseModel):
-    id_person:StrictInt
+    id_persons:StrictInt
     id_workplace:StrictInt
     id_role:StrictInt
 

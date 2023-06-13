@@ -24,12 +24,12 @@ class CategoryDelete(tableModel.CategoryBase):
         orm_mode = True
 
 class Product(tableModel.ProductBase):
-    id:int
+    pass
     class Config:
         orm_mode = True
 
 class ProductCreate(Product):
-    amount:str
+    amount:int
     class Config:
         orm_mode = True
 

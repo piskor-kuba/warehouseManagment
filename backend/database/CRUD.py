@@ -173,17 +173,8 @@ def getProductAmount(db: Session, skip: int = 0, limit: int = 100):
     """
     return db.query(models.ProductAmount).offset(skip).limit(limit).all()
 
-def createProductAmount(db: Session, product: schemas.ProductCreate):
-    """Create a new product amount in the database.
-
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        product (schemas.ProductCreate): The product information used to create the new product amount.
-
-    Returns:
-        models.ProductAmount: The newly created product amount object.
-    """
-    db_product_amount = models.ProductAmount(id_product=product.id, amount=product.amount)
+def createProductAmount(db: Session, product, amount):
+    db_product_amount = models.ProductAmount(id_product=product.id, amount=amount)
     db.add(db_product_amount)
     db.commit()
     db.refresh(db_product_amount)

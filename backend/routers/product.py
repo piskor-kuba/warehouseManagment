@@ -29,9 +29,9 @@ def read_amount(skip: int = 0, limit: int = 100, current_user: schemas.LoginData
 def create_product(product: schemas.ProductCreate, current_user: schemas.LoginData = Depends(get_current_active_user), db: Session = Depends(getDB)):
     category = CRUD.getCategoryById(category_id= product.id_category, db = db)
     if category is None :
-        raise HTTPException(status_code=404, detail="Product not Found")
-    CRUD.createProductAmount(db = db, product = product)
-    return CRUD.createProduct(db = db, product = product)
+        raise HTTPException(status_code=404, detail="Category not Found")
+    pro = CRUD.createProduct(db = db, product = product)
+    return CRUD.createProductAmount(db = db, product = pro, amount = product.amount)
 
 @router.patch("/{product_id}", response_model= schemas.ProductUpdate, status_code=200)
 def update_product(product_id: int, product: schemas.ProductUpdate, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
