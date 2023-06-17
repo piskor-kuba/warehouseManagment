@@ -94,6 +94,8 @@ def createProduct(db: Session, product: schemas.ProductCreate):
 def getProductById(db: Session, product_id:int):
 
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if product is None:
+        return None
     category = getCategoryById(db = db, category_id=product.id_category)
     response = {
         "category":category.name,
@@ -115,18 +117,9 @@ def getProduct(db: Session, skip: int = 0, limit: int = 100):
 
     return response
 
-def updateProduct(db: Session, product: schemas.ProductUpdate, product_id:int):
-    """Update a product in the database.
+def updateProduct(db: Session, product: dict, product_id:int):
 
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        product (schemas.ProductUpdate): The updated product information.
-        product_id (int): The ID of the product to be updated.
-
-    Returns:
-        models.Product: The updated product object.
-    """
-    db_product = getProductById(db,product_id)
+    db_product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if db_product is None:
         return None
     for key,value in vars(product).items():
@@ -137,19 +130,11 @@ def updateProduct(db: Session, product: schemas.ProductUpdate, product_id:int):
     db.refresh(db_product)
     return db_product
 
-def delProduct(db: Session, product: schemas.ProductDelete):
-    """Delete a product from the database.
-
-    Args:
-        db (Session): The database session obtained from the getDB function.
-        product (schemas.ProductDelete): The product object to be deleted.
-
-    Returns:
-        schemas.ProductDelete: The deleted product object.
-        """
-    db.delete(product)
+def delProduct(db: Session, product: dict):
+    db_product = db.query(models.Product).filter(models.Product.id == product["product_id"]).first()
+    db.delete(db_product)
     db.commit()
-    return product
+    return "Product deleted"
 
 
 ##################################################__PRODUCT-AMOUNT__##################################################
@@ -166,8 +151,8 @@ def getProductAmount(db: Session, skip: int = 0, limit: int = 100):
     """
     return db.query(models.ProductAmount).offset(skip).limit(limit).all()
 
-def getProductAmountById(db: Session, product_amount_id:int):
-    return db.query(models.ProductAmount).filter(models.ProductAmount.id == product_amount_id).first()
+def getProductAmountById(db: Session, product_id:int):
+    return db.query(models.ProductAmount).filter(models.ProductAmount.id_product == product_id).first()
 
 def createProductAmount(db: Session, product, amount):
     db_product_amount = models.ProductAmount(id_product=product.id, amount=amount)
@@ -410,14 +395,14 @@ def createEmployee(db: Session, employee: schemas.EmployeesCreate):
                ).first()
     if existed is not None:
         return None
-    db_employee = models.Employees(id_person = employee.id_person, id_workplace = employee.id_workplace, id_role = employee.id_role)
+    db_employee = models.Employees(id_persons = employee.id_persons, id_workplace = employee.id_workplace, id_role = employee.id_role)
     db.add(db_employee)
     db.commit()
     db.refresh(db_employee)
     return db_employee
 
 def updateEmployee(db: Session, employee: schemas.EmployeesUpdate, employee_id:int):
-    db_employee = getEmployeeById(db,employee_id)
+    db_employee = db.query(models.Employees).filter(models.Employees.id == employee_id).first()
     if db_employee is None:
         return None
     for key,value in vars(employee).items():
@@ -428,8 +413,9 @@ def updateEmployee(db: Session, employee: schemas.EmployeesUpdate, employee_id:i
     db.refresh(db_employee)
     return db_employee
 
-def delEmployee(db: Session, employee: schemas.EmployeesDelete):
-    db.delete(employee)
+def delEmployee(db: Session, employee: dict):
+    db_employee = db.query(models.Employees).filter(models.Employees.id == employee["Employee_id"]).first()
+    db.delete(db_employee)
     db.commit()
 
 ##################################################__OTP__##################################################

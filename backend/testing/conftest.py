@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
 from database import models
 from dependencies import getDB
-from routers import users,product,person,employee,category,client,workplace,role
+from routers import users,person,employee,category,client,workplace,role, product
 
 def get_user(email: str, db: Session):
     user = db.query(models.LoginData).filter(models.LoginData.login == email).first()
@@ -23,8 +23,7 @@ def user_authentication_headers(client: TestClient, email: str, password: str, o
     headers = {"Authorization": f"Bearer {auth_token}"}
     return headers
 
-def authentication_token(client: TestClient, email: str, db: Session):
-    password = "qwerty"
+def authentication_token(client: TestClient, email: str, password: str, db: Session):
     user = get_user(email=email, db=db)
     if not user:
         print("Something is no yes")
@@ -46,14 +45,14 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 SessionTesting = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def app() -> Generator[FastAPI, Any, None]:
     models.Base.metadata.create_all(engine)
     app = start_application()
     yield app
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def db_session(app: FastAPI) -> Generator[SessionTesting, Any, None]:
     connection = engine.connect()
     transaction = connection.begin()
@@ -64,7 +63,7 @@ def db_session(app: FastAPI) -> Generator[SessionTesting, Any, None]:
     connection.close()
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def client(app: FastAPI, db_session: SessionTesting) -> Generator[TestClient, Any, None]:
     def getTestDB():
         try:
@@ -75,7 +74,10 @@ def client(app: FastAPI, db_session: SessionTesting) -> Generator[TestClient, An
     app.dependency_overrides[getDB] = getTestDB
     with TestClient(app) as client:
         yield client
+@pytest.fixture
+def database( db_session: SessionTesting) -> Generator[Session, Any, None]:
+    yield db_session
 
-@pytest.fixture(scope="module")
+@pytest.fixture
 def user_token(client: TestClient, db_session: Session):
-    return authentication_token(client=client, email="test@test.pl", db=db_session)
+    return authentication_token(client=client, email="test@test.pl", password="qwerty", db=db_session)

@@ -112,7 +112,7 @@ def test_incorrect_type_role_model(name):
 
 #=======================================EMPLOYEES MODEL=======================================#
 def test_correct_type_employees_model():
-    assert model.EmployeesBase(id_person=0,id_workplace=1,id_role=2)
+    assert model.EmployeesBase(id_persons=0,id_workplace=1,id_role=2)
 
 @pytest.mark.parametrize('id_person,id_workplace,id_role', tableModelIncorrectTypeParamsForEmployees)
 def test_incorrect_type_employees_model(id_person,id_workplace,id_role):

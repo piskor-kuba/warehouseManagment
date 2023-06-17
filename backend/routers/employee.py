@@ -38,7 +38,7 @@ def update_employee(employee_id: int, employee: schemas.EmployeesUpdate, current
 
 @router.delete("/{employee_id}", status_code=204)
 def delete_product(employee_id : int, current_user: schemas.LoginData = Depends(get_current_active_user) ,db: Session = Depends(getDB)):
-    employee = CRUD.getProductById(db,employee_id)
+    employee = CRUD.getEmployeeById(db,employee_id)
     if employee is None:
         raise HTTPException(status_code=404, detail=" Employee not found")
     return CRUD.delEmployee(db = db, employee = employee)

@@ -46,7 +46,7 @@ class ProductUpdate(tableModel.ProductBase):
         orm_mode = True
 
 class ProductAmount(tableModel.ProductAmountBase):
-    id:int
+    pass
     class Config:
         orm_mode = True
 
@@ -178,7 +178,6 @@ class EmployeesCreate(tableModel.EmployeesBase):
         orm_mode = True
 
 class EmployeesUpdate(tableModel.EmployeesBase):
-    id_person: Optional[int] = None
     id_workplace: Optional[int] = None
     id_role: Optional[int] = None
     class Config:
