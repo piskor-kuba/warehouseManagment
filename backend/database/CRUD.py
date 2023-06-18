@@ -196,12 +196,44 @@ def delProductAmount(db: Session, product_id:int):
 
 ##################################################__PERSONS__##################################################
 def getPersons(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Retrieve a list of persons from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+        limit (int, optional): The maximum number of records to return. Default is 100.
+
+    Returns:
+        List[models.Persons]: A list of person objects.
+    """
     return db.query(models.Persons).offset(skip).limit(limit).all()
 
+
 def getPersonById(db: Session, person_id:int):
+    """
+    Retrieve a person from the database by their ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        person_id (int): The ID of the person to retrieve.
+
+    Returns:
+        Optional[models.Persons]: The person object if found, or None if not found.
+    """
     return db.query(models.Persons).filter(models.Persons.id == person_id).first()
 
 def createPerson(db: Session, person: schemas.PersonsCreate):
+    """
+    Create a new person in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        person (schemas.PersonsCreate): The information of the person to create.
+
+    Returns:
+        Optional[models.Persons]: The created person object if it doesn't already exist, or None if it already exists.
+    """
     existed = db.query(models.Persons).\
         filter(models.Persons.name == person.name,\
                models.Persons.surname == person.surname,\
@@ -217,6 +249,17 @@ def createPerson(db: Session, person: schemas.PersonsCreate):
     return db_person
 
 def updatePerson(db: Session, person: schemas.PersonsUpdate, person_id:int):
+    """
+    Update a person in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        person (schemas.PersonsUpdate): The updated information of the person.
+        person_id (int): The ID of the person to be updated.
+
+    Returns:
+        Optional[models.Persons]: The updated person object if found, or None if the person doesn't exist.
+    """
     db_person = getPersonById(db,person_id)
     if db_person is None:
         return None
@@ -229,12 +272,33 @@ def updatePerson(db: Session, person: schemas.PersonsUpdate, person_id:int):
     return db_person
 
 def delPerson(db: Session, person: schemas.PersonsDelete):
+    """
+    Delete a person from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        person (schemas.PersonsDelete): The person object to be deleted.
+
+    Returns:
+        None
+    """
     db.delete(person)
     db.commit()
 
 
 ##################################################__CLIENTS__##################################################
 def getClients(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Retrieve a list of clients from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+        limit (int, optional): The maximum number of records to return. Default is 100.
+
+    Returns:
+        List[Dict[str, Union[str, int]]]: A list of client objects with "Name", "Amount", and "Client_id" properties.
+    """
     clients = db.query(models.Clients).offset(skip).limit(limit).all()
     response = [
         {
@@ -248,6 +312,16 @@ def getClients(db: Session, skip: int = 0, limit: int = 100):
     return response
 
 def getClientById(db: Session, client_id:int):
+    """
+    Retrieve a client from the database by their ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        client_id (int): The ID of the client to retrieve.
+
+    Returns:
+        Dict[str, Union[str, int]]: A dictionary containing the client information with "Name", "Amount", and "Client_id" properties.
+    """
     client = db.query(models.Clients).filter(models.Clients.id == client_id).first()
     response = {
         "Name": ' '.join([getPersonById(db=db, person_id=client.id_persons).name,
@@ -258,6 +332,16 @@ def getClientById(db: Session, client_id:int):
 
     return response
 def createClient(db: Session, client: schemas.ClientCreate):
+    """
+    Create a new client in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        client (schemas.ClientCreate): The information of the client to create.
+
+    Returns:
+        Optional[models.Clients]: The created client object if it doesn't already exist, or None if it already exists.
+    """
     existed = db.query(models.Clients). \
         filter(models.Clients.id_persons == client.id_persons, \
                models.Clients.amount == client.amount \
@@ -271,6 +355,17 @@ def createClient(db: Session, client: schemas.ClientCreate):
     return db_client
 
 def updateClient(db: Session, client: schemas.ClientUpdate, client_id:int):
+    """
+    Update a client in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        client (schemas.ClientUpdate): The updated information of the client.
+        client_id (int): The ID of the client to be updated.
+
+    Returns:
+        Optional[models.Clients]: The updated client object if found, or None if the client doesn't exist.
+    """
     db_client = getClientById(db,client_id)
     if db_client is None:
         return None
@@ -283,15 +378,46 @@ def updateClient(db: Session, client: schemas.ClientUpdate, client_id:int):
     return db_client
 
 def delClient(db: Session, client: schemas.ClientDelete):
+    """
+    Delete a client from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        client (schemas.ClientDelete): The client object to be deleted.
+
+    Returns:
+        None
+    """
     db.delete(client)
     db.commit()
 
 
 ##################################################__CLIENT-PRODUCT__##################################################
 def getClientProduct(db: Session, skip: int = 0, limit: int = 100):
+    """
+        Retrieve a list of client products from the database.
+
+        Args:
+            db (Session): The database session obtained from the getDB function.
+            skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+            limit (int, optional): The maximum number of records to return. Default is 100.
+
+        Returns:
+            List[models.ClientProduct]: A list of client product objects.
+        """
     return db.query(models.ClientProduct).offset(skip).limit(limit).all()
 
 def createClientProduct(db: Session, client_product: schemas.ClientProductCreate):
+    """
+    Create a new client product in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        client_product (schemas.ClientProductCreate): The information of the client product to create.
+
+    Returns:
+        models.ClientProduct: The created client product object.
+    """
     db_client_product = models.ClientProduct(id_client = client_product.id_client, id_product = client_product.id_product)
     db.add(db_client_product)
     db.commit()
@@ -300,12 +426,43 @@ def createClientProduct(db: Session, client_product: schemas.ClientProductCreate
 
 ##################################################__WORKPLACE__##################################################
 def getWorkplace(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Retrieve a list of workplaces from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+        limit (int, optional): The maximum number of records to return. Default is 100.
+
+    Returns:
+        List[models.Workplace]: A list of workplace objects.
+    """
     return db.query(models.Workplace).offset(skip).limit(limit).all()
 
 def getWorkplaceById(db: Session, workplace_id:int):
+    """
+    Retrieve a workplace from the database by its ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        workplace_id (int): The ID of the workplace to retrieve.
+
+    Returns:
+        models.Workplace: The workplace object with the specified ID, or None if not found.
+    """
     return db.query(models.Workplace).filter(models.Workplace.id == workplace_id).first()
 
 def createWorkplace(db: Session, workplace: schemas.WorkplaceCreate):
+    """
+    Create a new workplace in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        workplace (schemas.WorkplaceCreate): The information of the workplace to create.
+
+    Returns:
+        Optional[models.Workplace]: The created workplace object if it doesn't already exist, or None if it already exists.
+    """
     existed = db.query(models.Workplace).filter(models.Workplace.name == workplace.name).first()
     if existed is not None:
         return None
@@ -316,6 +473,17 @@ def createWorkplace(db: Session, workplace: schemas.WorkplaceCreate):
     return db_workplace
 
 def updateWorkplace(db: Session, workplace: schemas.WorkplaceUpdate, workplace_id:int):
+    """
+    Update a workplace in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        workplace (schemas.WorkplaceUpdate): The updated workplace information.
+        workplace_id (int): The ID of the workplace to be updated.
+
+    Returns:
+        Optional[models.Workplace]: The updated workplace object if it exists, or None if it doesn't exist.
+    """
     db_workplace = db.query(models.Workplace).filter(models.Workplace.id == workplace_id).first()
     if db_workplace is None:
         return None
@@ -328,17 +496,58 @@ def updateWorkplace(db: Session, workplace: schemas.WorkplaceUpdate, workplace_i
     return db_workplace
 
 def delWorkplace(db: Session, workplace: schemas.WorkplaceDelete):
+    """
+    Delete a workplace from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        workplace (schemas.WorkplaceDelete): The workplace to be deleted.
+
+    Returns:
+        None
+    """
     db.delete(workplace)
     db.commit()
 
 ##################################################__ROLE__##################################################
 def getRole(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Retrieve a list of roles from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+        limit (int, optional): The maximum number of records to return. Default is 100.
+
+    Returns:
+        List[models.Role]: A list of role objects.
+    """
     return db.query(models.Role).offset(skip).limit(limit).all()
 
 def getRoleById(db: Session, role_id:int):
+    """
+    Retrieve a role from the database by its ID.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        role_id (int): The ID of the role to retrieve.
+
+    Returns:
+        models.Role: The role object with the specified ID, or None if not found.
+    """
     return db.query(models.Role).filter(models.Role.id == role_id).first()
 
 def createRole(db: Session, role: schemas.RoleCreate):
+    """
+    Create a new role in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        role (schemas.RoleCreate): The information of the role to create.
+
+    Returns:
+        Optional[models.Role]: The created role object if it doesn't already exist, or None if it already exists.
+    """
     existed = db.query(models.Role).filter(models.Role.name == role.name).first()
     if existed is not None:
         return None
@@ -349,6 +558,17 @@ def createRole(db: Session, role: schemas.RoleCreate):
     return db_role
 
 def updateRole(db: Session, role: schemas.RoleUpdate, role_id:int):
+    """
+    Update a role in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        role (schemas.RoleUpdate): The updated role information.
+        role_id (int): The ID of the role to be updated.
+
+    Returns:
+        Optional[models.Role]: The updated role object if it exists, or None if it doesn't exist.
+    """
     db_role = getRoleById(db,role_id)
     if db_role is None:
         return None
@@ -361,11 +581,37 @@ def updateRole(db: Session, role: schemas.RoleUpdate, role_id:int):
     return db_role
 
 def delRole(db: Session, role: schemas.RoleDelete):
+    """
+    Delete a role from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        role (schemas.RoleDelete): The role to be deleted.
+
+    Returns:
+        None
+    """
     db.delete(role)
     db.commit()
 
 ##################################################__EMPLOYEES__##################################################
 def getEmployees(db: Session, skip: int = 0, limit: int = 100):
+    """
+    Retrieve employees from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        skip (int): The number of employees to skip (used for pagination).
+        limit (int): The maximum number of employees to retrieve.
+
+    Returns:
+        List[Dict[str, Any]]: A list of dictionaries representing employee information.
+            Each dictionary contains the following keys:
+                - "Name": The full name of the employee.
+                - "Workplace": The name of the workplace where the employee works.
+                - "Role": The name of the role of the employee.
+                - "Employee_id": The ID of the employee.
+    """
     employees = db.query(models.Employees).offset(skip).limit(limit).all()
     response = [
         {
@@ -377,6 +623,21 @@ def getEmployees(db: Session, skip: int = 0, limit: int = 100):
     ]
     return response
 def getEmployeeById(db: Session, employee_id:int):
+    """
+    Retrieve an employee by ID from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        employee_id (int): The ID of the employee to retrieve.
+
+    Returns:
+        Optional[Dict[str, Any]]: A dictionary representing the employee information if it exists, or None if it doesn't exist.
+            The dictionary contains the following keys:
+                - "Name": The full name of the employee.
+                - "Workplace": The name of the workplace where the employee works.
+                - "Role": The name of the role of the employee.
+                - "Employee_id": The ID of the employee.
+    """
     employee = db.query(models.Employees).filter(models.Employees.id == employee_id).first()
     response = {
         "Name": ' '.join([getPersonById(db=db, person_id=employee.id_persons).name,
@@ -388,6 +649,16 @@ def getEmployeeById(db: Session, employee_id:int):
     return response
 
 def createEmployee(db: Session, employee: schemas.EmployeesCreate):
+    """
+    Create a new employee in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        employee (schemas.EmployeesCreate): The employee information to be created.
+
+    Returns:
+        Optional[models.Employees]: The created employee object if it doesn't already exist, or None if it already exists.
+    """
     existed = db.query(models.Employees). \
         filter(models.Employees.id_persons == employee.id_persons, \
                models.Employees.id_workplace == employee.id_workplace, \
@@ -402,6 +673,17 @@ def createEmployee(db: Session, employee: schemas.EmployeesCreate):
     return db_employee
 
 def updateEmployee(db: Session, employee: schemas.EmployeesUpdate, employee_id:int):
+    """
+    Update an employee in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        employee (schemas.EmployeesUpdate): The updated employee information.
+        employee_id (int): The ID of the employee to be updated.
+
+    Returns:
+        Optional[models.Employees]: The updated employee object if it exists, or None if it doesn't exist.
+    """
     db_employee = db.query(models.Employees).filter(models.Employees.id == employee_id).first()
     if db_employee is None:
         return None
@@ -414,15 +696,46 @@ def updateEmployee(db: Session, employee: schemas.EmployeesUpdate, employee_id:i
     return db_employee
 
 def delEmployee(db: Session, employee: dict):
+    """
+    Delete an employee from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        employee (dict): The employee dictionary containing the "Employee_id" key with the ID of the employee to be deleted.
+
+    Returns:
+        None
+    """
     db_employee = db.query(models.Employees).filter(models.Employees.id == employee["Employee_id"]).first()
     db.delete(db_employee)
     db.commit()
 
 ##################################################__OTP__##################################################
 def getOtpByLogin(db: Session, login:str):
+    """
+    Get OTP (One-Time Password) information by login from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        login (str): The login to search for OTP information.
+
+    Returns:
+        Optional[models.Otp]: The OTP object if it exists, or None if it doesn't exist.
+    """
     return db.query(models.Otp).filter(models.Otp.login == login).first()
 
 def createOtpRecord(db: Session, otp:str, login:str):
+    """
+    Create a new OTP (One-Time Password) record in the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        otp (str): The OTP code.
+        login (str): The login associated with the OTP.
+
+    Returns:
+        models.Otp: The created OTP record.
+    """
     db_otp = models.Otp(login = login, otp_code = otp)
     db.add(db_otp)
     db.commit()
@@ -430,6 +743,16 @@ def createOtpRecord(db: Session, otp:str, login:str):
     return db_otp
 
 def delOtp(db: Session, login: str):
+    """
+    Delete an OTP (One-Time Password) record from the database.
+
+    Args:
+        db (Session): The database session obtained from the getDB function.
+        login (str): The login associated with the OTP record to be deleted.
+
+    Returns:
+        None
+    """
     db_otp = getOtpByLogin(db,login)
     db.delete(db_otp)
     db.commit()
