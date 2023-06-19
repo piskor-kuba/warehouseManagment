@@ -41,30 +41,42 @@ __OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl = "users/token")
 __AUTH_ATTEMPT_BLOCKER = AuthAttemptBlocker()
 
 def __get_password_hash(password):
-    """Function responsible for returning the password in hashed form
+    """
+    Generates a hashed password using the password hashing context.
+
     Args:
-        password (str): user password
+        password (str): Plain-text password.
+
     Returns:
-        str: hashed user password
+        str: Hashed password.
+
     """
     return __PWD_CONTEXT.hash(password)
 
 def __verify_password(plain_password, hashed_password):
-    """Function responsible for validating the given password with the password stored in the database
-        Args:
-            plain_password (str): plain user password
-            hashed_password (any): hashed user password
-        Returns:
-            bool: verification status
+    """
+    Verifies if the plain password matches the hashed password.
+
+    Args:
+        plain_password (str): Plain-text password.
+        hashed_password (str): Hashed password.
+
+    Returns:
+        bool: True if the passwords match, False otherwise.
+
     """
     return __PWD_CONTEXT.verify(plain_password, hashed_password)
 
 def __verify_email(email):
-    """Function responsible for validating the syntax of the given email address
-        Args:
-            email (str): user email
-        Returns:
-            bool: verification status
+    """
+    Verifies if the email address is valid.
+
+    Args:
+        email (str): Email address to verify.
+
+    Returns:
+        bool: True if the email is valid, False otherwise.
+
     """
     regex = re.compile(rf'{config.emailRegex}')
     if re.fullmatch(regex, email):
@@ -73,12 +85,16 @@ def __verify_email(email):
         return False
 
 def __get_user(username: str, db: Session):
-    """Function responsible for retrieving user data from the database
-        Args:
-            username (str): username
-            db (Session): parameter to manage operations for ORM-mapped objects
-        Returns:
-            ORM-mapped objects: user data from the database
+    """
+    Retrieves a user from the database based on the username.
+
+    Args:
+        username (str): Username of the user to retrieve.
+        db (Session): Database session.
+
+    Returns:
+        Model: User model object if found, None otherwise.
+
     """
     user = db.query(Model).filter(Model.login == username).first()
     if user is None:
@@ -86,12 +102,19 @@ def __get_user(username: str, db: Session):
     return user
 
 async def __get_current_user(token: str = Depends(__OAUTH2_SCHEME), db: Session = Depends(getDB)):
-    """Function that returns the current user for a session using a jwt credential token
-        Args:
-            token (str): jwt token
-            db (Session): parameter to manage operations for ORM-mapped objects
-        Returns:
-            ORM-mapped objects: user data from the database
+    """
+    Retrieves the current user based on the provided token.
+
+    Args:
+        token (str): Authentication token.
+        db (Session): Database session.
+
+    Returns:
+        User: Current user if authenticated.
+
+    Raises:
+        HTTPException: If the token is invalid or the user is not found.
+
     """
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -115,12 +138,19 @@ async def __get_current_user(token: str = Depends(__OAUTH2_SCHEME), db: Session 
 #public
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 def create_user(db: Session, user: CreateUser):
-    """Function that creates a new record in the database associated with a user
-        Args:
-            db (Session): parameter to manage operations for ORM-mapped objects
-            user (Schemas): data schema representing the new user
-        Returns:
-            str: message about creating a new user
+    """
+    Creates a new user.
+
+    Args:
+        db (Session): Database session.
+        user (CreateUser): User data to be created.
+
+    Returns:
+        str: Success message if the user is created.
+
+    Raises:
+        HTTPException: If the email is already in use or has incorrect syntax.
+
     """
     db_user = db.query(Model).filter(Model.login == user.login).first()
     if db_user:
@@ -135,14 +165,21 @@ def create_user(db: Session, user: CreateUser):
     return "New user created"
 
 def authenticate_user(db: Session, username: str, password: str, otp_code:str):
-    """Function responsible for authorizing users using a login and password and a verification code that has been generated
-        Args:
-            db (Session): parameter to manage operations for ORM-mapped objects
-            username (str): username
-            password (str): password
-            otp_code (str): verification code(otp)
-        Returns:
-            ORM-mapped objects: user data from the database
+    """
+    Authenticates a user based on username, password, and OTP code.
+
+    Args:
+        db (Session): Database session.
+        username (str): Username.
+        password (str): Password.
+        otp_code (str): OTP code.
+
+    Returns:
+        user: Authenticated user.
+
+    Raises:
+        HTTPException: If the data provided is invalid.
+
     """
     __AUTH_ATTEMPT_BLOCKER.block_user_if_needed(username=username, db=db)
     user = __get_user(db = db, username = username)
@@ -155,13 +192,20 @@ def authenticate_user(db: Session, username: str, password: str, otp_code:str):
     return user
 
 def send_otp_code(db: Session, username: str, password: str):
-    """Function responsible for generating the otp code and initializing the method that sends the code to the user's email address
-        Args:
-            db (Session): parameter to manage operations for ORM-mapped objects
-            username (str): username
-            password (str): password
-        Returns:
-            bool
+    """
+    Sends an OTP code to the user for authentication.
+
+    Args:
+        db (Session): Database session.
+        username (str): Username.
+        password (str): Password.
+
+    Returns:
+        bool: True if the OTP code is sent successfully.
+
+    Raises:
+        HTTPException: If the login or password is invalid.
+
     """
     __AUTH_ATTEMPT_BLOCKER.block_user_if_needed(username=username, db=db)
     user = __get_user(db=db, username=username)
@@ -174,13 +218,17 @@ def send_otp_code(db: Session, username: str, password: str):
     return True
 
 def get_user(db: Session, username: str, password: str):
-    """Function responsible for retrieving user data from the database
-        Args:
-            db (Session): parameter to manage operations for ORM-mapped objects
-            username (str): username
-            password (str): password
-        Returns:
-            ORM-mapped objects: user data from the database
+    """
+    Retrieves the user from the database based on the provided username and password.
+
+    Args:
+        db (Session): Database session.
+        username (str): Username.
+        password (str): Password.
+
+    Returns:
+        Union[bool, Model]: User model if the username and password are valid, False otherwise.
+
     """
     user = __get_user(db=db, username=username)
     if user is None or __verify_password(password, user.password) is False:
@@ -189,12 +237,16 @@ def get_user(db: Session, username: str, password: str):
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
-    """This function is used to obtain the jwt token
-        Args:
-            data (dict): dictionary containing jwt token "sub"
-            expires_delta (timedelta): timedelta
-        Returns:
-            str: jwt token
+    """
+    Creates an access token with the provided data.
+
+    Args:
+        data (dict): Data to be encoded in the access token.
+        expires_delta (timedelta | None): Expiration time for the access token. If None, a default expiration time of 15 minutes is used.
+
+    Returns:
+        str: Encoded access token.
+
     """
     to_encode = data.copy()
     if expires_delta:
@@ -206,21 +258,30 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 async def get_current_active_user(current_user: LoginData = Depends(__get_current_user)):
-    """Function that returns the current active user
-        Args:
-            current_user (Schemas): data schema representing the current active user
-        Returns:
-            ORM-mapped objects: user data from the database
+    """
+    Returns the login of the current active user.
+
+    Args:
+        current_user (LoginData): Current authenticated user.
+
+    Raises:
+        HTTPException: If the user is inactive.
+
+    Returns:
+        str: Login of the current active user.
+
     """
     if current_user.disabled:
         raise HTTPException(status_code = 400, detail = "Inactive user")
     return current_user.login
 
 def getAccessTokenExpireMinutes():
-    """Function that returns the time after which the jwt token will expire
-        Args:
-        Returns:
-            int: Access token expire minutes
+    """
+    Returns the expiration time of the access token in minutes.
+
+    Returns:
+        int: Expiration time of the access token in minutes.
+
     """
     return ACCESS_TOKEN_EXPIRE_MINUTES
 
