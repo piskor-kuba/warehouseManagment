@@ -7,12 +7,28 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from configuration.config import F2a
+import hashlib
 
 config = F2a()
 
 __SECRET_KEY = config.key
 __PASSWORD = config.password
 __FROM = config.email
+
+def __hash_function(code):
+    """
+       Hashes a code using the SHA-256 algorithm.
+
+       Args:
+           code: Code to be hashed.
+
+       Returns:
+           str: Hashed code as a hexadecimal string.
+       """
+    sha256 = hashlib.sha256()
+    code_bytes = str(code).encode('utf-8')
+    sha256.update(code_bytes)
+    return sha256.hexdigest()
 
 def __send_email(email,otp):
     """
@@ -57,7 +73,8 @@ def totp_generate(login: str, db: Session = Depends(getDB)):
     totp = pyotp.TOTP(__SECRET_KEY)
     if CRUD.getOtpByLogin(login = login, db = db) is not None:
         CRUD.delOtp(db = db, login = login)
-    CRUD.createOtpRecord(db = db,otp = totp.now(),login = login)
+    hashCode = __hash_function(totp.now())
+    CRUD.createOtpRecord(db = db,otp = str(hashCode),login = login)
     __send_email(login,totp)
     return totp
 
@@ -75,7 +92,7 @@ def totp_verify(login: str, otp_code:str, db: Session = Depends(getDB)):
 
     """
     otp = CRUD.getOtpByLogin(db = db, login=login)
-    if otp is None or not otp_code == otp.otp_code:
+    if otp is None or not __hash_function(otp_code) == otp.otp_code:
         return False
     return True
 
