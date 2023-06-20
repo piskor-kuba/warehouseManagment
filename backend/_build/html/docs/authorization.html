@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>authorization package &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">authorization package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-authorization.F2A">F2A module</a><ul>
+<li><a class="reference internal" href="#authorization.F2A.release_otp"><code class="docutils literal notranslate"><span class="pre">release_otp()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.F2A.totp_generate"><code class="docutils literal notranslate"><span class="pre">totp_generate()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.F2A.totp_verify"><code class="docutils literal notranslate"><span class="pre">totp_verify()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-authorization.auth">auth module</a><ul>
+<li><a class="reference internal" href="#authorization.auth.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li><a class="reference internal" href="#authorization.auth.Otp.Config"><code class="docutils literal notranslate"><span class="pre">Otp.Config</span></code></a><ul>
+<li><a class="reference internal" href="#authorization.auth.Otp.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Otp.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorization.auth.Otp.password"><code class="docutils literal notranslate"><span class="pre">Otp.password</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.Otp.username"><code class="docutils literal notranslate"><span class="pre">Otp.username</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorization.auth.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a><ul>
+<li><a class="reference internal" href="#authorization.auth.Token.access_token"><code class="docutils literal notranslate"><span class="pre">Token.access_token</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.Token.token_type"><code class="docutils literal notranslate"><span class="pre">Token.token_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorization.auth.TokenData"><code class="docutils literal notranslate"><span class="pre">TokenData</span></code></a><ul>
+<li><a class="reference internal" href="#authorization.auth.TokenData.username"><code class="docutils literal notranslate"><span class="pre">TokenData.username</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authorization.auth.authenticate_user"><code class="docutils literal notranslate"><span class="pre">authenticate_user()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.create_user"><code class="docutils literal notranslate"><span class="pre">create_user()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.getAccessTokenExpireMinutes"><code class="docutils literal notranslate"><span class="pre">getAccessTokenExpireMinutes()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.get_current_active_user"><code class="docutils literal notranslate"><span class="pre">get_current_active_user()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.get_user"><code class="docutils literal notranslate"><span class="pre">get_user()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.auth.send_otp_code"><code class="docutils literal notranslate"><span class="pre">send_otp_code()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-authorization.authAttemptBlocker">authAttemptBlocker module</a><ul>
+<li><a class="reference internal" href="#authorization.authAttemptBlocker.AuthAttemptBlocker"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker</span></code></a><ul>
+<li><a class="reference internal" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.block_user_if_needed"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.block_user_if_needed()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.is_blocked"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.is_blocked()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.register_failed_attempt"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.register_failed_attempt()</span></code></a></li>
+<li><a class="reference internal" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.reset_attempts"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.reset_attempts()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-authorization">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">authorization package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/authorization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="authorization-package">
+<h1>authorization package<a class="headerlink" href="#authorization-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-authorization.F2A">
+<span id="f2a-module"></span><h2>F2A module<a class="headerlink" href="#module-authorization.F2A" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.F2A.release_otp">
+<span class="sig-prename descclassname"><span class="pre">authorization.F2A.</span></span><span class="sig-name descname"><span class="pre">release_otp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/F2A.html#release_otp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.F2A.release_otp" title="Permalink to this definition"></a></dt>
+<dd><p>Releases the OTP for a given user login by deleting it from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>login (str): User login.
+db (Session, optional): Database session. Defaults to Depends(getDB).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.F2A.totp_generate">
+<span class="sig-prename descclassname"><span class="pre">authorization.F2A.</span></span><span class="sig-name descname"><span class="pre">totp_generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/F2A.html#totp_generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.F2A.totp_generate" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a Time-based One-Time Password (TOTP) and sends it via email.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>login (str): User login.
+db (Session, optional): Database session. Defaults to Depends(getDB).</p>
+</dd>
+<dt>Returns:</dt><dd><p>pyotp.TOTP: TOTP object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.F2A.totp_verify">
+<span class="sig-prename descclassname"><span class="pre">authorization.F2A.</span></span><span class="sig-name descname"><span class="pre">totp_verify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/F2A.html#totp_verify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.F2A.totp_verify" title="Permalink to this definition"></a></dt>
+<dd><p>Verifies the provided OTP code for a given user login.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>login (str): User login.
+otp_code (str): OTP code to verify.
+db (Session, optional): Database session. Defaults to Depends(getDB).</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the OTP code is valid, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-authorization.auth">
+<span id="auth-module"></span><h2>auth module<a class="headerlink" href="#module-authorization.auth" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authorization.auth.Otp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">Otp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#Otp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.Otp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="authorization.auth.Otp.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/authorization/auth.html#Otp.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.Otp.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.Otp.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#authorization.auth.Otp.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.Otp.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#authorization.auth.Otp.password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.Otp.username">
+<span class="sig-name descname"><span class="pre">username</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#authorization.auth.Otp.username" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authorization.auth.Token">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">Token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">access_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#Token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.Token" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.Token.access_token">
+<span class="sig-name descname"><span class="pre">access_token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#authorization.auth.Token.access_token" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.Token.token_type">
+<span class="sig-name descname"><span class="pre">token_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#authorization.auth.Token.token_type" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="authorization.auth.TokenData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">TokenData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#TokenData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.TokenData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="authorization.auth.TokenData.username">
+<span class="sig-name descname"><span class="pre">username</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#authorization.auth.TokenData.username" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.authenticate_user">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">authenticate_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#authenticate_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.authenticate_user" title="Permalink to this definition"></a></dt>
+<dd><p>Authenticates a user based on username, password, and OTP code.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): Database session.
+username (str): Username.
+password (str): Password.
+otp_code (str): OTP code.</p>
+</dd>
+<dt>Returns:</dt><dd><p>user: Authenticated user.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the data provided is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.create_access_token">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">create_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">timedelta</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#create_access_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.create_access_token" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an access token with the provided data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data (dict): Data to be encoded in the access token.
+expires_delta (timedelta | None): Expiration time for the access token. If None, a default expiration time of 15 minutes is used.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Encoded access token.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.create_user">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CreateUser" title="models.schemas.CreateUser"><span class="pre">CreateUser</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.create_user" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new user.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): Database session.
+user (CreateUser): User data to be created.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Success message if the user is created.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the email is already in use or has incorrect syntax.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.getAccessTokenExpireMinutes">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">getAccessTokenExpireMinutes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#getAccessTokenExpireMinutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.getAccessTokenExpireMinutes" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the expiration time of the access token in minutes.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: Expiration time of the access token in minutes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.get_current_active_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">get_current_active_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(__get_current_user)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#get_current_active_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.get_current_active_user" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the login of the current active user.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>current_user (LoginData): Current authenticated user.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the user is inactive.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Login of the current active user.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.get_user">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">get_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#get_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.get_user" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieves the user from the database based on the provided username and password.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): Database session.
+username (str): Username.
+password (str): Password.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Union[bool, Model]: User model if the username and password are valid, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="authorization.auth.send_otp_code">
+<span class="sig-prename descclassname"><span class="pre">authorization.auth.</span></span><span class="sig-name descname"><span class="pre">send_otp_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/auth.html#send_otp_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.auth.send_otp_code" title="Permalink to this definition"></a></dt>
+<dd><p>Sends an OTP code to the user for authentication.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): Database session.
+username (str): Username.
+password (str): Password.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the OTP code is sent successfully.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the login or password is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-authorization.authAttemptBlocker">
+<span id="authattemptblocker-module"></span><h2>authAttemptBlocker module<a class="headerlink" href="#module-authorization.authAttemptBlocker" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="authorization.authAttemptBlocker.AuthAttemptBlocker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">authorization.authAttemptBlocker.</span></span><span class="sig-name descname"><span class="pre">AuthAttemptBlocker</span></span><a class="reference internal" href="../_modules/authorization/authAttemptBlocker.html#AuthAttemptBlocker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.authAttemptBlocker.AuthAttemptBlocker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="authorization.authAttemptBlocker.AuthAttemptBlocker.block_user_if_needed">
+<span class="sig-name descname"><span class="pre">block_user_if_needed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/authAttemptBlocker.html#AuthAttemptBlocker.block_user_if_needed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.block_user_if_needed" title="Permalink to this definition"></a></dt>
+<dd><p>This function checks if the specified username is blocked in the database. If the user is blocked, it raises an HTTPException with status code 429 (Too Many Requests).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>username (str): The username of the user to be checked.
+db (Database): An instance of the database connection.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the user is blocked.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authorization.authAttemptBlocker.AuthAttemptBlocker.is_blocked">
+<span class="sig-name descname"><span class="pre">is_blocked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/authAttemptBlocker.html#AuthAttemptBlocker.is_blocked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.is_blocked" title="Permalink to this definition"></a></dt>
+<dd><p>Check if a user is blocked based on their login attempts.</p>
+<p>This function checks if the specified username is blocked in the database based on their login attempts. It considers the following conditions:
+- If the user does not exist in the AttemptBlocker table, they are not blocked.
+- If the user has less than 6 login attempts, they are not blocked.
+- If the current date is later than the date of the last login attempt recorded for the user, the attempts are reset and the user is not blocked.
+- If the time difference between the current time and the time of the last login attempt is less than 5 minutes and the current hour is greater than or equal to the recorded hour, the user is blocked.
+- If the time difference between the current time and the time of the last login attempt is greater than 5 minutes, the attempts are reset and the user is not blocked.
+- Otherwise, the user is considered blocked.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>username (str): The username of the user to be checked.
+db (Database): An instance of the database connection.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the user is blocked, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authorization.authAttemptBlocker.AuthAttemptBlocker.register_failed_attempt">
+<span class="sig-name descname"><span class="pre">register_failed_attempt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/authAttemptBlocker.html#AuthAttemptBlocker.register_failed_attempt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.register_failed_attempt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="authorization.authAttemptBlocker.AuthAttemptBlocker.reset_attempts">
+<span class="sig-name descname"><span class="pre">reset_attempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/authorization/authAttemptBlocker.html#AuthAttemptBlocker.reset_attempts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#authorization.authAttemptBlocker.AuthAttemptBlocker.reset_attempts" title="Permalink to this definition"></a></dt>
+<dd><p>This function removes the entry of the user from the AttemptBlocker table in the database, effectively resetting the login attempts for that user.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>username (str): The username of the user whose login attempts need to be reset.
+db (Database): An instance of the database connection.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-authorization">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-authorization" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

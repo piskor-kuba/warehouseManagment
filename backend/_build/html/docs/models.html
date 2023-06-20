@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>models package &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">models package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-models.schemas">schemas module</a><ul>
+<li><a class="reference internal" href="#models.schemas.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Category.Config"><code class="docutils literal notranslate"><span class="pre">Category.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Category.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Category.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Category.id"><code class="docutils literal notranslate"><span class="pre">Category.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CategoryCreate"><code class="docutils literal notranslate"><span class="pre">CategoryCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryCreate.Config"><code class="docutils literal notranslate"><span class="pre">CategoryCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">CategoryCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CategoryDelete"><code class="docutils literal notranslate"><span class="pre">CategoryDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryDelete.Config"><code class="docutils literal notranslate"><span class="pre">CategoryDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">CategoryDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CategoryUpdate"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryUpdate.Config"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CategoryUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CategoryUpdate.name"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientCreate"><code class="docutils literal notranslate"><span class="pre">ClientCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientCreate.Config"><code class="docutils literal notranslate"><span class="pre">ClientCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientDelete"><code class="docutils literal notranslate"><span class="pre">ClientDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientDelete.Config"><code class="docutils literal notranslate"><span class="pre">ClientDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProduct"><code class="docutils literal notranslate"><span class="pre">ClientProduct</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProduct.Config"><code class="docutils literal notranslate"><span class="pre">ClientProduct.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProduct.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientProduct.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProduct.id"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProductCreate"><code class="docutils literal notranslate"><span class="pre">ClientProductCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductCreate.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientProductCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProductDelete"><code class="docutils literal notranslate"><span class="pre">ClientProductDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductDelete.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientProductDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProductUpdate"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientProductUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientProductUpdate.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.id_client</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.ClientProductUpdate.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.id_product</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientUpdate"><code class="docutils literal notranslate"><span class="pre">ClientUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ClientUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ClientUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ClientUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ClientUpdate.amount"><code class="docutils literal notranslate"><span class="pre">ClientUpdate.amount</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Clients"><code class="docutils literal notranslate"><span class="pre">Clients</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Clients.Config"><code class="docutils literal notranslate"><span class="pre">Clients.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Clients.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Clients.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Clients.id"><code class="docutils literal notranslate"><span class="pre">Clients.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CreateUser"><code class="docutils literal notranslate"><span class="pre">CreateUser</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CreateUser.Config"><code class="docutils literal notranslate"><span class="pre">CreateUser.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.CreateUser.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">CreateUser.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.CreateUser.id_employee"><code class="docutils literal notranslate"><span class="pre">CreateUser.id_employee</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Employees"><code class="docutils literal notranslate"><span class="pre">Employees</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Employees.Config"><code class="docutils literal notranslate"><span class="pre">Employees.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Employees.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Employees.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Employees.id"><code class="docutils literal notranslate"><span class="pre">Employees.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.EmployeesCreate"><code class="docutils literal notranslate"><span class="pre">EmployeesCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesCreate.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">EmployeesCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.EmployeesDelete"><code class="docutils literal notranslate"><span class="pre">EmployeesDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesDelete.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">EmployeesDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.EmployeesUpdate"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesUpdate.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.EmployeesUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.EmployeesUpdate.id_role"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.id_role</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.EmployeesUpdate.id_workplace"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.LoginData"><code class="docutils literal notranslate"><span class="pre">LoginData</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.LoginData.Config"><code class="docutils literal notranslate"><span class="pre">LoginData.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.LoginData.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">LoginData.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.LoginData.id_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.id_employee</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Otp.Config"><code class="docutils literal notranslate"><span class="pre">Otp.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Otp.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Otp.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Otp.id"><code class="docutils literal notranslate"><span class="pre">Otp.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.OtpCreate"><code class="docutils literal notranslate"><span class="pre">OtpCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.OtpCreate.Config"><code class="docutils literal notranslate"><span class="pre">OtpCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.OtpCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">OtpCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.OtpDelete"><code class="docutils literal notranslate"><span class="pre">OtpDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.OtpDelete.Config"><code class="docutils literal notranslate"><span class="pre">OtpDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.OtpDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">OtpDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Persons"><code class="docutils literal notranslate"><span class="pre">Persons</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Persons.Config"><code class="docutils literal notranslate"><span class="pre">Persons.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Persons.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Persons.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Persons.id"><code class="docutils literal notranslate"><span class="pre">Persons.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.PersonsCreate"><code class="docutils literal notranslate"><span class="pre">PersonsCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsCreate.Config"><code class="docutils literal notranslate"><span class="pre">PersonsCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">PersonsCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.PersonsDelete"><code class="docutils literal notranslate"><span class="pre">PersonsDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsDelete.Config"><code class="docutils literal notranslate"><span class="pre">PersonsDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">PersonsDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.Config"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.address"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.address</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.name"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.name</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.phone"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.phone</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.PersonsUpdate.surname"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.surname</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Product.Config"><code class="docutils literal notranslate"><span class="pre">Product.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Product.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Product.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Product.id"><code class="docutils literal notranslate"><span class="pre">Product.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductAmount"><code class="docutils literal notranslate"><span class="pre">ProductAmount</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmount.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmount.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmount.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductAmount.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductAmountCreate"><code class="docutils literal notranslate"><span class="pre">ProductAmountCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountCreate.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductAmountCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductAmountDelete"><code class="docutils literal notranslate"><span class="pre">ProductAmountDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountDelete.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductAmountDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductAmountUpdate"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductAmountUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductAmountUpdate.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate.amount</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductCreate"><code class="docutils literal notranslate"><span class="pre">ProductCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductCreate.Config"><code class="docutils literal notranslate"><span class="pre">ProductCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductCreate.amount"><code class="docutils literal notranslate"><span class="pre">ProductCreate.amount</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductDelete"><code class="docutils literal notranslate"><span class="pre">ProductDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductDelete.Config"><code class="docutils literal notranslate"><span class="pre">ProductDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate"><code class="docutils literal notranslate"><span class="pre">ProductUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate.describe"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.describe</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate.id_category"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.id_category</span></code></a></li>
+<li><a class="reference internal" href="#models.schemas.ProductUpdate.name"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Role.Config"><code class="docutils literal notranslate"><span class="pre">Role.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Role.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Role.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Role.id"><code class="docutils literal notranslate"><span class="pre">Role.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.RoleCreate"><code class="docutils literal notranslate"><span class="pre">RoleCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleCreate.Config"><code class="docutils literal notranslate"><span class="pre">RoleCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">RoleCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.RoleDelete"><code class="docutils literal notranslate"><span class="pre">RoleDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleDelete.Config"><code class="docutils literal notranslate"><span class="pre">RoleDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">RoleDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.RoleUpdate"><code class="docutils literal notranslate"><span class="pre">RoleUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleUpdate.Config"><code class="docutils literal notranslate"><span class="pre">RoleUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.RoleUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">RoleUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.RoleUpdate.name"><code class="docutils literal notranslate"><span class="pre">RoleUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Workplace"><code class="docutils literal notranslate"><span class="pre">Workplace</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Workplace.Config"><code class="docutils literal notranslate"><span class="pre">Workplace.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.Workplace.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">Workplace.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.Workplace.id"><code class="docutils literal notranslate"><span class="pre">Workplace.id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.WorkplaceCreate"><code class="docutils literal notranslate"><span class="pre">WorkplaceCreate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceCreate.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceCreate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceCreate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">WorkplaceCreate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.WorkplaceDelete"><code class="docutils literal notranslate"><span class="pre">WorkplaceDelete</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceDelete.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceDelete.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceDelete.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">WorkplaceDelete.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.WorkplaceUpdate"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceUpdate.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate.Config</span></code></a><ul>
+<li><a class="reference internal" href="#models.schemas.WorkplaceUpdate.Config.orm_mode"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate.Config.orm_mode</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.schemas.WorkplaceUpdate.name"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models.tableModel">tableModel module</a><ul>
+<li><a class="reference internal" href="#models.tableModel.AttemptBlockerBase"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.AttemptBlockerBase.attempts"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.attempts</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.AttemptBlockerBase.login"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.login</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.AttemptBlockerBase.time"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.time</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.CategoryBase"><code class="docutils literal notranslate"><span class="pre">CategoryBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.CategoryBase.name"><code class="docutils literal notranslate"><span class="pre">CategoryBase.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.ClientProductBase"><code class="docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.ClientProductBase.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProductBase.id_client</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.ClientProductBase.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProductBase.id_product</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.ClientsBase"><code class="docutils literal notranslate"><span class="pre">ClientsBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.ClientsBase.amount"><code class="docutils literal notranslate"><span class="pre">ClientsBase.amount</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.ClientsBase.id_persons"><code class="docutils literal notranslate"><span class="pre">ClientsBase.id_persons</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.CreateUser"><code class="docutils literal notranslate"><span class="pre">CreateUser</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.CreateUser.login"><code class="docutils literal notranslate"><span class="pre">CreateUser.login</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.CreateUser.password"><code class="docutils literal notranslate"><span class="pre">CreateUser.password</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.EmployeesBase"><code class="docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.EmployeesBase.id_persons"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_persons</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.EmployeesBase.id_role"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_role</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.EmployeesBase.id_workplace"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.LoginDataBase"><code class="docutils literal notranslate"><span class="pre">LoginDataBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.LoginDataBase.disabled"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.disabled</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.LoginDataBase.login"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.login</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.LoginDataBase.password"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.password</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.OtpBase"><code class="docutils literal notranslate"><span class="pre">OtpBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.OtpBase.login"><code class="docutils literal notranslate"><span class="pre">OtpBase.login</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.OtpBase.otp_code"><code class="docutils literal notranslate"><span class="pre">OtpBase.otp_code</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.PersonsBase"><code class="docutils literal notranslate"><span class="pre">PersonsBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.PersonsBase.address"><code class="docutils literal notranslate"><span class="pre">PersonsBase.address</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.PersonsBase.name"><code class="docutils literal notranslate"><span class="pre">PersonsBase.name</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.PersonsBase.phone"><code class="docutils literal notranslate"><span class="pre">PersonsBase.phone</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.PersonsBase.surname"><code class="docutils literal notranslate"><span class="pre">PersonsBase.surname</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.ProductAmountBase"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.ProductAmountBase.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase.amount</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.ProductAmountBase.id_product"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase.id_product</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.ProductBase"><code class="docutils literal notranslate"><span class="pre">ProductBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.ProductBase.describe"><code class="docutils literal notranslate"><span class="pre">ProductBase.describe</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.ProductBase.id_category"><code class="docutils literal notranslate"><span class="pre">ProductBase.id_category</span></code></a></li>
+<li><a class="reference internal" href="#models.tableModel.ProductBase.name"><code class="docutils literal notranslate"><span class="pre">ProductBase.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.RoleBase"><code class="docutils literal notranslate"><span class="pre">RoleBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.RoleBase.name"><code class="docutils literal notranslate"><span class="pre">RoleBase.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models.tableModel.WorkplaceBase"><code class="docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a><ul>
+<li><a class="reference internal" href="#models.tableModel.WorkplaceBase.name"><code class="docutils literal notranslate"><span class="pre">WorkplaceBase.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">models package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models-package">
+<h1>models package<a class="headerlink" href="#models-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-models.schemas">
+<span id="schemas-module"></span><h2>schemas module<a class="headerlink" href="#module-models.schemas" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Category">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Category" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.CategoryBase" title="models.tableModel.CategoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoryBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Category.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Category.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Category.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Category.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Category.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Category.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Category.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">CategoryCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#CategoryCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.CategoryBase" title="models.tableModel.CategoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoryBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#CategoryCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CategoryCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.CategoryCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">CategoryDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#CategoryDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.CategoryBase" title="models.tableModel.CategoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoryBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#CategoryDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CategoryDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.CategoryDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">CategoryUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#CategoryUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.CategoryBase" title="models.tableModel.CategoryBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CategoryBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CategoryUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#CategoryUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CategoryUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CategoryUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.CategoryUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CategoryUpdate.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.CategoryUpdate.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientsBase" title="models.tableModel.ClientsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientsBase" title="models.tableModel.ClientsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProduct">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientProductBase" title="models.tableModel.ClientProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProduct.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientProduct.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProduct.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProduct.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientProduct.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProduct.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.ClientProduct.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientProductCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientProductBase" title="models.tableModel.ClientProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProductCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientProductCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientProductDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientProductBase" title="models.tableModel.ClientProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProductDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientProductDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientProductUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientProductBase" title="models.tableModel.ClientProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientProductUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientProductUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientProductUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProductUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientProductUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProductUpdate.id_client">
+<span class="sig-name descname"><span class="pre">id_client</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ClientProductUpdate.id_client" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientProductUpdate.id_product">
+<span class="sig-name descname"><span class="pre">id_product</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ClientProductUpdate.id_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ClientUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ClientUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientsBase" title="models.tableModel.ClientsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ClientUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ClientUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ClientUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ClientUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ClientUpdate.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ClientUpdate.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Clients">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Clients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Clients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Clients" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ClientsBase" title="models.tableModel.ClientsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClientsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Clients.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Clients.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Clients.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Clients.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Clients.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Clients.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Clients.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CreateUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">CreateUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#CreateUser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CreateUser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.CreateUser" title="models.tableModel.CreateUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateUser</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.CreateUser.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#CreateUser.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.CreateUser.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CreateUser.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.CreateUser.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.CreateUser.id_employee">
+<span class="sig-name descname"><span class="pre">id_employee</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.CreateUser.id_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Employees">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Employees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Employees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Employees" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.EmployeesBase" title="models.tableModel.EmployeesBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Employees.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Employees.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Employees.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Employees.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Employees.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Employees.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Employees.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">EmployeesCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.EmployeesBase" title="models.tableModel.EmployeesBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.EmployeesCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.EmployeesCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">EmployeesDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.EmployeesBase" title="models.tableModel.EmployeesBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.EmployeesDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.EmployeesDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">EmployeesUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.EmployeesBase" title="models.tableModel.EmployeesBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.EmployeesUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#EmployeesUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.EmployeesUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.EmployeesUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.EmployeesUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.EmployeesUpdate.id_role">
+<span class="sig-name descname"><span class="pre">id_role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.EmployeesUpdate.id_role" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.EmployeesUpdate.id_workplace">
+<span class="sig-name descname"><span class="pre">id_workplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.EmployeesUpdate.id_workplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.LoginData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">LoginData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#LoginData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.LoginData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.LoginDataBase" title="models.tableModel.LoginDataBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoginDataBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.LoginData.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#LoginData.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.LoginData.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.LoginData.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.LoginData.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.LoginData.id_employee">
+<span class="sig-name descname"><span class="pre">id_employee</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.LoginData.id_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Otp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Otp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Otp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Otp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.OtpBase" title="models.tableModel.OtpBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">OtpBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Otp.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Otp.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Otp.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Otp.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Otp.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Otp.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Otp.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.OtpCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">OtpCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#OtpCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.OtpCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.OtpBase" title="models.tableModel.OtpBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">OtpBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.OtpCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#OtpCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.OtpCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.OtpCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.OtpCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.OtpDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">OtpDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#OtpDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.OtpDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.OtpBase" title="models.tableModel.OtpBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">OtpBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.OtpDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#OtpDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.OtpDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.OtpDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.OtpDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Persons">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Persons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Persons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Persons" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.PersonsBase" title="models.tableModel.PersonsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Persons.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Persons.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Persons.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Persons.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Persons.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Persons.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Persons.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">PersonsCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#PersonsCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.PersonsBase" title="models.tableModel.PersonsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#PersonsCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.PersonsCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">PersonsDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#PersonsDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.PersonsBase" title="models.tableModel.PersonsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#PersonsDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.PersonsDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">PersonsUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#PersonsUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.PersonsBase" title="models.tableModel.PersonsBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">PersonsBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#PersonsUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.PersonsUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.PersonsUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.address">
+<span class="sig-name descname"><span class="pre">address</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.PersonsUpdate.address" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.PersonsUpdate.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.PersonsUpdate.phone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.PersonsUpdate.surname">
+<span class="sig-name descname"><span class="pre">surname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.PersonsUpdate.surname" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Product">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">describe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Product" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductBase" title="models.tableModel.ProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Product.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Product.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Product.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Product.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Product.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Product.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Product.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmount">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmount" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductAmountBase" title="models.tableModel.ProductAmountBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmount.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmount.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmount.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductAmount.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductAmount.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductAmountCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductAmountBase" title="models.tableModel.ProductAmountBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductAmountCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductAmountDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductAmountBase" title="models.tableModel.ProductAmountBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductAmountDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductAmountUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductAmountBase" title="models.tableModel.ProductAmountBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductAmountUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductAmountUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductAmountUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductAmountUpdate.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ProductAmountUpdate.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">describe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductBase" title="models.tableModel.ProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductCreate.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.ProductCreate.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">describe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductBase" title="models.tableModel.ProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">ProductUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">describe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#ProductUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.ProductBase" title="models.tableModel.ProductBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProductBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#ProductUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.ProductUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.ProductUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ProductUpdate.describe" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate.id_category">
+<span class="sig-name descname"><span class="pre">id_category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ProductUpdate.id_category" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.ProductUpdate.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.ProductUpdate.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Role">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Role" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.RoleBase" title="models.tableModel.RoleBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoleBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Role.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Role.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Role.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Role.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Role.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Role.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Role.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">RoleCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#RoleCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.RoleBase" title="models.tableModel.RoleBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoleBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#RoleCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.RoleCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.RoleCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">RoleDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#RoleDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.RoleBase" title="models.tableModel.RoleBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoleBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#RoleDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.RoleDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.RoleDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">RoleUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#RoleUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.RoleBase" title="models.tableModel.RoleBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">RoleBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.RoleUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#RoleUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.RoleUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.RoleUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.RoleUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.RoleUpdate.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.RoleUpdate.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Workplace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">Workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#Workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.WorkplaceBase" title="models.tableModel.WorkplaceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.Workplace.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#Workplace.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.Workplace.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Workplace.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.Workplace.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.Workplace.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#models.schemas.Workplace.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceCreate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">WorkplaceCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceCreate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.WorkplaceBase" title="models.tableModel.WorkplaceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceCreate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceCreate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceCreate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceCreate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.WorkplaceCreate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceDelete">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">WorkplaceDelete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceDelete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceDelete" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.WorkplaceBase" title="models.tableModel.WorkplaceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceDelete.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceDelete.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceDelete.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceDelete.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.WorkplaceDelete.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceUpdate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.schemas.</span></span><span class="sig-name descname"><span class="pre">WorkplaceUpdate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceUpdate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceUpdate" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.tableModel.WorkplaceBase" title="models.tableModel.WorkplaceBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceUpdate.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><a class="reference internal" href="../_modules/models/schemas.html#WorkplaceUpdate.Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.schemas.WorkplaceUpdate.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceUpdate.Config.orm_mode">
+<span class="sig-name descname"><span class="pre">orm_mode</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#models.schemas.WorkplaceUpdate.Config.orm_mode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.schemas.WorkplaceUpdate.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.schemas.WorkplaceUpdate.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.tableModel">
+<span id="tablemodel-module"></span><h2>tableModel module<a class="headerlink" href="#module-models.tableModel" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.AttemptBlockerBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">AttemptBlockerBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attempts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#AttemptBlockerBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.AttemptBlockerBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.AttemptBlockerBase.attempts">
+<span class="sig-name descname"><span class="pre">attempts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.AttemptBlockerBase.attempts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.AttemptBlockerBase.login">
+<span class="sig-name descname"><span class="pre">login</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.AttemptBlockerBase.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.AttemptBlockerBase.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">datetime</span></em><a class="headerlink" href="#models.tableModel.AttemptBlockerBase.time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.CategoryBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">CategoryBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#CategoryBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.CategoryBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.CategoryBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.CategoryBase.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.ClientProductBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">ClientProductBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#ClientProductBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.ClientProductBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ClientProductBase.id_client">
+<span class="sig-name descname"><span class="pre">id_client</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ClientProductBase.id_client" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ClientProductBase.id_product">
+<span class="sig-name descname"><span class="pre">id_product</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ClientProductBase.id_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.ClientsBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">ClientsBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#ClientsBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.ClientsBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ClientsBase.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ClientsBase.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ClientsBase.id_persons">
+<span class="sig-name descname"><span class="pre">id_persons</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ClientsBase.id_persons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.CreateUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">CreateUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#CreateUser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.CreateUser" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.CreateUser.login">
+<span class="sig-name descname"><span class="pre">login</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.CreateUser.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.CreateUser.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.CreateUser.password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.EmployeesBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">EmployeesBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_persons</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#EmployeesBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.EmployeesBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.EmployeesBase.id_persons">
+<span class="sig-name descname"><span class="pre">id_persons</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.EmployeesBase.id_persons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.EmployeesBase.id_role">
+<span class="sig-name descname"><span class="pre">id_role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.EmployeesBase.id_role" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.EmployeesBase.id_workplace">
+<span class="sig-name descname"><span class="pre">id_workplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.EmployeesBase.id_workplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.LoginDataBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">LoginDataBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disabled</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#LoginDataBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.LoginDataBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.LoginDataBase.disabled">
+<span class="sig-name descname"><span class="pre">disabled</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#models.tableModel.LoginDataBase.disabled" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.LoginDataBase.login">
+<span class="sig-name descname"><span class="pre">login</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.LoginDataBase.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.LoginDataBase.password">
+<span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.LoginDataBase.password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.OtpBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">OtpBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#OtpBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.OtpBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.OtpBase.login">
+<span class="sig-name descname"><span class="pre">login</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.OtpBase.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.OtpBase.otp_code">
+<span class="sig-name descname"><span class="pre">otp_code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.OtpBase.otp_code" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.PersonsBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">PersonsBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#PersonsBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.PersonsBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.PersonsBase.address">
+<span class="sig-name descname"><span class="pre">address</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.PersonsBase.address" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.PersonsBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.PersonsBase.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.PersonsBase.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.PersonsBase.phone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.PersonsBase.surname">
+<span class="sig-name descname"><span class="pre">surname</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.PersonsBase.surname" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.ProductAmountBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">ProductAmountBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#ProductAmountBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.ProductAmountBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ProductAmountBase.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ProductAmountBase.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ProductAmountBase.id_product">
+<span class="sig-name descname"><span class="pre">id_product</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ProductAmountBase.id_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.ProductBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">ProductBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">describe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#ProductBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.ProductBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ProductBase.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#models.tableModel.ProductBase.describe" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ProductBase.id_category">
+<span class="sig-name descname"><span class="pre">id_category</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictInt</span></em><a class="headerlink" href="#models.tableModel.ProductBase.id_category" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.ProductBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.ProductBase.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.RoleBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">RoleBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#RoleBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.RoleBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.RoleBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.RoleBase.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.tableModel.WorkplaceBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.tableModel.</span></span><span class="sig-name descname"><span class="pre">WorkplaceBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">StrictStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/models/tableModel.html#WorkplaceBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.tableModel.WorkplaceBase" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.tableModel.WorkplaceBase.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">StrictStr</span></em><a class="headerlink" href="#models.tableModel.WorkplaceBase.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

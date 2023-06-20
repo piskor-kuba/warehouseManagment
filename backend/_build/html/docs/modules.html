@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>backend &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">backend</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">backend</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="backend">
+<h1>backend<a class="headerlink" href="#backend" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authorization.html">authorization package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html#module-authorization.F2A">F2A module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.F2A.release_otp"><code class="docutils literal notranslate"><span class="pre">release_otp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.F2A.totp_generate"><code class="docutils literal notranslate"><span class="pre">totp_generate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.F2A.totp_verify"><code class="docutils literal notranslate"><span class="pre">totp_verify()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html#module-authorization.auth">auth module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.Otp.Config"><code class="docutils literal notranslate"><span class="pre">Otp.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.Otp.password"><code class="docutils literal notranslate"><span class="pre">Otp.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.Otp.username"><code class="docutils literal notranslate"><span class="pre">Otp.username</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.Token.access_token"><code class="docutils literal notranslate"><span class="pre">Token.access_token</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.Token.token_type"><code class="docutils literal notranslate"><span class="pre">Token.token_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.TokenData"><code class="docutils literal notranslate"><span class="pre">TokenData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.auth.TokenData.username"><code class="docutils literal notranslate"><span class="pre">TokenData.username</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.authenticate_user"><code class="docutils literal notranslate"><span class="pre">authenticate_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.create_user"><code class="docutils literal notranslate"><span class="pre">create_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.getAccessTokenExpireMinutes"><code class="docutils literal notranslate"><span class="pre">getAccessTokenExpireMinutes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.get_current_active_user"><code class="docutils literal notranslate"><span class="pre">get_current_active_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.get_user"><code class="docutils literal notranslate"><span class="pre">get_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.auth.send_otp_code"><code class="docutils literal notranslate"><span class="pre">send_otp_code()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html#module-authorization.authAttemptBlocker">authAttemptBlocker module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authorization.html#authorization.authAttemptBlocker.AuthAttemptBlocker"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.authAttemptBlocker.AuthAttemptBlocker.block_user_if_needed"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.block_user_if_needed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.authAttemptBlocker.AuthAttemptBlocker.is_blocked"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.is_blocked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.authAttemptBlocker.AuthAttemptBlocker.register_failed_attempt"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.register_failed_attempt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="authorization.html#authorization.authAttemptBlocker.AuthAttemptBlocker.reset_attempts"><code class="docutils literal notranslate"><span class="pre">AuthAttemptBlocker.reset_attempts()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authorization.html#module-authorization">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conf.html">conf module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">configuration package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#module-configuration.config">config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.Authorization"><code class="docutils literal notranslate"><span class="pre">Authorization</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Authorization.algorithm"><code class="docutils literal notranslate"><span class="pre">Authorization.algorithm</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Authorization.emailRegex"><code class="docutils literal notranslate"><span class="pre">Authorization.emailRegex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Authorization.key"><code class="docutils literal notranslate"><span class="pre">Authorization.key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.AuthorizationBlocker"><code class="docutils literal notranslate"><span class="pre">AuthorizationBlocker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.AuthorizationBlocker.attempts"><code class="docutils literal notranslate"><span class="pre">AuthorizationBlocker.attempts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.AuthorizationBlocker.time"><code class="docutils literal notranslate"><span class="pre">AuthorizationBlocker.time</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Config.config"><code class="docutils literal notranslate"><span class="pre">Config.config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.Database"><code class="docutils literal notranslate"><span class="pre">Database</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Database.url"><code class="docutils literal notranslate"><span class="pre">Database.url</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.F2a"><code class="docutils literal notranslate"><span class="pre">F2a</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.email"><code class="docutils literal notranslate"><span class="pre">F2a.email</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.emailBody"><code class="docutils literal notranslate"><span class="pre">F2a.emailBody</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.emailSubject"><code class="docutils literal notranslate"><span class="pre">F2a.emailSubject</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.key"><code class="docutils literal notranslate"><span class="pre">F2a.key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.password"><code class="docutils literal notranslate"><span class="pre">F2a.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.F2a.smtpServer"><code class="docutils literal notranslate"><span class="pre">F2a.smtpServer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#configuration.config.Server"><code class="docutils literal notranslate"><span class="pre">Server</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Server.host"><code class="docutils literal notranslate"><span class="pre">Server.host</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="configuration.html#configuration.config.Server.port"><code class="docutils literal notranslate"><span class="pre">Server.port</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#module-configuration">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">database package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#module-database.CRUD">CRUD module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createCategory"><code class="docutils literal notranslate"><span class="pre">createCategory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createClient"><code class="docutils literal notranslate"><span class="pre">createClient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createClientProduct"><code class="docutils literal notranslate"><span class="pre">createClientProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createEmployee"><code class="docutils literal notranslate"><span class="pre">createEmployee()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createOtpRecord"><code class="docutils literal notranslate"><span class="pre">createOtpRecord()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createPerson"><code class="docutils literal notranslate"><span class="pre">createPerson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createProduct"><code class="docutils literal notranslate"><span class="pre">createProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createProductAmount"><code class="docutils literal notranslate"><span class="pre">createProductAmount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createRole"><code class="docutils literal notranslate"><span class="pre">createRole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.createWorkplace"><code class="docutils literal notranslate"><span class="pre">createWorkplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delCategory"><code class="docutils literal notranslate"><span class="pre">delCategory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delClient"><code class="docutils literal notranslate"><span class="pre">delClient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delEmployee"><code class="docutils literal notranslate"><span class="pre">delEmployee()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delOtp"><code class="docutils literal notranslate"><span class="pre">delOtp()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delPerson"><code class="docutils literal notranslate"><span class="pre">delPerson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delProduct"><code class="docutils literal notranslate"><span class="pre">delProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delProductAmount"><code class="docutils literal notranslate"><span class="pre">delProductAmount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delRole"><code class="docutils literal notranslate"><span class="pre">delRole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.delWorkplace"><code class="docutils literal notranslate"><span class="pre">delWorkplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getCategory"><code class="docutils literal notranslate"><span class="pre">getCategory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getCategoryById"><code class="docutils literal notranslate"><span class="pre">getCategoryById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getClientById"><code class="docutils literal notranslate"><span class="pre">getClientById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getClientProduct"><code class="docutils literal notranslate"><span class="pre">getClientProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getClients"><code class="docutils literal notranslate"><span class="pre">getClients()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getEmployeeById"><code class="docutils literal notranslate"><span class="pre">getEmployeeById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getEmployees"><code class="docutils literal notranslate"><span class="pre">getEmployees()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getOtpByLogin"><code class="docutils literal notranslate"><span class="pre">getOtpByLogin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getPersonById"><code class="docutils literal notranslate"><span class="pre">getPersonById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getPersons"><code class="docutils literal notranslate"><span class="pre">getPersons()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getProduct"><code class="docutils literal notranslate"><span class="pre">getProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getProductAmount"><code class="docutils literal notranslate"><span class="pre">getProductAmount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getProductAmountById"><code class="docutils literal notranslate"><span class="pre">getProductAmountById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getProductById"><code class="docutils literal notranslate"><span class="pre">getProductById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getRole"><code class="docutils literal notranslate"><span class="pre">getRole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getRoleById"><code class="docutils literal notranslate"><span class="pre">getRoleById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getWorkplace"><code class="docutils literal notranslate"><span class="pre">getWorkplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.getWorkplaceById"><code class="docutils literal notranslate"><span class="pre">getWorkplaceById()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateCategory"><code class="docutils literal notranslate"><span class="pre">updateCategory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateClient"><code class="docutils literal notranslate"><span class="pre">updateClient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateEmployee"><code class="docutils literal notranslate"><span class="pre">updateEmployee()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updatePerson"><code class="docutils literal notranslate"><span class="pre">updatePerson()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateProduct"><code class="docutils literal notranslate"><span class="pre">updateProduct()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateProductAmount"><code class="docutils literal notranslate"><span class="pre">updateProductAmount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateRole"><code class="docutils literal notranslate"><span class="pre">updateRole()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.CRUD.updateWorkplace"><code class="docutils literal notranslate"><span class="pre">updateWorkplace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#module-database.database">database module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#module-database.models">models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.AttemptBlocker"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.AttemptBlocker.attempts"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.attempts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.AttemptBlocker.id"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.AttemptBlocker.login"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.AttemptBlocker.time"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.time</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Category.category_product"><code class="docutils literal notranslate"><span class="pre">Category.category_product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Category.id"><code class="docutils literal notranslate"><span class="pre">Category.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Category.name"><code class="docutils literal notranslate"><span class="pre">Category.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.ClientProduct"><code class="docutils literal notranslate"><span class="pre">ClientProduct</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ClientProduct.clientProduct_client"><code class="docutils literal notranslate"><span class="pre">ClientProduct.clientProduct_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ClientProduct.clientProduct_product"><code class="docutils literal notranslate"><span class="pre">ClientProduct.clientProduct_product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ClientProduct.id"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ClientProduct.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ClientProduct.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id_product</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Clients"><code class="docutils literal notranslate"><span class="pre">Clients</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Clients.amount"><code class="docutils literal notranslate"><span class="pre">Clients.amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Clients.client_clientProduct"><code class="docutils literal notranslate"><span class="pre">Clients.client_clientProduct</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Clients.client_persons"><code class="docutils literal notranslate"><span class="pre">Clients.client_persons</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Clients.id"><code class="docutils literal notranslate"><span class="pre">Clients.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Clients.id_persons"><code class="docutils literal notranslate"><span class="pre">Clients.id_persons</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Employees"><code class="docutils literal notranslate"><span class="pre">Employees</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.employee_loginData"><code class="docutils literal notranslate"><span class="pre">Employees.employee_loginData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.employee_role"><code class="docutils literal notranslate"><span class="pre">Employees.employee_role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.employee_workplace"><code class="docutils literal notranslate"><span class="pre">Employees.employee_workplace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.id"><code class="docutils literal notranslate"><span class="pre">Employees.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.id_persons"><code class="docutils literal notranslate"><span class="pre">Employees.id_persons</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.id_role"><code class="docutils literal notranslate"><span class="pre">Employees.id_role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Employees.id_workplace"><code class="docutils literal notranslate"><span class="pre">Employees.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.LoginData"><code class="docutils literal notranslate"><span class="pre">LoginData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.disabled"><code class="docutils literal notranslate"><span class="pre">LoginData.disabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.id"><code class="docutils literal notranslate"><span class="pre">LoginData.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.id_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.id_employee</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.login"><code class="docutils literal notranslate"><span class="pre">LoginData.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.loginData_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.loginData_employee</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.password"><code class="docutils literal notranslate"><span class="pre">LoginData.password</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.LoginData.verify_password"><code class="docutils literal notranslate"><span class="pre">LoginData.verify_password()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Otp.id"><code class="docutils literal notranslate"><span class="pre">Otp.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Otp.login"><code class="docutils literal notranslate"><span class="pre">Otp.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Otp.otp_code"><code class="docutils literal notranslate"><span class="pre">Otp.otp_code</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Persons"><code class="docutils literal notranslate"><span class="pre">Persons</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.address"><code class="docutils literal notranslate"><span class="pre">Persons.address</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.id"><code class="docutils literal notranslate"><span class="pre">Persons.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.name"><code class="docutils literal notranslate"><span class="pre">Persons.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.persons_client"><code class="docutils literal notranslate"><span class="pre">Persons.persons_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.phone"><code class="docutils literal notranslate"><span class="pre">Persons.phone</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Persons.surname"><code class="docutils literal notranslate"><span class="pre">Persons.surname</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.describe"><code class="docutils literal notranslate"><span class="pre">Product.describe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.id"><code class="docutils literal notranslate"><span class="pre">Product.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.id_category"><code class="docutils literal notranslate"><span class="pre">Product.id_category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.name"><code class="docutils literal notranslate"><span class="pre">Product.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.product_amount"><code class="docutils literal notranslate"><span class="pre">Product.product_amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.product_category"><code class="docutils literal notranslate"><span class="pre">Product.product_category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Product.product_clientProduct"><code class="docutils literal notranslate"><span class="pre">Product.product_clientProduct</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.ProductAmount"><code class="docutils literal notranslate"><span class="pre">ProductAmount</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ProductAmount.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmount.amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ProductAmount.amount_product"><code class="docutils literal notranslate"><span class="pre">ProductAmount.amount_product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ProductAmount.id"><code class="docutils literal notranslate"><span class="pre">ProductAmount.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.ProductAmount.id_product"><code class="docutils literal notranslate"><span class="pre">ProductAmount.id_product</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Role.id"><code class="docutils literal notranslate"><span class="pre">Role.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Role.name"><code class="docutils literal notranslate"><span class="pre">Role.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Role.role_employee"><code class="docutils literal notranslate"><span class="pre">Role.role_employee</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="database.html#database.models.Workplace"><code class="docutils literal notranslate"><span class="pre">Workplace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Workplace.id"><code class="docutils literal notranslate"><span class="pre">Workplace.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Workplace.name"><code class="docutils literal notranslate"><span class="pre">Workplace.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html#database.models.Workplace.workplace_employee"><code class="docutils literal notranslate"><span class="pre">Workplace.workplace_employee</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#module-database">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">dependencies module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html#dependencies.getDB"><code class="docutils literal notranslate"><span class="pre">getDB()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-models.schemas">schemas module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Category.Config"><code class="docutils literal notranslate"><span class="pre">Category.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Category.id"><code class="docutils literal notranslate"><span class="pre">Category.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.CategoryCreate"><code class="docutils literal notranslate"><span class="pre">CategoryCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CategoryCreate.Config"><code class="docutils literal notranslate"><span class="pre">CategoryCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.CategoryDelete"><code class="docutils literal notranslate"><span class="pre">CategoryDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CategoryDelete.Config"><code class="docutils literal notranslate"><span class="pre">CategoryDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.CategoryUpdate"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CategoryUpdate.Config"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CategoryUpdate.name"><code class="docutils literal notranslate"><span class="pre">CategoryUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientCreate"><code class="docutils literal notranslate"><span class="pre">ClientCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientCreate.Config"><code class="docutils literal notranslate"><span class="pre">ClientCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientDelete"><code class="docutils literal notranslate"><span class="pre">ClientDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientDelete.Config"><code class="docutils literal notranslate"><span class="pre">ClientDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientProduct"><code class="docutils literal notranslate"><span class="pre">ClientProduct</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProduct.Config"><code class="docutils literal notranslate"><span class="pre">ClientProduct.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProduct.id"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientProductCreate"><code class="docutils literal notranslate"><span class="pre">ClientProductCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProductCreate.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientProductDelete"><code class="docutils literal notranslate"><span class="pre">ClientProductDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProductDelete.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientProductUpdate"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProductUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProductUpdate.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.id_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientProductUpdate.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProductUpdate.id_product</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ClientUpdate"><code class="docutils literal notranslate"><span class="pre">ClientUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ClientUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ClientUpdate.amount"><code class="docutils literal notranslate"><span class="pre">ClientUpdate.amount</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Clients"><code class="docutils literal notranslate"><span class="pre">Clients</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Clients.Config"><code class="docutils literal notranslate"><span class="pre">Clients.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Clients.id"><code class="docutils literal notranslate"><span class="pre">Clients.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.CreateUser"><code class="docutils literal notranslate"><span class="pre">CreateUser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CreateUser.Config"><code class="docutils literal notranslate"><span class="pre">CreateUser.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.CreateUser.id_employee"><code class="docutils literal notranslate"><span class="pre">CreateUser.id_employee</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Employees"><code class="docutils literal notranslate"><span class="pre">Employees</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Employees.Config"><code class="docutils literal notranslate"><span class="pre">Employees.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Employees.id"><code class="docutils literal notranslate"><span class="pre">Employees.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.EmployeesCreate"><code class="docutils literal notranslate"><span class="pre">EmployeesCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.EmployeesCreate.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.EmployeesDelete"><code class="docutils literal notranslate"><span class="pre">EmployeesDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.EmployeesDelete.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate.Config"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate.id_role"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.id_role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate.id_workplace"><code class="docutils literal notranslate"><span class="pre">EmployeesUpdate.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.LoginData"><code class="docutils literal notranslate"><span class="pre">LoginData</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.LoginData.Config"><code class="docutils literal notranslate"><span class="pre">LoginData.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.LoginData.id_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.id_employee</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Otp.Config"><code class="docutils literal notranslate"><span class="pre">Otp.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Otp.id"><code class="docutils literal notranslate"><span class="pre">Otp.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.OtpCreate"><code class="docutils literal notranslate"><span class="pre">OtpCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.OtpCreate.Config"><code class="docutils literal notranslate"><span class="pre">OtpCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.OtpDelete"><code class="docutils literal notranslate"><span class="pre">OtpDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.OtpDelete.Config"><code class="docutils literal notranslate"><span class="pre">OtpDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Persons"><code class="docutils literal notranslate"><span class="pre">Persons</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Persons.Config"><code class="docutils literal notranslate"><span class="pre">Persons.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Persons.id"><code class="docutils literal notranslate"><span class="pre">Persons.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.PersonsCreate"><code class="docutils literal notranslate"><span class="pre">PersonsCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsCreate.Config"><code class="docutils literal notranslate"><span class="pre">PersonsCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.PersonsDelete"><code class="docutils literal notranslate"><span class="pre">PersonsDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsDelete.Config"><code class="docutils literal notranslate"><span class="pre">PersonsDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate.Config"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate.address"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.address</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate.name"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate.phone"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.phone</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate.surname"><code class="docutils literal notranslate"><span class="pre">PersonsUpdate.surname</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Product.Config"><code class="docutils literal notranslate"><span class="pre">Product.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Product.id"><code class="docutils literal notranslate"><span class="pre">Product.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductAmount"><code class="docutils literal notranslate"><span class="pre">ProductAmount</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductAmount.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmount.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductAmountCreate"><code class="docutils literal notranslate"><span class="pre">ProductAmountCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductAmountCreate.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductAmountDelete"><code class="docutils literal notranslate"><span class="pre">ProductAmountDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductAmountDelete.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductAmountUpdate"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductAmountUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductAmountUpdate.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmountUpdate.amount</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductCreate"><code class="docutils literal notranslate"><span class="pre">ProductCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductCreate.Config"><code class="docutils literal notranslate"><span class="pre">ProductCreate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductCreate.amount"><code class="docutils literal notranslate"><span class="pre">ProductCreate.amount</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductDelete"><code class="docutils literal notranslate"><span class="pre">ProductDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductDelete.Config"><code class="docutils literal notranslate"><span class="pre">ProductDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.ProductUpdate"><code class="docutils literal notranslate"><span class="pre">ProductUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductUpdate.Config"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductUpdate.describe"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.describe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductUpdate.id_category"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.id_category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.ProductUpdate.name"><code class="docutils literal notranslate"><span class="pre">ProductUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Role.Config"><code class="docutils literal notranslate"><span class="pre">Role.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Role.id"><code class="docutils literal notranslate"><span class="pre">Role.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.RoleCreate"><code class="docutils literal notranslate"><span class="pre">RoleCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.RoleCreate.Config"><code class="docutils literal notranslate"><span class="pre">RoleCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.RoleDelete"><code class="docutils literal notranslate"><span class="pre">RoleDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.RoleDelete.Config"><code class="docutils literal notranslate"><span class="pre">RoleDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.RoleUpdate"><code class="docutils literal notranslate"><span class="pre">RoleUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.RoleUpdate.Config"><code class="docutils literal notranslate"><span class="pre">RoleUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.RoleUpdate.name"><code class="docutils literal notranslate"><span class="pre">RoleUpdate.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.Workplace"><code class="docutils literal notranslate"><span class="pre">Workplace</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Workplace.Config"><code class="docutils literal notranslate"><span class="pre">Workplace.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.Workplace.id"><code class="docutils literal notranslate"><span class="pre">Workplace.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.WorkplaceCreate"><code class="docutils literal notranslate"><span class="pre">WorkplaceCreate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.WorkplaceCreate.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceCreate.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.WorkplaceDelete"><code class="docutils literal notranslate"><span class="pre">WorkplaceDelete</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.WorkplaceDelete.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceDelete.Config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.schemas.WorkplaceUpdate"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.WorkplaceUpdate.Config"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate.Config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.schemas.WorkplaceUpdate.name"><code class="docutils literal notranslate"><span class="pre">WorkplaceUpdate.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-models.tableModel">tableModel module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.AttemptBlockerBase"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.AttemptBlockerBase.attempts"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.attempts</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.AttemptBlockerBase.login"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.AttemptBlockerBase.time"><code class="docutils literal notranslate"><span class="pre">AttemptBlockerBase.time</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.CategoryBase"><code class="docutils literal notranslate"><span class="pre">CategoryBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.CategoryBase.name"><code class="docutils literal notranslate"><span class="pre">CategoryBase.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.ClientProductBase"><code class="docutils literal notranslate"><span class="pre">ClientProductBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ClientProductBase.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProductBase.id_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ClientProductBase.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProductBase.id_product</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.ClientsBase"><code class="docutils literal notranslate"><span class="pre">ClientsBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ClientsBase.amount"><code class="docutils literal notranslate"><span class="pre">ClientsBase.amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ClientsBase.id_persons"><code class="docutils literal notranslate"><span class="pre">ClientsBase.id_persons</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.CreateUser"><code class="docutils literal notranslate"><span class="pre">CreateUser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.CreateUser.login"><code class="docutils literal notranslate"><span class="pre">CreateUser.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.CreateUser.password"><code class="docutils literal notranslate"><span class="pre">CreateUser.password</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.EmployeesBase"><code class="docutils literal notranslate"><span class="pre">EmployeesBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.EmployeesBase.id_persons"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_persons</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.EmployeesBase.id_role"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_role</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.EmployeesBase.id_workplace"><code class="docutils literal notranslate"><span class="pre">EmployeesBase.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.LoginDataBase"><code class="docutils literal notranslate"><span class="pre">LoginDataBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.LoginDataBase.disabled"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.disabled</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.LoginDataBase.login"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.LoginDataBase.password"><code class="docutils literal notranslate"><span class="pre">LoginDataBase.password</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.OtpBase"><code class="docutils literal notranslate"><span class="pre">OtpBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.OtpBase.login"><code class="docutils literal notranslate"><span class="pre">OtpBase.login</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.OtpBase.otp_code"><code class="docutils literal notranslate"><span class="pre">OtpBase.otp_code</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.PersonsBase"><code class="docutils literal notranslate"><span class="pre">PersonsBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.PersonsBase.address"><code class="docutils literal notranslate"><span class="pre">PersonsBase.address</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.PersonsBase.name"><code class="docutils literal notranslate"><span class="pre">PersonsBase.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.PersonsBase.phone"><code class="docutils literal notranslate"><span class="pre">PersonsBase.phone</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.PersonsBase.surname"><code class="docutils literal notranslate"><span class="pre">PersonsBase.surname</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.ProductAmountBase"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ProductAmountBase.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase.amount</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ProductAmountBase.id_product"><code class="docutils literal notranslate"><span class="pre">ProductAmountBase.id_product</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.ProductBase"><code class="docutils literal notranslate"><span class="pre">ProductBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ProductBase.describe"><code class="docutils literal notranslate"><span class="pre">ProductBase.describe</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ProductBase.id_category"><code class="docutils literal notranslate"><span class="pre">ProductBase.id_category</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.ProductBase.name"><code class="docutils literal notranslate"><span class="pre">ProductBase.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.RoleBase"><code class="docutils literal notranslate"><span class="pre">RoleBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.RoleBase.name"><code class="docutils literal notranslate"><span class="pre">RoleBase.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="models.html#models.tableModel.WorkplaceBase"><code class="docutils literal notranslate"><span class="pre">WorkplaceBase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.html#models.tableModel.WorkplaceBase.name"><code class="docutils literal notranslate"><span class="pre">WorkplaceBase.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="routers.html">routers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.category">category module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.category.create_category"><code class="docutils literal notranslate"><span class="pre">create_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.category.delete_category"><code class="docutils literal notranslate"><span class="pre">delete_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.category.read_category"><code class="docutils literal notranslate"><span class="pre">read_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.category.read_category_by_id"><code class="docutils literal notranslate"><span class="pre">read_category_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.category.update_category"><code class="docutils literal notranslate"><span class="pre">update_category()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.client">client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.create_client"><code class="docutils literal notranslate"><span class="pre">create_client()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.delete_client"><code class="docutils literal notranslate"><span class="pre">delete_client()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.new_transition"><code class="docutils literal notranslate"><span class="pre">new_transition()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.read_client_by_id"><code class="docutils literal notranslate"><span class="pre">read_client_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.read_clients"><code class="docutils literal notranslate"><span class="pre">read_clients()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.client.update_client"><code class="docutils literal notranslate"><span class="pre">update_client()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.employee">employee module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.employee.create_employee"><code class="docutils literal notranslate"><span class="pre">create_employee()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.employee.delete_product"><code class="docutils literal notranslate"><span class="pre">delete_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.employee.read_employee_by_id"><code class="docutils literal notranslate"><span class="pre">read_employee_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.employee.read_employees"><code class="docutils literal notranslate"><span class="pre">read_employees()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.employee.update_employee"><code class="docutils literal notranslate"><span class="pre">update_employee()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.person">person module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.person.create_person"><code class="docutils literal notranslate"><span class="pre">create_person()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.person.delete_person"><code class="docutils literal notranslate"><span class="pre">delete_person()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.person.read_person_by_id"><code class="docutils literal notranslate"><span class="pre">read_person_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.person.read_persons"><code class="docutils literal notranslate"><span class="pre">read_persons()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.person.update_person"><code class="docutils literal notranslate"><span class="pre">update_person()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.product">product module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.create_product"><code class="docutils literal notranslate"><span class="pre">create_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.delete_product"><code class="docutils literal notranslate"><span class="pre">delete_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.read_amount"><code class="docutils literal notranslate"><span class="pre">read_amount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.read_product"><code class="docutils literal notranslate"><span class="pre">read_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.read_product_by_id"><code class="docutils literal notranslate"><span class="pre">read_product_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.update_product"><code class="docutils literal notranslate"><span class="pre">update_product()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.product.update_product_amount"><code class="docutils literal notranslate"><span class="pre">update_product_amount()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.role">role module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.role.create_role"><code class="docutils literal notranslate"><span class="pre">create_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.role.delete_role"><code class="docutils literal notranslate"><span class="pre">delete_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.role.read_role"><code class="docutils literal notranslate"><span class="pre">read_role()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.role.read_role_by_id"><code class="docutils literal notranslate"><span class="pre">read_role_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.role.update_role"><code class="docutils literal notranslate"><span class="pre">update_role()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.users">users module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.users.OTP_code"><code class="docutils literal notranslate"><span class="pre">OTP_code()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.users.create_user_account"><code class="docutils literal notranslate"><span class="pre">create_user_account()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.users.login_for_access_token"><code class="docutils literal notranslate"><span class="pre">login_for_access_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.users.read_users"><code class="docutils literal notranslate"><span class="pre">read_users()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers.workplace">workplace module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.workplace.create_workplace"><code class="docutils literal notranslate"><span class="pre">create_workplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.workplace.delete_workplace"><code class="docutils literal notranslate"><span class="pre">delete_workplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.workplace.read_workplace"><code class="docutils literal notranslate"><span class="pre">read_workplace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.workplace.read_workplace_by_id"><code class="docutils literal notranslate"><span class="pre">read_workplace_by_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="routers.html#routers.workplace.update_workplace"><code class="docutils literal notranslate"><span class="pre">update_workplace()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="routers.html#module-routers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>routers package &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">routers package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-routers.category">category module</a><ul>
+<li><a class="reference internal" href="#routers.category.create_category"><code class="docutils literal notranslate"><span class="pre">create_category()</span></code></a></li>
+<li><a class="reference internal" href="#routers.category.delete_category"><code class="docutils literal notranslate"><span class="pre">delete_category()</span></code></a></li>
+<li><a class="reference internal" href="#routers.category.read_category"><code class="docutils literal notranslate"><span class="pre">read_category()</span></code></a></li>
+<li><a class="reference internal" href="#routers.category.read_category_by_id"><code class="docutils literal notranslate"><span class="pre">read_category_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.category.update_category"><code class="docutils literal notranslate"><span class="pre">update_category()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.client">client module</a><ul>
+<li><a class="reference internal" href="#routers.client.create_client"><code class="docutils literal notranslate"><span class="pre">create_client()</span></code></a></li>
+<li><a class="reference internal" href="#routers.client.delete_client"><code class="docutils literal notranslate"><span class="pre">delete_client()</span></code></a></li>
+<li><a class="reference internal" href="#routers.client.new_transition"><code class="docutils literal notranslate"><span class="pre">new_transition()</span></code></a></li>
+<li><a class="reference internal" href="#routers.client.read_client_by_id"><code class="docutils literal notranslate"><span class="pre">read_client_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.client.read_clients"><code class="docutils literal notranslate"><span class="pre">read_clients()</span></code></a></li>
+<li><a class="reference internal" href="#routers.client.update_client"><code class="docutils literal notranslate"><span class="pre">update_client()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.employee">employee module</a><ul>
+<li><a class="reference internal" href="#routers.employee.create_employee"><code class="docutils literal notranslate"><span class="pre">create_employee()</span></code></a></li>
+<li><a class="reference internal" href="#routers.employee.delete_product"><code class="docutils literal notranslate"><span class="pre">delete_product()</span></code></a></li>
+<li><a class="reference internal" href="#routers.employee.read_employee_by_id"><code class="docutils literal notranslate"><span class="pre">read_employee_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.employee.read_employees"><code class="docutils literal notranslate"><span class="pre">read_employees()</span></code></a></li>
+<li><a class="reference internal" href="#routers.employee.update_employee"><code class="docutils literal notranslate"><span class="pre">update_employee()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.person">person module</a><ul>
+<li><a class="reference internal" href="#routers.person.create_person"><code class="docutils literal notranslate"><span class="pre">create_person()</span></code></a></li>
+<li><a class="reference internal" href="#routers.person.delete_person"><code class="docutils literal notranslate"><span class="pre">delete_person()</span></code></a></li>
+<li><a class="reference internal" href="#routers.person.read_person_by_id"><code class="docutils literal notranslate"><span class="pre">read_person_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.person.read_persons"><code class="docutils literal notranslate"><span class="pre">read_persons()</span></code></a></li>
+<li><a class="reference internal" href="#routers.person.update_person"><code class="docutils literal notranslate"><span class="pre">update_person()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.product">product module</a><ul>
+<li><a class="reference internal" href="#routers.product.create_product"><code class="docutils literal notranslate"><span class="pre">create_product()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.delete_product"><code class="docutils literal notranslate"><span class="pre">delete_product()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.read_amount"><code class="docutils literal notranslate"><span class="pre">read_amount()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.read_product"><code class="docutils literal notranslate"><span class="pre">read_product()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.read_product_by_id"><code class="docutils literal notranslate"><span class="pre">read_product_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.update_product"><code class="docutils literal notranslate"><span class="pre">update_product()</span></code></a></li>
+<li><a class="reference internal" href="#routers.product.update_product_amount"><code class="docutils literal notranslate"><span class="pre">update_product_amount()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.role">role module</a><ul>
+<li><a class="reference internal" href="#routers.role.create_role"><code class="docutils literal notranslate"><span class="pre">create_role()</span></code></a></li>
+<li><a class="reference internal" href="#routers.role.delete_role"><code class="docutils literal notranslate"><span class="pre">delete_role()</span></code></a></li>
+<li><a class="reference internal" href="#routers.role.read_role"><code class="docutils literal notranslate"><span class="pre">read_role()</span></code></a></li>
+<li><a class="reference internal" href="#routers.role.read_role_by_id"><code class="docutils literal notranslate"><span class="pre">read_role_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.role.update_role"><code class="docutils literal notranslate"><span class="pre">update_role()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.users">users module</a><ul>
+<li><a class="reference internal" href="#routers.users.OTP_code"><code class="docutils literal notranslate"><span class="pre">OTP_code()</span></code></a></li>
+<li><a class="reference internal" href="#routers.users.create_user_account"><code class="docutils literal notranslate"><span class="pre">create_user_account()</span></code></a></li>
+<li><a class="reference internal" href="#routers.users.login_for_access_token"><code class="docutils literal notranslate"><span class="pre">login_for_access_token()</span></code></a></li>
+<li><a class="reference internal" href="#routers.users.read_users"><code class="docutils literal notranslate"><span class="pre">read_users()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers.workplace">workplace module</a><ul>
+<li><a class="reference internal" href="#routers.workplace.create_workplace"><code class="docutils literal notranslate"><span class="pre">create_workplace()</span></code></a></li>
+<li><a class="reference internal" href="#routers.workplace.delete_workplace"><code class="docutils literal notranslate"><span class="pre">delete_workplace()</span></code></a></li>
+<li><a class="reference internal" href="#routers.workplace.read_workplace"><code class="docutils literal notranslate"><span class="pre">read_workplace()</span></code></a></li>
+<li><a class="reference internal" href="#routers.workplace.read_workplace_by_id"><code class="docutils literal notranslate"><span class="pre">read_workplace_by_id()</span></code></a></li>
+<li><a class="reference internal" href="#routers.workplace.update_workplace"><code class="docutils literal notranslate"><span class="pre">update_workplace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-routers">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">routers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/routers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="routers-package">
+<h1>routers package<a class="headerlink" href="#routers-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-routers.category">
+<span id="category-module"></span><h2>category module<a class="headerlink" href="#module-routers.category" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.category.create_category">
+<span class="sig-prename descclassname"><span class="pre">routers.category.</span></span><span class="sig-name descname"><span class="pre">create_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CategoryCreate" title="models.schemas.CategoryCreate"><span class="pre">CategoryCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/category.html#create_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.category.create_category" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new category.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (schemas.CategoryCreate): The category data to be created.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.CategoryCreate: The created category.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the category already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.category.delete_category">
+<span class="sig-prename descclassname"><span class="pre">routers.category.</span></span><span class="sig-name descname"><span class="pre">delete_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/category.html#delete_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.category.delete_category" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a category by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>category_id (int): The ID of the category to be deleted.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the category with the specified ID does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.category.read_category">
+<span class="sig-prename descclassname"><span class="pre">routers.category.</span></span><span class="sig-name descname"><span class="pre">read_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/category.html#read_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.category.read_category" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of categories.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): The number of categories to skip (used for pagination).
+limit (int): The maximum number of categories to return (used for pagination).
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[schemas.Category]: The list of categories.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no categories are found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.category.read_category_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.category.</span></span><span class="sig-name descname"><span class="pre">read_category_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/category.html#read_category_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.category.read_category_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a category by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>category_id (int): The ID of the category to retrieve.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.Category: The retrieved category.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the category is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.category.update_category">
+<span class="sig-prename descclassname"><span class="pre">routers.category.</span></span><span class="sig-name descname"><span class="pre">update_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CategoryUpdate" title="models.schemas.CategoryUpdate"><span class="pre">CategoryUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/category.html#update_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.category.update_category" title="Permalink to this definition"></a></dt>
+<dd><p>Update a category by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>category_id (int): The ID of the category to be updated.
+category (schemas.CategoryUpdate): The updated category data.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.CategoryUpdate: The updated category.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the category with the specified ID does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.client">
+<span id="client-module"></span><h2>client module<a class="headerlink" href="#module-routers.client" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.create_client">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">create_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientCreate" title="models.schemas.ClientCreate"><span class="pre">ClientCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#create_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.create_client" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new client.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client (schemas.ClientCreate): The client data to be created.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ClientCreate: The created client.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the client already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.delete_client">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">delete_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#delete_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.delete_client" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a client by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client_id (int): The ID of the client to be deleted.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the client is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.new_transition">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">new_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientProductCreate" title="models.schemas.ClientProductCreate"><span class="pre">ClientProductCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#new_transition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.new_transition" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new client product transition.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>new_transition (schemas.ClientProductCreate): The client product transition data to be created.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ClientProductCreate: The created client product transition.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the client does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.read_client_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">read_client_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#read_client_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.read_client_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a client by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client_id (int): The ID of the client.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: The client information.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the client is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.read_clients">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">read_clients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#read_clients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.read_clients" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of clients.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): The number of clients to skip (for pagination).
+limit (int): The maximum number of clients to retrieve (for pagination).
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[dict]: A list of clients.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no clients are found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.client.update_client">
+<span class="sig-prename descclassname"><span class="pre">routers.client.</span></span><span class="sig-name descname"><span class="pre">update_client</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientUpdate" title="models.schemas.ClientUpdate"><span class="pre">ClientUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/client.html#update_client"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.client.update_client" title="Permalink to this definition"></a></dt>
+<dd><p>Update a client by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>client_id (int): The ID of the client to be updated.
+updated_client (schemas.ClientUpdate): The updated client data.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ClientUpdate: The updated client.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the client does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.employee">
+<span id="employee-module"></span><h2>employee module<a class="headerlink" href="#module-routers.employee" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.employee.create_employee">
+<span class="sig-prename descclassname"><span class="pre">routers.employee.</span></span><span class="sig-name descname"><span class="pre">create_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.EmployeesCreate" title="models.schemas.EmployeesCreate"><span class="pre">EmployeesCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/employee.html#create_employee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.employee.create_employee" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new employee.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>emp (schemas.EmployeesCreate): The employee data to create.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.EmployeesCreate: The created employee.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the employee already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.employee.delete_product">
+<span class="sig-prename descclassname"><span class="pre">routers.employee.</span></span><span class="sig-name descname"><span class="pre">delete_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/employee.html#delete_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.employee.delete_product" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an employee.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>employee_id (int): The ID of the employee to delete.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the employee is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.employee.read_employee_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.employee.</span></span><span class="sig-name descname"><span class="pre">read_employee_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/employee.html#read_employee_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.employee.read_employee_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve an employee by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>employee_id (int): The ID of the employee to retrieve.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Employee record.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the employee is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.employee.read_employees">
+<span class="sig-prename descclassname"><span class="pre">routers.employee.</span></span><span class="sig-name descname"><span class="pre">read_employees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/employee.html#read_employees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.employee.read_employees" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of employees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): Number of records to skip (for pagination).
+limit (int): Maximum number of records to retrieve (for pagination).
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[dict]: List of employee records.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no employees are found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.employee.update_employee">
+<span class="sig-prename descclassname"><span class="pre">routers.employee.</span></span><span class="sig-name descname"><span class="pre">update_employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate" title="models.schemas.EmployeesUpdate"><span class="pre">EmployeesUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/employee.html#update_employee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.employee.update_employee" title="Permalink to this definition"></a></dt>
+<dd><p>Update an existing employee.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>employee_id (int): The ID of the employee to update.
+employee (schemas.EmployeesUpdate): The updated employee data.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.EmployeesUpdate: The updated employee.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the employee is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.person">
+<span id="person-module"></span><h2>person module<a class="headerlink" href="#module-routers.person" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.person.create_person">
+<span class="sig-prename descclassname"><span class="pre">routers.person.</span></span><span class="sig-name descname"><span class="pre">create_person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.PersonsCreate" title="models.schemas.PersonsCreate"><span class="pre">PersonsCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/person.html#create_person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.person.create_person" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new person.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (schemas.PersonsCreate): The data for creating the person.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the person already exists.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.PersonsCreate: The created person object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.person.delete_person">
+<span class="sig-prename descclassname"><span class="pre">routers.person.</span></span><span class="sig-name descname"><span class="pre">delete_person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/person.html#delete_person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.person.delete_person" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a person.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>person_id (int): The ID of the person to delete.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the person is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.person.read_person_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.person.</span></span><span class="sig-name descname"><span class="pre">read_person_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/person.html#read_person_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.person.read_person_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a person by their ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>person_id (int): The ID of the person to retrieve.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the person is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.Persons: The person object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.person.read_persons">
+<span class="sig-prename descclassname"><span class="pre">routers.person.</span></span><span class="sig-name descname"><span class="pre">read_persons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/person.html#read_persons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.person.read_persons" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of persons.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): The number of persons to skip (for pagination).
+limit (int): The maximum number of persons to retrieve (for pagination).
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no persons are found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list[schemas.Persons]: A list of person objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.person.update_person">
+<span class="sig-prename descclassname"><span class="pre">routers.person.</span></span><span class="sig-name descname"><span class="pre">update_person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate" title="models.schemas.PersonsUpdate"><span class="pre">PersonsUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/person.html#update_person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.person.update_person" title="Permalink to this definition"></a></dt>
+<dd><p>Update a person.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>person_id (int): The ID of the person to update.
+person (schemas.PersonsUpdate): The updated data for the person.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the person is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.PersonsUpdate: The updated person object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.product">
+<span id="product-module"></span><h2>product module<a class="headerlink" href="#module-routers.product" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.create_product">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">create_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ProductCreate" title="models.schemas.ProductCreate"><span class="pre">ProductCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#create_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.create_product" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new product.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product (schemas.ProductCreate): The data of the product to be created.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the category for the product is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ProductCreate: The created product.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.delete_product">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">delete_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#delete_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.delete_product" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a product.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product_id (int): The ID of the product to be deleted.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the product is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.read_amount">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">read_amount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#read_amount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.read_amount" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve the amount of a product by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product_id (int): The ID of the product.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(200): If there is a lack of this product.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ProductAmount: The amount of the product with the specified ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.read_product">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">read_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#read_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.read_product" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of products.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): Number of products to skip.
+limit (int): Maximum number of products to retrieve.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no products are found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[schemas.Product]: A list of products.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.read_product_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">read_product_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#read_product_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.read_product_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a product by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product_id (int): The ID of the product.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the product with the specified ID is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.Product: The product with the specified ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.update_product">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">update_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ProductUpdate" title="models.schemas.ProductUpdate"><span class="pre">ProductUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#update_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.update_product" title="Permalink to this definition"></a></dt>
+<dd><p>Update a product.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product_id (int): The ID of the product to be updated.
+product (schemas.ProductUpdate): The updated data of the product.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the product is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ProductUpdate: The updated product.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.product.update_product_amount">
+<span class="sig-prename descclassname"><span class="pre">routers.product.</span></span><span class="sig-name descname"><span class="pre">update_product_amount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ProductAmountUpdate" title="models.schemas.ProductAmountUpdate"><span class="pre">ProductAmountUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/product.html#update_product_amount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.product.update_product_amount" title="Permalink to this definition"></a></dt>
+<dd><p>Update the amount of a product.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>product_amount (schemas.ProductAmountUpdate): The updated amount of the product.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the product is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.ProductAmountUpdate: The updated product amount.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.role">
+<span id="role-module"></span><h2>role module<a class="headerlink" href="#module-routers.role" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.role.create_role">
+<span class="sig-prename descclassname"><span class="pre">routers.role.</span></span><span class="sig-name descname"><span class="pre">create_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.RoleCreate" title="models.schemas.RoleCreate"><span class="pre">RoleCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/role.html#create_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.role.create_role" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new role.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rol (schemas.RoleCreate): The role data to be created.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(400): If the role already exists.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.RoleCreate: The created role object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.role.delete_role">
+<span class="sig-prename descclassname"><span class="pre">routers.role.</span></span><span class="sig-name descname"><span class="pre">delete_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/role.html#delete_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.role.delete_role" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a role.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>role_id (int): The ID of the role to be deleted.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the role is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.role.read_role">
+<span class="sig-prename descclassname"><span class="pre">routers.role.</span></span><span class="sig-name descname"><span class="pre">read_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/role.html#read_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.role.read_role" title="Permalink to this definition"></a></dt>
+<dd><p>Read roles.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): Number of records to skip (used for pagination).
+limit (int): Maximum number of records to return (used for pagination).
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If no roles are found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[schemas.Role]: List of role objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.role.read_role_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.role.</span></span><span class="sig-name descname"><span class="pre">read_role_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/role.html#read_role_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.role.read_role_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Read role by ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>role_id (int): The ID of the role.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the role with the specified ID is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.Role: The role object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.role.update_role">
+<span class="sig-prename descclassname"><span class="pre">routers.role.</span></span><span class="sig-name descname"><span class="pre">update_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.RoleUpdate" title="models.schemas.RoleUpdate"><span class="pre">RoleUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/role.html#update_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.role.update_role" title="Permalink to this definition"></a></dt>
+<dd><p>Update an existing role.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>role_id (int): The ID of the role to be updated.
+role (schemas.RoleUpdate): The updated role data.
+current_user (schemas.LoginData): The currently authenticated user obtained through the get_current_active_user dependency.
+db (Session): The database session obtained from the getDB dependency.</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException(404): If the role is not found.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.RoleUpdate: The updated role object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.users">
+<span id="users-module"></span><h2>users module<a class="headerlink" href="#module-routers.users" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.users.OTP_code">
+<span class="sig-prename descclassname"><span class="pre">routers.users.</span></span><span class="sig-name descname"><span class="pre">OTP_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="authorization.html#authorization.auth.Otp" title="authorization.auth.Otp"><span class="pre">Otp</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/users.html#OTP_code"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.users.OTP_code" title="Permalink to this definition"></a></dt>
+<dd><p>Generate OTP code and send it to the user.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>data (Otp): User credentials.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Success message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.users.create_user_account">
+<span class="sig-prename descclassname"><span class="pre">routers.users.</span></span><span class="sig-name descname"><span class="pre">create_user_account</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CreateUser" title="models.schemas.CreateUser"><span class="pre">CreateUser</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/users.html#create_user_account"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.users.create_user_account" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new user account.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>user (schemas.CreateUser): User data.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Success message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.users.login_for_access_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">routers.users.</span></span><span class="sig-name descname"><span class="pre">login_for_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OAuth2PasswordRequestForm</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(NoneType)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/users.html#login_for_access_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.users.login_for_access_token" title="Permalink to this definition"></a></dt>
+<dd><p>Obtain an access token for authentication.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>form_data (OAuth2PasswordRequestForm): User credentials.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Token: Access token and token type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.users.read_users">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">routers.users.</span></span><span class="sig-name descname"><span class="pre">read_users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/users.html#read_users"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.users.read_users" title="Permalink to this definition"></a></dt>
+<dd><p>Get the current user’s information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>current_user (str): Current user’s login.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Current user’s login.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers.workplace">
+<span id="workplace-module"></span><h2>workplace module<a class="headerlink" href="#module-routers.workplace" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.workplace.create_workplace">
+<span class="sig-prename descclassname"><span class="pre">routers.workplace.</span></span><span class="sig-name descname"><span class="pre">create_workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">work</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.WorkplaceCreate" title="models.schemas.WorkplaceCreate"><span class="pre">WorkplaceCreate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/workplace.html#create_workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.workplace.create_workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new workplace.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>work (schemas.WorkplaceCreate): Workplace data.
+current_user (schemas.LoginData): Current user data.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.WorkplaceCreate: Created workplace information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.workplace.delete_workplace">
+<span class="sig-prename descclassname"><span class="pre">routers.workplace.</span></span><span class="sig-name descname"><span class="pre">delete_workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workplace_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/workplace.html#delete_workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.workplace.delete_workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a workplace.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>workplace_id (int): ID of the workplace to delete.
+current_user (schemas.LoginData): Current user data.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+<dt>Raises:</dt><dd><p>HTTPException: If the workplace is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.workplace.read_workplace">
+<span class="sig-prename descclassname"><span class="pre">routers.workplace.</span></span><span class="sig-name descname"><span class="pre">read_workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/workplace.html#read_workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.workplace.read_workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of workplaces.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>skip (int): Number of records to skip.
+limit (int): Maximum number of records to retrieve.
+current_user (schemas.LoginData): Current user data.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[schemas.Workplace]: List of workplaces.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.workplace.read_workplace_by_id">
+<span class="sig-prename descclassname"><span class="pre">routers.workplace.</span></span><span class="sig-name descname"><span class="pre">read_workplace_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workplace_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/workplace.html#read_workplace_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.workplace.read_workplace_by_id" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a workplace by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>workplace_id (int): ID of the workplace.
+current_user (schemas.LoginData): Current user data.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.Workplace: Workplace information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="routers.workplace.update_workplace">
+<span class="sig-prename descclassname"><span class="pre">routers.workplace.</span></span><span class="sig-name descname"><span class="pre">update_workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workplace_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.WorkplaceUpdate" title="models.schemas.WorkplaceUpdate"><span class="pre">WorkplaceUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.LoginData" title="models.schemas.LoginData"><span class="pre">LoginData</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_active_user)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(getDB)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/routers/workplace.html#update_workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#routers.workplace.update_workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Update an existing workplace.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>workplace_id (int): ID of the workplace to update.
+workplace (schemas.WorkplaceUpdate): Updated workplace data.
+current_user (schemas.LoginData): Current user data.
+db (Session): Database session.</p>
+</dd>
+<dt>Returns:</dt><dd><p>schemas.WorkplaceUpdate: Updated workplace information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-routers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-routers" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

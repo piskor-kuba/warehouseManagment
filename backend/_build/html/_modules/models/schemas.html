@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>models.schemas &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">models.schemas</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for models.schemas</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">tableModel</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+
+<div class="viewcode-block" id="Category"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Category">[docs]</a><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">CategoryBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+
+<div class="viewcode-block" id="Category.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Category.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="CategoryCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryCreate">[docs]</a><span class="k">class</span> <span class="nc">CategoryCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">CategoryBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="CategoryCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="CategoryUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryUpdate">[docs]</a><span class="k">class</span> <span class="nc">CategoryUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">CategoryBase</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="CategoryUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="CategoryDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryDelete">[docs]</a><span class="k">class</span> <span class="nc">CategoryDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">CategoryBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="CategoryDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CategoryDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Product"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Product">[docs]</a><span class="k">class</span> <span class="nc">Product</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Product.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Product.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductCreate">[docs]</a><span class="k">class</span> <span class="nc">ProductCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductBase</span><span class="p">):</span>
+    <span class="n">amount</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="ProductCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductDelete">[docs]</a><span class="k">class</span> <span class="nc">ProductDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ProductDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductUpdate">[docs]</a><span class="k">class</span> <span class="nc">ProductUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductBase</span><span class="p">):</span>
+    <span class="n">id_category</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">describe</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="ProductUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductAmount"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmount">[docs]</a><span class="k">class</span> <span class="nc">ProductAmount</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductAmountBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ProductAmount.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmount.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductAmountCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountCreate">[docs]</a><span class="k">class</span> <span class="nc">ProductAmountCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductAmountBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ProductAmountCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+<div class="viewcode-block" id="ProductAmountDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountDelete">[docs]</a><span class="k">class</span> <span class="nc">ProductAmountDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductAmountBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ProductAmountDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ProductAmountUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountUpdate">[docs]</a><span class="k">class</span> <span class="nc">ProductAmountUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ProductAmountBase</span><span class="p">):</span>
+    <span class="n">amount</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="ProductAmountUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ProductAmountUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Persons"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Persons">[docs]</a><span class="k">class</span> <span class="nc">Persons</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">PersonsBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Persons.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Persons.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="PersonsCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsCreate">[docs]</a><span class="k">class</span> <span class="nc">PersonsCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">PersonsBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="PersonsCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+<div class="viewcode-block" id="PersonsDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsDelete">[docs]</a><span class="k">class</span> <span class="nc">PersonsDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">PersonsBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="PersonsDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="PersonsUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsUpdate">[docs]</a><span class="k">class</span> <span class="nc">PersonsUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">PersonsBase</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">surname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">address</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="PersonsUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.PersonsUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Clients"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Clients">[docs]</a><span class="k">class</span> <span class="nc">Clients</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientsBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Clients.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Clients.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientCreate">[docs]</a><span class="k">class</span> <span class="nc">ClientCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientsBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ClientCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientDelete">[docs]</a><span class="k">class</span> <span class="nc">ClientDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientsBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ClientDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+<div class="viewcode-block" id="ClientUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientUpdate">[docs]</a><span class="k">class</span> <span class="nc">ClientUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientsBase</span><span class="p">):</span>
+    <span class="n">amount</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="ClientUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientProduct"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProduct">[docs]</a><span class="k">class</span> <span class="nc">ClientProduct</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientProductBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="ClientProduct.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProduct.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientProductCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductCreate">[docs]</a><span class="k">class</span> <span class="nc">ClientProductCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientProductBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ClientProductCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientProductDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductDelete">[docs]</a><span class="k">class</span> <span class="nc">ClientProductDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientProductBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="ClientProductDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="ClientProductUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductUpdate">[docs]</a><span class="k">class</span> <span class="nc">ClientProductUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">ClientProductBase</span><span class="p">):</span>
+    <span class="n">id_product</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">id_client</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="ClientProductUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.ClientProductUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Workplace"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Workplace">[docs]</a><span class="k">class</span> <span class="nc">Workplace</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">WorkplaceBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Workplace.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Workplace.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="WorkplaceCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceCreate">[docs]</a><span class="k">class</span> <span class="nc">WorkplaceCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">WorkplaceBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="WorkplaceCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="WorkplaceDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceDelete">[docs]</a><span class="k">class</span> <span class="nc">WorkplaceDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">WorkplaceBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="WorkplaceDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="WorkplaceUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceUpdate">[docs]</a><span class="k">class</span> <span class="nc">WorkplaceUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">WorkplaceBase</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="WorkplaceUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.WorkplaceUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Role"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Role">[docs]</a><span class="k">class</span> <span class="nc">Role</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">RoleBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+
+<div class="viewcode-block" id="Role.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Role.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="RoleCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleCreate">[docs]</a><span class="k">class</span> <span class="nc">RoleCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">RoleBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="RoleCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="RoleUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleUpdate">[docs]</a><span class="k">class</span> <span class="nc">RoleUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">RoleBase</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="RoleUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="RoleDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleDelete">[docs]</a><span class="k">class</span> <span class="nc">RoleDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">RoleBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="RoleDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.RoleDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Employees"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Employees">[docs]</a><span class="k">class</span> <span class="nc">Employees</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">EmployeesBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Employees.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Employees.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="EmployeesCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesCreate">[docs]</a><span class="k">class</span> <span class="nc">EmployeesCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">EmployeesBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="EmployeesCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="EmployeesUpdate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesUpdate">[docs]</a><span class="k">class</span> <span class="nc">EmployeesUpdate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">EmployeesBase</span><span class="p">):</span>
+    <span class="n">id_workplace</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">id_role</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<div class="viewcode-block" id="EmployeesUpdate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesUpdate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="EmployeesDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesDelete">[docs]</a><span class="k">class</span> <span class="nc">EmployeesDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">EmployeesBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="EmployeesDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.EmployeesDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="LoginData"><a class="viewcode-back" href="../../docs/models.html#models.schemas.LoginData">[docs]</a><span class="k">class</span> <span class="nc">LoginData</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">LoginDataBase</span><span class="p">):</span>
+    <span class="n">id_employee</span><span class="p">:</span> <span class="nb">int</span>
+<div class="viewcode-block" id="LoginData.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.LoginData.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="CreateUser"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CreateUser">[docs]</a><span class="k">class</span> <span class="nc">CreateUser</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">CreateUser</span><span class="p">):</span>
+    <span class="n">id_employee</span><span class="p">:</span> <span class="nb">int</span>
+<div class="viewcode-block" id="CreateUser.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.CreateUser.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="Otp"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Otp">[docs]</a><span class="k">class</span> <span class="nc">Otp</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">OtpBase</span><span class="p">):</span>
+    <span class="nb">id</span><span class="p">:</span><span class="nb">int</span>
+<div class="viewcode-block" id="Otp.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.Otp.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="OtpCreate"><a class="viewcode-back" href="../../docs/models.html#models.schemas.OtpCreate">[docs]</a><span class="k">class</span> <span class="nc">OtpCreate</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">OtpBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="OtpCreate.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.OtpCreate.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+
+<div class="viewcode-block" id="OtpDelete"><a class="viewcode-back" href="../../docs/models.html#models.schemas.OtpDelete">[docs]</a><span class="k">class</span> <span class="nc">OtpDelete</span><span class="p">(</span><span class="n">tableModel</span><span class="o">.</span><span class="n">OtpBase</span><span class="p">):</span>
+    <span class="k">pass</span>
+<div class="viewcode-block" id="OtpDelete.Config"><a class="viewcode-back" href="../../docs/models.html#models.schemas.OtpDelete.Config">[docs]</a>    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">orm_mode</span> <span class="o">=</span> <span class="kc">True</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

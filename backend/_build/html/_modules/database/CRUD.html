@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>database.CRUD &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">database.CRUD</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for database.CRUD</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">schemas</span>
+<span class="kn">from</span> <span class="nn">database</span> <span class="kn">import</span> <span class="n">models</span>
+
+
+<span class="c1">##################################################__CATEGORY__##################################################</span>
+<div class="viewcode-block" id="createCategory"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createCategory">[docs]</a><span class="k">def</span> <span class="nf">createCategory</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">CategoryCreate</span><span class="p">):</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">category</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_category</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_category</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_category</span></div>
+
+<div class="viewcode-block" id="getCategory"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getCategory">[docs]</a><span class="k">def</span> <span class="nf">getCategory</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a list of categories from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int): The number of categories to skip (used for pagination). Defaults to 0.</span>
+<span class="sd">        limit (int): The maximum number of categories to retrieve (used for pagination). Defaults to 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[models.Category]: A list of category objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="getCategoryById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getCategoryById">[docs]</a><span class="k">def</span> <span class="nf">getCategoryById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">category_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a category from the database by its ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        category_id (int): The ID of the category to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Category: The category object with the specified ID.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Category</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">category_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="delCategory"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delCategory">[docs]</a><span class="k">def</span> <span class="nf">delCategory</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">CategoryDelete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Delete a category from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        category (schemas.CategoryDelete): The category object to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="updateCategory"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateCategory">[docs]</a><span class="k">def</span> <span class="nf">updateCategory</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">CategoryUpdate</span><span class="p">,</span> <span class="n">category_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update a category in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        category (schemas.CategoryUpdate): The updated category information.</span>
+<span class="sd">        category_id (int): The ID of the category to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Category: The updated category object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_category</span> <span class="o">=</span> <span class="n">getCategoryById</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">category_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db_category</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">category</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_category</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_category</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_category</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_category</span></div>
+
+<span class="c1">##################################################__PRODUCT__##################################################</span>
+<div class="viewcode-block" id="createProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createProduct">[docs]</a><span class="k">def</span> <span class="nf">createProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ProductCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new product in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        product (schemas.ProductCreate): The product information used to create the new product.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Product: The newly created product object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_product</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="p">(</span><span class="n">id_category</span> <span class="o">=</span> <span class="n">product</span><span class="o">.</span><span class="n">id_category</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">describe</span> <span class="o">=</span> <span class="n">product</span><span class="o">.</span><span class="n">describe</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_product</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_product</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_product</span></div>
+
+<div class="viewcode-block" id="getProductById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getProductById">[docs]</a><span class="k">def</span> <span class="nf">getProductById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+
+    <span class="n">product</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">product_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">product</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">category</span> <span class="o">=</span> <span class="n">getCategoryById</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">product</span><span class="o">.</span><span class="n">id_category</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;category&quot;</span><span class="p">:</span><span class="n">category</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;product_name&quot;</span><span class="p">:</span><span class="n">product</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;describe&quot;</span><span class="p">:</span><span class="n">product</span><span class="o">.</span><span class="n">describe</span><span class="p">,</span>
+        <span class="s2">&quot;product_id&quot;</span><span class="p">:</span><span class="n">product</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="getProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getProduct">[docs]</a><span class="k">def</span> <span class="nf">getProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;category&quot;</span><span class="p">:</span><span class="n">getCategoryById</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">category_id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">id_category</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+         <span class="s2">&quot;product_name&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+         <span class="s2">&quot;describe&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">describe</span><span class="p">,</span>
+         <span class="s2">&quot;product_id&quot;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
+         <span class="p">}</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">products</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="updateProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateProduct">[docs]</a><span class="k">def</span> <span class="nf">updateProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">product_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+
+    <span class="n">db_product</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">product_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">db_product</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">product</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_product</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_product</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_product</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_product</span></div>
+
+<div class="viewcode-block" id="delProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delProduct">[docs]</a><span class="k">def</span> <span class="nf">delProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">db_product</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">product</span><span class="p">[</span><span class="s2">&quot;product_id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">db_product</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;Product deleted&quot;</span></div>
+
+
+<span class="c1">##################################################__PRODUCT-AMOUNT__##################################################</span>
+<div class="viewcode-block" id="getProductAmount"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getProductAmount">[docs]</a><span class="k">def</span> <span class="nf">getProductAmount</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a list of product amounts from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int): The number of product amounts to skip (used for pagination). Defaults to 0.</span>
+<span class="sd">        limit (int): The maximum number of product amounts to retrieve (used for pagination). Defaults to 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[models.ProductAmount]: A list of product amount objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="getProductAmountById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getProductAmountById">[docs]</a><span class="k">def</span> <span class="nf">getProductAmountById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="o">.</span><span class="n">id_product</span> <span class="o">==</span> <span class="n">product_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createProductAmount"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createProductAmount">[docs]</a><span class="k">def</span> <span class="nf">createProductAmount</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="n">db_product_amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="p">(</span><span class="n">id_product</span><span class="o">=</span><span class="n">product</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="n">amount</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_product_amount</span></div>
+
+<div class="viewcode-block" id="updateProductAmount"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateProductAmount">[docs]</a><span class="k">def</span> <span class="nf">updateProductAmount</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product_amount</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ProductAmountUpdate</span><span class="p">,</span> <span class="n">product_amount_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update a product amount in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        product_amount (schemas.ProductAmountUpdate): The updated product amount information.</span>
+<span class="sd">        product_amount_id (int): The ID of the product amount to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.ProductAmount: The updated product amount object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_product_amount</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">product_amount_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">db_product_amount</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">product_amount</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_product_amount</span></div>
+
+<div class="viewcode-block" id="delProductAmount"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delProductAmount">[docs]</a><span class="k">def</span> <span class="nf">delProductAmount</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">product_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Delete a product amount from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        product_id (int): The ID of the product amount to be deleted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_product_amount</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ProductAmount</span><span class="o">.</span><span class="n">id_product</span> <span class="o">==</span> <span class="n">product_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">db_product_amount</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<span class="c1">##################################################__PERSONS__##################################################</span>
+<div class="viewcode-block" id="getPersons"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getPersons">[docs]</a><span class="k">def</span> <span class="nf">getPersons</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of persons from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.</span>
+<span class="sd">        limit (int, optional): The maximum number of records to return. Default is 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[models.Persons]: A list of person objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="getPersonById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getPersonById">[docs]</a><span class="k">def</span> <span class="nf">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">person_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a person from the database by their ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        person_id (int): The ID of the person to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Persons]: The person object if found, or None if not found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">person_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createPerson"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createPerson">[docs]</a><span class="k">def</span> <span class="nf">createPerson</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">person</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">PersonsCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new person in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        person (schemas.PersonsCreate): The information of the person to create.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Persons]: The created person object if it doesn&#39;t already exist, or None if it already exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="p">)</span><span class="o">.</span>\
+        <span class="nb">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>\
+               <span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="o">.</span><span class="n">surname</span> <span class="o">==</span> <span class="n">person</span><span class="o">.</span><span class="n">surname</span><span class="p">,</span>\
+               <span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="o">.</span><span class="n">phone</span> <span class="o">==</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">,</span>\
+               <span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="o">.</span><span class="n">address</span> <span class="o">==</span> <span class="n">person</span><span class="o">.</span><span class="n">address</span>\
+               <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_person</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Persons</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">surname</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">surname</span><span class="p">,</span> <span class="n">phone</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">phone</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_person</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_person</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_person</span></div>
+
+<div class="viewcode-block" id="updatePerson"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updatePerson">[docs]</a><span class="k">def</span> <span class="nf">updatePerson</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">person</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">PersonsUpdate</span><span class="p">,</span> <span class="n">person_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a person in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        person (schemas.PersonsUpdate): The updated information of the person.</span>
+<span class="sd">        person_id (int): The ID of the person to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Persons]: The updated person object if found, or None if the person doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_person</span> <span class="o">=</span> <span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">person_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db_person</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">person</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_person</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_person</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_person</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_person</span></div>
+
+<div class="viewcode-block" id="delPerson"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delPerson">[docs]</a><span class="k">def</span> <span class="nf">delPerson</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">person</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">PersonsDelete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a person from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        person (schemas.PersonsDelete): The person object to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<span class="c1">##################################################__CLIENTS__##################################################</span>
+<div class="viewcode-block" id="getClients"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getClients">[docs]</a><span class="k">def</span> <span class="nf">getClients</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of clients from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.</span>
+<span class="sd">        limit (int, optional): The maximum number of records to return. Default is 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Dict[str, Union[str, int]]]: A list of client objects with &quot;Name&quot;, &quot;Amount&quot;, and &quot;Client_id&quot; properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">clients</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                              <span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">surname</span><span class="p">]),</span>
+            <span class="s2">&quot;Amount&quot;</span><span class="p">:</span><span class="n">item</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span>
+            <span class="s2">&quot;Clinet_id&quot;</span><span class="p">:</span><span class="n">item</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">}</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">clients</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="getClientById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getClientById">[docs]</a><span class="k">def</span> <span class="nf">getClientById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">client_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a client from the database by their ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        client_id (int): The ID of the client to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dict[str, Union[str, int]]: A dictionary containing the client information with &quot;Name&quot;, &quot;Amount&quot;, and &quot;Client_id&quot; properties.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">client_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                          <span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">surname</span><span class="p">]),</span>
+        <span class="s2">&quot;Amount&quot;</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">amount</span><span class="p">,</span>
+        <span class="s2">&quot;Clinet_id&quot;</span><span class="p">:</span> <span class="n">client</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">response</span></div>
+<div class="viewcode-block" id="createClient"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createClient">[docs]</a><span class="k">def</span> <span class="nf">createClient</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ClientCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new client in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        client (schemas.ClientCreate): The information of the client to create.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Clients]: The created client object if it doesn&#39;t already exist, or None if it already exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="p">)</span><span class="o">.</span> \
+        <span class="nb">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="o">.</span><span class="n">id_persons</span> <span class="o">==</span> <span class="n">client</span><span class="o">.</span><span class="n">id_persons</span><span class="p">,</span> \
+               <span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="o">.</span><span class="n">amount</span> <span class="o">==</span> <span class="n">client</span><span class="o">.</span><span class="n">amount</span> \
+               <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_client</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Clients</span><span class="p">(</span><span class="n">id_persons</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">id_persons</span><span class="p">,</span> <span class="n">amount</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_client</span></div>
+
+<div class="viewcode-block" id="updateClient"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateClient">[docs]</a><span class="k">def</span> <span class="nf">updateClient</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ClientUpdate</span><span class="p">,</span> <span class="n">client_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a client in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        client (schemas.ClientUpdate): The updated information of the client.</span>
+<span class="sd">        client_id (int): The ID of the client to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Clients]: The updated client object if found, or None if the client doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_client</span> <span class="o">=</span> <span class="n">getClientById</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">client_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db_client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">client</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_client</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_client</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_client</span></div>
+
+<div class="viewcode-block" id="delClient"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delClient">[docs]</a><span class="k">def</span> <span class="nf">delClient</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ClientDelete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a client from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        client (schemas.ClientDelete): The client object to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<span class="c1">##################################################__CLIENT-PRODUCT__##################################################</span>
+<div class="viewcode-block" id="getClientProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getClientProduct">[docs]</a><span class="k">def</span> <span class="nf">getClientProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a list of client products from the database.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">            skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.</span>
+<span class="sd">            limit (int, optional): The maximum number of records to return. Default is 100.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[models.ClientProduct]: A list of client product objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">ClientProduct</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createClientProduct"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createClientProduct">[docs]</a><span class="k">def</span> <span class="nf">createClientProduct</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">client_product</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">ClientProductCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new client product in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        client_product (schemas.ClientProductCreate): The information of the client product to create.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.ClientProduct: The created client product object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_client_product</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ClientProduct</span><span class="p">(</span><span class="n">id_client</span> <span class="o">=</span> <span class="n">client_product</span><span class="o">.</span><span class="n">id_client</span><span class="p">,</span> <span class="n">id_product</span> <span class="o">=</span> <span class="n">client_product</span><span class="o">.</span><span class="n">id_product</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_client_product</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_client_product</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_client_product</span></div>
+
+<span class="c1">##################################################__WORKPLACE__##################################################</span>
+<div class="viewcode-block" id="getWorkplace"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getWorkplace">[docs]</a><span class="k">def</span> <span class="nf">getWorkplace</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of workplaces from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.</span>
+<span class="sd">        limit (int, optional): The maximum number of records to return. Default is 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[models.Workplace]: A list of workplace objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="getWorkplaceById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getWorkplaceById">[docs]</a><span class="k">def</span> <span class="nf">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">workplace_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a workplace from the database by its ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        workplace_id (int): The ID of the workplace to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Workplace: The workplace object with the specified ID, or None if not found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">workplace_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createWorkplace"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createWorkplace">[docs]</a><span class="k">def</span> <span class="nf">createWorkplace</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">workplace</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new workplace in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        workplace (schemas.WorkplaceCreate): The information of the workplace to create.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Workplace]: The created workplace object if it doesn&#39;t already exist, or None if it already exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">workplace</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_workplace</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">workplace</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_workplace</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_workplace</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_workplace</span></div>
+
+<div class="viewcode-block" id="updateWorkplace"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateWorkplace">[docs]</a><span class="k">def</span> <span class="nf">updateWorkplace</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">workplace</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceUpdate</span><span class="p">,</span> <span class="n">workplace_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a workplace in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        workplace (schemas.WorkplaceUpdate): The updated workplace information.</span>
+<span class="sd">        workplace_id (int): The ID of the workplace to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Workplace]: The updated workplace object if it exists, or None if it doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_workplace</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Workplace</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">workplace_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">db_workplace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">workplace</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_workplace</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_workplace</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_workplace</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_workplace</span></div>
+
+<div class="viewcode-block" id="delWorkplace"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delWorkplace">[docs]</a><span class="k">def</span> <span class="nf">delWorkplace</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">workplace</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceDelete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a workplace from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        workplace (schemas.WorkplaceDelete): The workplace to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">workplace</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<span class="c1">##################################################__ROLE__##################################################</span>
+<div class="viewcode-block" id="getRole"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getRole">[docs]</a><span class="k">def</span> <span class="nf">getRole</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of roles from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.</span>
+<span class="sd">        limit (int, optional): The maximum number of records to return. Default is 100.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[models.Role]: A list of role objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="getRoleById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getRoleById">[docs]</a><span class="k">def</span> <span class="nf">getRoleById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">role_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a role from the database by its ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        role_id (int): The ID of the role to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Role: The role object with the specified ID, or None if not found.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">role_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createRole"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createRole">[docs]</a><span class="k">def</span> <span class="nf">createRole</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">RoleCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new role in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        role (schemas.RoleCreate): The information of the role to create.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Role]: The created role object if it doesn&#39;t already exist, or None if it already exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">role</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_role</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Role</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">role</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_role</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_role</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_role</span></div>
+
+<div class="viewcode-block" id="updateRole"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateRole">[docs]</a><span class="k">def</span> <span class="nf">updateRole</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">RoleUpdate</span><span class="p">,</span> <span class="n">role_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a role in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        role (schemas.RoleUpdate): The updated role information.</span>
+<span class="sd">        role_id (int): The ID of the role to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Role]: The updated role object if it exists, or None if it doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_role</span> <span class="o">=</span> <span class="n">getRoleById</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">role_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">db_role</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">role</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_role</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_role</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_role</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_role</span></div>
+
+<div class="viewcode-block" id="delRole"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delRole">[docs]</a><span class="k">def</span> <span class="nf">delRole</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">role</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">RoleDelete</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a role from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        role (schemas.RoleDelete): The role to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">role</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<span class="c1">##################################################__EMPLOYEES__##################################################</span>
+<div class="viewcode-block" id="getEmployees"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getEmployees">[docs]</a><span class="k">def</span> <span class="nf">getEmployees</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve employees from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        skip (int): The number of employees to skip (used for pagination).</span>
+<span class="sd">        limit (int): The maximum number of employees to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Dict[str, Any]]: A list of dictionaries representing employee information.</span>
+<span class="sd">            Each dictionary contains the following keys:</span>
+<span class="sd">                - &quot;Name&quot;: The full name of the employee.</span>
+<span class="sd">                - &quot;Workplace&quot;: The name of the workplace where the employee works.</span>
+<span class="sd">                - &quot;Role&quot;: The name of the role of the employee.</span>
+<span class="sd">                - &quot;Employee_id&quot;: The ID of the employee.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">employees</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">)</span><span class="o">.</span><span class="n">offset</span><span class="p">(</span><span class="n">skip</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">surname</span><span class="p">]),</span>
+        <span class="s2">&quot;Workplace&quot;</span><span class="p">:</span> <span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">workplace_id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">id_workplace</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;Role&quot;</span><span class="p">:</span> <span class="n">getRoleById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">role_id</span><span class="o">=</span><span class="n">item</span><span class="o">.</span><span class="n">id_role</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;Employee_id&quot;</span><span class="p">:</span><span class="n">item</span><span class="o">.</span><span class="n">id</span>
+        <span class="p">}</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">employees</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">response</span></div>
+<div class="viewcode-block" id="getEmployeeById"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getEmployeeById">[docs]</a><span class="k">def</span> <span class="nf">getEmployeeById</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">employee_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve an employee by ID from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        employee_id (int): The ID of the employee to retrieve.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[Dict[str, Any]]: A dictionary representing the employee information if it exists, or None if it doesn&#39;t exist.</span>
+<span class="sd">            The dictionary contains the following keys:</span>
+<span class="sd">                - &quot;Name&quot;: The full name of the employee.</span>
+<span class="sd">                - &quot;Workplace&quot;: The name of the workplace where the employee works.</span>
+<span class="sd">                - &quot;Role&quot;: The name of the role of the employee.</span>
+<span class="sd">                - &quot;Employee_id&quot;: The ID of the employee.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">employee</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">employee_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">employee</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                          <span class="n">getPersonById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">person_id</span><span class="o">=</span><span class="n">employee</span><span class="o">.</span><span class="n">id_persons</span><span class="p">)</span><span class="o">.</span><span class="n">surname</span><span class="p">]),</span>
+        <span class="s2">&quot;Workplace&quot;</span><span class="p">:</span> <span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">workplace_id</span><span class="o">=</span><span class="n">employee</span><span class="o">.</span><span class="n">id_workplace</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;Role&quot;</span><span class="p">:</span> <span class="n">getRoleById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">role_id</span><span class="o">=</span><span class="n">employee</span><span class="o">.</span><span class="n">id_role</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;Employee_id&quot;</span><span class="p">:</span> <span class="n">employee</span><span class="o">.</span><span class="n">id</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="createEmployee"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createEmployee">[docs]</a><span class="k">def</span> <span class="nf">createEmployee</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">employee</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">EmployeesCreate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new employee in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        employee (schemas.EmployeesCreate): The employee information to be created.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Employees]: The created employee object if it doesn&#39;t already exist, or None if it already exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">existed</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">)</span><span class="o">.</span> \
+        <span class="nb">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id_persons</span> <span class="o">==</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_persons</span><span class="p">,</span> \
+               <span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id_workplace</span> <span class="o">==</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_workplace</span><span class="p">,</span> \
+               <span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id_role</span> <span class="o">==</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_role</span> \
+               <span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">existed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">db_employee</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">(</span><span class="n">id_persons</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_persons</span><span class="p">,</span> <span class="n">id_workplace</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_workplace</span><span class="p">,</span> <span class="n">id_role</span> <span class="o">=</span> <span class="n">employee</span><span class="o">.</span><span class="n">id_role</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_employee</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_employee</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_employee</span></div>
+
+<div class="viewcode-block" id="updateEmployee"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.updateEmployee">[docs]</a><span class="k">def</span> <span class="nf">updateEmployee</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">employee</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">EmployeesUpdate</span><span class="p">,</span> <span class="n">employee_id</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update an employee in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        employee (schemas.EmployeesUpdate): The updated employee information.</span>
+<span class="sd">        employee_id (int): The ID of the employee to be updated.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Employees]: The updated employee object if it exists, or None if it doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_employee</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">employee_id</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">db_employee</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">employee</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">db_employee</span><span class="p">,</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_employee</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_employee</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_employee</span></div>
+
+<div class="viewcode-block" id="delEmployee"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delEmployee">[docs]</a><span class="k">def</span> <span class="nf">delEmployee</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">employee</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete an employee from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        employee (dict): The employee dictionary containing the &quot;Employee_id&quot; key with the ID of the employee to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_employee</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Employees</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">employee</span><span class="p">[</span><span class="s2">&quot;Employee_id&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">db_employee</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+<span class="c1">##################################################__OTP__##################################################</span>
+<div class="viewcode-block" id="getOtpByLogin"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.getOtpByLogin">[docs]</a><span class="k">def</span> <span class="nf">getOtpByLogin</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">login</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get OTP (One-Time Password) information by login from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        login (str): The login to search for OTP information.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Optional[models.Otp]: The OTP object if it exists, or None if it doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">db</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Otp</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Otp</span><span class="o">.</span><span class="n">login</span> <span class="o">==</span> <span class="n">login</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="createOtpRecord"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.createOtpRecord">[docs]</a><span class="k">def</span> <span class="nf">createOtpRecord</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">otp</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">login</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new OTP (One-Time Password) record in the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        otp (str): The OTP code.</span>
+<span class="sd">        login (str): The login associated with the OTP.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        models.Otp: The created OTP record.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_otp</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Otp</span><span class="p">(</span><span class="n">login</span> <span class="o">=</span> <span class="n">login</span><span class="p">,</span> <span class="n">otp_code</span> <span class="o">=</span> <span class="n">otp</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">db_otp</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">db_otp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">db_otp</span></div>
+
+<div class="viewcode-block" id="delOtp"><a class="viewcode-back" href="../../docs/database.html#database.CRUD.delOtp">[docs]</a><span class="k">def</span> <span class="nf">delOtp</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span><span class="p">,</span> <span class="n">login</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete an OTP (One-Time Password) record from the database.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        db (Session): The database session obtained from the getDB function.</span>
+<span class="sd">        login (str): The login associated with the OTP record to be deleted.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">db_otp</span> <span class="o">=</span> <span class="n">getOtpByLogin</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">login</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">db_otp</span><span class="p">)</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

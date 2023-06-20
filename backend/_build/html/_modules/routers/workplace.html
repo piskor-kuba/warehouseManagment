@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>routers.workplace &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">routers.workplace</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for routers.workplace</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span> <span class="nn">database</span> <span class="kn">import</span> <span class="n">CRUD</span>
+<span class="kn">from</span> <span class="nn">dependencies</span> <span class="kn">import</span> <span class="n">getDB</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">models</span> <span class="kn">import</span> <span class="n">schemas</span>
+<span class="kn">from</span> <span class="nn">authorization.auth</span> <span class="kn">import</span> <span class="n">get_current_active_user</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/workplace&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;workplace&quot;</span><span class="p">])</span>
+
+<div class="viewcode-block" id="read_workplace"><a class="viewcode-back" href="../../docs/routers.html#routers.workplace.read_workplace">[docs]</a><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">response_model</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">schemas</span><span class="o">.</span><span class="n">Workplace</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">read_workplace</span><span class="p">(</span><span class="n">skip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">LoginData</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_active_user</span><span class="p">)</span> <span class="p">,</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">getDB</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a list of workplaces.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        skip (int): Number of records to skip.</span>
+<span class="sd">        limit (int): Maximum number of records to retrieve.</span>
+<span class="sd">        current_user (schemas.LoginData): Current user data.</span>
+<span class="sd">        db (Session): Database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[schemas.Workplace]: List of workplaces.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workplace</span> <span class="o">=</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">getWorkplace</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">workplace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Workplace not found&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">workplace</span></div>
+
+<div class="viewcode-block" id="read_workplace_by_id"><a class="viewcode-back" href="../../docs/routers.html#routers.workplace.read_workplace_by_id">[docs]</a><span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{workplace_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span> <span class="n">schemas</span><span class="o">.</span><span class="n">Workplace</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_workplace_by_id</span><span class="p">(</span><span class="n">workplace_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">LoginData</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_active_user</span><span class="p">)</span> <span class="p">,</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">getDB</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve a workplace by its ID.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        workplace_id (int): ID of the workplace.</span>
+<span class="sd">        current_user (schemas.LoginData): Current user data.</span>
+<span class="sd">        db (Session): Database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        schemas.Workplace: Workplace information.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workplace</span> <span class="o">=</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">workplace_id</span><span class="o">=</span><span class="n">workplace_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">workplace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Workplace not found&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">workplace_id</span> <span class="o">=</span> <span class="n">workplace_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="create_workplace"><a class="viewcode-back" href="../../docs/routers.html#routers.workplace.create_workplace">[docs]</a><span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceCreate</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">201</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_workplace</span><span class="p">(</span><span class="n">work</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceCreate</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">LoginData</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_active_user</span><span class="p">)</span> <span class="p">,</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">getDB</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new workplace.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        work (schemas.WorkplaceCreate): Workplace data.</span>
+<span class="sd">        current_user (schemas.LoginData): Current user data.</span>
+<span class="sd">        db (Session): Database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        schemas.WorkplaceCreate: Created workplace information.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workplace</span> <span class="o">=</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">createWorkplace</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">workplace</span><span class="o">=</span><span class="n">work</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">workplace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Workplace existed&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">workplace</span></div>
+
+<div class="viewcode-block" id="update_workplace"><a class="viewcode-back" href="../../docs/routers.html#routers.workplace.update_workplace">[docs]</a><span class="nd">@router</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{workplace_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_model</span><span class="o">=</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceUpdate</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">update_workplace</span><span class="p">(</span><span class="n">workplace_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">workplace</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">WorkplaceUpdate</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">LoginData</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_active_user</span><span class="p">)</span> <span class="p">,</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">getDB</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update an existing workplace.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        workplace_id (int): ID of the workplace to update.</span>
+<span class="sd">        workplace (schemas.WorkplaceUpdate): Updated workplace data.</span>
+<span class="sd">        current_user (schemas.LoginData): Current user data.</span>
+<span class="sd">        db (Session): Database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        schemas.WorkplaceUpdate: Updated workplace information.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">wor</span> <span class="o">=</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="n">db</span><span class="p">,</span> <span class="n">workplace_id</span><span class="o">=</span><span class="n">workplace_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Workplace not found&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">updateWorkplace</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">workplace</span> <span class="o">=</span> <span class="n">workplace</span><span class="p">,</span> <span class="n">workplace_id</span> <span class="o">=</span> <span class="n">workplace_id</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="delete_workplace"><a class="viewcode-back" href="../../docs/routers.html#routers.workplace.delete_workplace">[docs]</a><span class="nd">@router</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{workplace_id}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">204</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">delete_workplace</span><span class="p">(</span><span class="n">workplace_id</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">schemas</span><span class="o">.</span><span class="n">LoginData</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_active_user</span><span class="p">)</span> <span class="p">,</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">getDB</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a workplace.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        workplace_id (int): ID of the workplace to delete.</span>
+<span class="sd">        current_user (schemas.LoginData): Current user data.</span>
+<span class="sd">        db (Session): Database session.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        HTTPException: If the workplace is not found.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workplace</span> <span class="o">=</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">getWorkplaceById</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="n">workplace_id</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">workplace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Workplace not found&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CRUD</span><span class="o">.</span><span class="n">delWorkplace</span><span class="p">(</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span><span class="p">,</span> <span class="n">workplace</span> <span class="o">=</span> <span class="n">workplace</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

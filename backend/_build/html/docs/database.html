@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>database package &mdash; Warehouse managment 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Warehouse managment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">database package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-database.CRUD">CRUD module</a><ul>
+<li><a class="reference internal" href="#database.CRUD.createCategory"><code class="docutils literal notranslate"><span class="pre">createCategory()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createClient"><code class="docutils literal notranslate"><span class="pre">createClient()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createClientProduct"><code class="docutils literal notranslate"><span class="pre">createClientProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createEmployee"><code class="docutils literal notranslate"><span class="pre">createEmployee()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createOtpRecord"><code class="docutils literal notranslate"><span class="pre">createOtpRecord()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createPerson"><code class="docutils literal notranslate"><span class="pre">createPerson()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createProduct"><code class="docutils literal notranslate"><span class="pre">createProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createProductAmount"><code class="docutils literal notranslate"><span class="pre">createProductAmount()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createRole"><code class="docutils literal notranslate"><span class="pre">createRole()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.createWorkplace"><code class="docutils literal notranslate"><span class="pre">createWorkplace()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delCategory"><code class="docutils literal notranslate"><span class="pre">delCategory()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delClient"><code class="docutils literal notranslate"><span class="pre">delClient()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delEmployee"><code class="docutils literal notranslate"><span class="pre">delEmployee()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delOtp"><code class="docutils literal notranslate"><span class="pre">delOtp()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delPerson"><code class="docutils literal notranslate"><span class="pre">delPerson()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delProduct"><code class="docutils literal notranslate"><span class="pre">delProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delProductAmount"><code class="docutils literal notranslate"><span class="pre">delProductAmount()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delRole"><code class="docutils literal notranslate"><span class="pre">delRole()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.delWorkplace"><code class="docutils literal notranslate"><span class="pre">delWorkplace()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getCategory"><code class="docutils literal notranslate"><span class="pre">getCategory()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getCategoryById"><code class="docutils literal notranslate"><span class="pre">getCategoryById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getClientById"><code class="docutils literal notranslate"><span class="pre">getClientById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getClientProduct"><code class="docutils literal notranslate"><span class="pre">getClientProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getClients"><code class="docutils literal notranslate"><span class="pre">getClients()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getEmployeeById"><code class="docutils literal notranslate"><span class="pre">getEmployeeById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getEmployees"><code class="docutils literal notranslate"><span class="pre">getEmployees()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getOtpByLogin"><code class="docutils literal notranslate"><span class="pre">getOtpByLogin()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getPersonById"><code class="docutils literal notranslate"><span class="pre">getPersonById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getPersons"><code class="docutils literal notranslate"><span class="pre">getPersons()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getProduct"><code class="docutils literal notranslate"><span class="pre">getProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getProductAmount"><code class="docutils literal notranslate"><span class="pre">getProductAmount()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getProductAmountById"><code class="docutils literal notranslate"><span class="pre">getProductAmountById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getProductById"><code class="docutils literal notranslate"><span class="pre">getProductById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getRole"><code class="docutils literal notranslate"><span class="pre">getRole()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getRoleById"><code class="docutils literal notranslate"><span class="pre">getRoleById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getWorkplace"><code class="docutils literal notranslate"><span class="pre">getWorkplace()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.getWorkplaceById"><code class="docutils literal notranslate"><span class="pre">getWorkplaceById()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateCategory"><code class="docutils literal notranslate"><span class="pre">updateCategory()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateClient"><code class="docutils literal notranslate"><span class="pre">updateClient()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateEmployee"><code class="docutils literal notranslate"><span class="pre">updateEmployee()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updatePerson"><code class="docutils literal notranslate"><span class="pre">updatePerson()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateProduct"><code class="docutils literal notranslate"><span class="pre">updateProduct()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateProductAmount"><code class="docutils literal notranslate"><span class="pre">updateProductAmount()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateRole"><code class="docutils literal notranslate"><span class="pre">updateRole()</span></code></a></li>
+<li><a class="reference internal" href="#database.CRUD.updateWorkplace"><code class="docutils literal notranslate"><span class="pre">updateWorkplace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-database.database">database module</a></li>
+<li><a class="reference internal" href="#module-database.models">models module</a><ul>
+<li><a class="reference internal" href="#database.models.AttemptBlocker"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.AttemptBlocker.attempts"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.attempts</span></code></a></li>
+<li><a class="reference internal" href="#database.models.AttemptBlocker.id"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.AttemptBlocker.login"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.login</span></code></a></li>
+<li><a class="reference internal" href="#database.models.AttemptBlocker.time"><code class="docutils literal notranslate"><span class="pre">AttemptBlocker.time</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Category"><code class="docutils literal notranslate"><span class="pre">Category</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Category.category_product"><code class="docutils literal notranslate"><span class="pre">Category.category_product</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Category.id"><code class="docutils literal notranslate"><span class="pre">Category.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Category.name"><code class="docutils literal notranslate"><span class="pre">Category.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.ClientProduct"><code class="docutils literal notranslate"><span class="pre">ClientProduct</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.ClientProduct.clientProduct_client"><code class="docutils literal notranslate"><span class="pre">ClientProduct.clientProduct_client</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ClientProduct.clientProduct_product"><code class="docutils literal notranslate"><span class="pre">ClientProduct.clientProduct_product</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ClientProduct.id"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ClientProduct.id_client"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id_client</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ClientProduct.id_product"><code class="docutils literal notranslate"><span class="pre">ClientProduct.id_product</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Clients"><code class="docutils literal notranslate"><span class="pre">Clients</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Clients.amount"><code class="docutils literal notranslate"><span class="pre">Clients.amount</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Clients.client_clientProduct"><code class="docutils literal notranslate"><span class="pre">Clients.client_clientProduct</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Clients.client_persons"><code class="docutils literal notranslate"><span class="pre">Clients.client_persons</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Clients.id"><code class="docutils literal notranslate"><span class="pre">Clients.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Clients.id_persons"><code class="docutils literal notranslate"><span class="pre">Clients.id_persons</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Employees"><code class="docutils literal notranslate"><span class="pre">Employees</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Employees.employee_loginData"><code class="docutils literal notranslate"><span class="pre">Employees.employee_loginData</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.employee_role"><code class="docutils literal notranslate"><span class="pre">Employees.employee_role</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.employee_workplace"><code class="docutils literal notranslate"><span class="pre">Employees.employee_workplace</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.id"><code class="docutils literal notranslate"><span class="pre">Employees.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.id_persons"><code class="docutils literal notranslate"><span class="pre">Employees.id_persons</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.id_role"><code class="docutils literal notranslate"><span class="pre">Employees.id_role</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Employees.id_workplace"><code class="docutils literal notranslate"><span class="pre">Employees.id_workplace</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.LoginData"><code class="docutils literal notranslate"><span class="pre">LoginData</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.LoginData.disabled"><code class="docutils literal notranslate"><span class="pre">LoginData.disabled</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.id"><code class="docutils literal notranslate"><span class="pre">LoginData.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.id_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.id_employee</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.login"><code class="docutils literal notranslate"><span class="pre">LoginData.login</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.loginData_employee"><code class="docutils literal notranslate"><span class="pre">LoginData.loginData_employee</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.password"><code class="docutils literal notranslate"><span class="pre">LoginData.password</span></code></a></li>
+<li><a class="reference internal" href="#database.models.LoginData.verify_password"><code class="docutils literal notranslate"><span class="pre">LoginData.verify_password()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Otp"><code class="docutils literal notranslate"><span class="pre">Otp</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Otp.id"><code class="docutils literal notranslate"><span class="pre">Otp.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Otp.login"><code class="docutils literal notranslate"><span class="pre">Otp.login</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Otp.otp_code"><code class="docutils literal notranslate"><span class="pre">Otp.otp_code</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Persons"><code class="docutils literal notranslate"><span class="pre">Persons</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Persons.address"><code class="docutils literal notranslate"><span class="pre">Persons.address</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Persons.id"><code class="docutils literal notranslate"><span class="pre">Persons.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Persons.name"><code class="docutils literal notranslate"><span class="pre">Persons.name</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Persons.persons_client"><code class="docutils literal notranslate"><span class="pre">Persons.persons_client</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Persons.phone"><code class="docutils literal notranslate"><span class="pre">Persons.phone</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Persons.surname"><code class="docutils literal notranslate"><span class="pre">Persons.surname</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Product.describe"><code class="docutils literal notranslate"><span class="pre">Product.describe</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.id"><code class="docutils literal notranslate"><span class="pre">Product.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.id_category"><code class="docutils literal notranslate"><span class="pre">Product.id_category</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.name"><code class="docutils literal notranslate"><span class="pre">Product.name</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.product_amount"><code class="docutils literal notranslate"><span class="pre">Product.product_amount</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.product_category"><code class="docutils literal notranslate"><span class="pre">Product.product_category</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Product.product_clientProduct"><code class="docutils literal notranslate"><span class="pre">Product.product_clientProduct</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.ProductAmount"><code class="docutils literal notranslate"><span class="pre">ProductAmount</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.ProductAmount.amount"><code class="docutils literal notranslate"><span class="pre">ProductAmount.amount</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ProductAmount.amount_product"><code class="docutils literal notranslate"><span class="pre">ProductAmount.amount_product</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ProductAmount.id"><code class="docutils literal notranslate"><span class="pre">ProductAmount.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.ProductAmount.id_product"><code class="docutils literal notranslate"><span class="pre">ProductAmount.id_product</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Role.id"><code class="docutils literal notranslate"><span class="pre">Role.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Role.name"><code class="docutils literal notranslate"><span class="pre">Role.name</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Role.role_employee"><code class="docutils literal notranslate"><span class="pre">Role.role_employee</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#database.models.Workplace"><code class="docutils literal notranslate"><span class="pre">Workplace</span></code></a><ul>
+<li><a class="reference internal" href="#database.models.Workplace.id"><code class="docutils literal notranslate"><span class="pre">Workplace.id</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Workplace.name"><code class="docutils literal notranslate"><span class="pre">Workplace.name</span></code></a></li>
+<li><a class="reference internal" href="#database.models.Workplace.workplace_employee"><code class="docutils literal notranslate"><span class="pre">Workplace.workplace_employee</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-database">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Warehouse managment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">database package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-package">
+<h1>database package<a class="headerlink" href="#database-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-database.CRUD">
+<span id="crud-module"></span><h2>CRUD module<a class="headerlink" href="#module-database.CRUD" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createCategory">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CategoryCreate" title="models.schemas.CategoryCreate"><span class="pre">CategoryCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createCategory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createCategory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createClient">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientCreate" title="models.schemas.ClientCreate"><span class="pre">ClientCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createClient" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new client in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+client (schemas.ClientCreate): The information of the client to create.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Clients]: The created client object if it doesn’t already exist, or None if it already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createClientProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createClientProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientProductCreate" title="models.schemas.ClientProductCreate"><span class="pre">ClientProductCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createClientProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createClientProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new client product in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+client_product (schemas.ClientProductCreate): The information of the client product to create.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.ClientProduct: The created client product object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createEmployee">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createEmployee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.EmployeesCreate" title="models.schemas.EmployeesCreate"><span class="pre">EmployeesCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createEmployee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createEmployee" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new employee in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+employee (schemas.EmployeesCreate): The employee information to be created.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Employees]: The created employee object if it doesn’t already exist, or None if it already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createOtpRecord">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createOtpRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createOtpRecord"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createOtpRecord" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new OTP (One-Time Password) record in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+otp (str): The OTP code.
+login (str): The login associated with the OTP.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Otp: The created OTP record.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createPerson">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createPerson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.PersonsCreate" title="models.schemas.PersonsCreate"><span class="pre">PersonsCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createPerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createPerson" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new person in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+person (schemas.PersonsCreate): The information of the person to create.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Persons]: The created person object if it doesn’t already exist, or None if it already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ProductCreate" title="models.schemas.ProductCreate"><span class="pre">ProductCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new product in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+product (schemas.ProductCreate): The product information used to create the new product.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Product: The newly created product object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createProductAmount">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createProductAmount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createRole">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createRole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.RoleCreate" title="models.schemas.RoleCreate"><span class="pre">RoleCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createRole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createRole" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new role in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+role (schemas.RoleCreate): The information of the role to create.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Role]: The created role object if it doesn’t already exist, or None if it already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.createWorkplace">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">createWorkplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.WorkplaceCreate" title="models.schemas.WorkplaceCreate"><span class="pre">WorkplaceCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#createWorkplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.createWorkplace" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new workplace in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+workplace (schemas.WorkplaceCreate): The information of the workplace to create.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Workplace]: The created workplace object if it doesn’t already exist, or None if it already exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delCategory">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CategoryDelete" title="models.schemas.CategoryDelete"><span class="pre">CategoryDelete</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delCategory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delCategory" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a category from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+category (schemas.CategoryDelete): The category object to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delClient">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientDelete" title="models.schemas.ClientDelete"><span class="pre">ClientDelete</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delClient" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a client from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+client (schemas.ClientDelete): The client object to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delEmployee">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delEmployee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delEmployee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delEmployee" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an employee from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+employee (dict): The employee dictionary containing the “Employee_id” key with the ID of the employee to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delOtp">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delOtp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delOtp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delOtp" title="Permalink to this definition"></a></dt>
+<dd><p>Delete an OTP (One-Time Password) record from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+login (str): The login associated with the OTP record to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delPerson">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delPerson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.PersonsDelete" title="models.schemas.PersonsDelete"><span class="pre">PersonsDelete</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delPerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delPerson" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a person from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+person (schemas.PersonsDelete): The person object to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delProduct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delProductAmount">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delProductAmount" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a product amount from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+product_id (int): The ID of the product amount to be deleted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delRole">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delRole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.RoleDelete" title="models.schemas.RoleDelete"><span class="pre">RoleDelete</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delRole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delRole" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a role from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+role (schemas.RoleDelete): The role to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.delWorkplace">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">delWorkplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.WorkplaceDelete" title="models.schemas.WorkplaceDelete"><span class="pre">WorkplaceDelete</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#delWorkplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.delWorkplace" title="Permalink to this definition"></a></dt>
+<dd><p>Delete a workplace from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+workplace (schemas.WorkplaceDelete): The workplace to be deleted.</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getCategory">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getCategory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getCategory" title="Permalink to this definition"></a></dt>
+<dd><p>Get a list of categories from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int): The number of categories to skip (used for pagination). Defaults to 0.
+limit (int): The maximum number of categories to retrieve (used for pagination). Defaults to 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.Category]: A list of category objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getCategoryById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getCategoryById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getCategoryById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getCategoryById" title="Permalink to this definition"></a></dt>
+<dd><p>Get a category from the database by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+category_id (int): The ID of the category to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Category: The category object with the specified ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getClientById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getClientById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getClientById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getClientById" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a client from the database by their ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+client_id (int): The ID of the client to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dict[str, Union[str, int]]: A dictionary containing the client information with “Name”, “Amount”, and “Client_id” properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getClientProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getClientProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getClientProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getClientProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of client products from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+limit (int, optional): The maximum number of records to return. Default is 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.ClientProduct]: A list of client product objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getClients">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getClients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getClients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getClients" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of clients from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+limit (int, optional): The maximum number of records to return. Default is 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[Dict[str, Union[str, int]]]: A list of client objects with “Name”, “Amount”, and “Client_id” properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getEmployeeById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getEmployeeById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getEmployeeById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getEmployeeById" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve an employee by ID from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+employee_id (int): The ID of the employee to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>Optional[Dict[str, Any]]: A dictionary representing the employee information if it exists, or None if it doesn’t exist.</dt><dd><dl class="simple">
+<dt>The dictionary contains the following keys:</dt><dd><ul class="simple">
+<li><p>“Name”: The full name of the employee.</p></li>
+<li><p>“Workplace”: The name of the workplace where the employee works.</p></li>
+<li><p>“Role”: The name of the role of the employee.</p></li>
+<li><p>“Employee_id”: The ID of the employee.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getEmployees">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getEmployees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getEmployees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getEmployees" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve employees from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int): The number of employees to skip (used for pagination).
+limit (int): The maximum number of employees to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>List[Dict[str, Any]]: A list of dictionaries representing employee information.</dt><dd><dl class="simple">
+<dt>Each dictionary contains the following keys:</dt><dd><ul class="simple">
+<li><p>“Name”: The full name of the employee.</p></li>
+<li><p>“Workplace”: The name of the workplace where the employee works.</p></li>
+<li><p>“Role”: The name of the role of the employee.</p></li>
+<li><p>“Employee_id”: The ID of the employee.</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getOtpByLogin">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getOtpByLogin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getOtpByLogin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getOtpByLogin" title="Permalink to this definition"></a></dt>
+<dd><p>Get OTP (One-Time Password) information by login from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+login (str): The login to search for OTP information.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Otp]: The OTP object if it exists, or None if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getPersonById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getPersonById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getPersonById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getPersonById" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a person from the database by their ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+person_id (int): The ID of the person to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Persons]: The person object if found, or None if not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getPersons">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getPersons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getPersons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getPersons" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of persons from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+limit (int, optional): The maximum number of records to return. Default is 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.Persons]: A list of person objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getProduct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getProductAmount">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getProductAmount" title="Permalink to this definition"></a></dt>
+<dd><p>Get a list of product amounts from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int): The number of product amounts to skip (used for pagination). Defaults to 0.
+limit (int): The maximum number of product amounts to retrieve (used for pagination). Defaults to 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.ProductAmount]: A list of product amount objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getProductAmountById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getProductAmountById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getProductAmountById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getProductAmountById" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getProductById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getProductById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getProductById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getProductById" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getRole">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getRole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getRole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getRole" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of roles from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+limit (int, optional): The maximum number of records to return. Default is 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.Role]: A list of role objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getRoleById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getRoleById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getRoleById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getRoleById" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a role from the database by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+role_id (int): The ID of the role to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Role: The role object with the specified ID, or None if not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getWorkplace">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getWorkplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getWorkplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getWorkplace" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a list of workplaces from the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+skip (int, optional): The number of records to skip at the beginning of the result list. Default is 0.
+limit (int, optional): The maximum number of records to return. Default is 100.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[models.Workplace]: A list of workplace objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.getWorkplaceById">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">getWorkplaceById</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#getWorkplaceById"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.getWorkplaceById" title="Permalink to this definition"></a></dt>
+<dd><p>Retrieve a workplace from the database by its ID.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+workplace_id (int): The ID of the workplace to retrieve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Workplace: The workplace object with the specified ID, or None if not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateCategory">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.CategoryUpdate" title="models.schemas.CategoryUpdate"><span class="pre">CategoryUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">category_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateCategory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateCategory" title="Permalink to this definition"></a></dt>
+<dd><p>Update a category in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+category (schemas.CategoryUpdate): The updated category information.
+category_id (int): The ID of the category to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.Category: The updated category object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateClient">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ClientUpdate" title="models.schemas.ClientUpdate"><span class="pre">ClientUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateClient" title="Permalink to this definition"></a></dt>
+<dd><p>Update a client in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+client (schemas.ClientUpdate): The updated information of the client.
+client_id (int): The ID of the client to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Clients]: The updated client object if found, or None if the client doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateEmployee">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateEmployee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.EmployeesUpdate" title="models.schemas.EmployeesUpdate"><span class="pre">EmployeesUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">employee_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateEmployee"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateEmployee" title="Permalink to this definition"></a></dt>
+<dd><p>Update an employee in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+employee (schemas.EmployeesUpdate): The updated employee information.
+employee_id (int): The ID of the employee to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Employees]: The updated employee object if it exists, or None if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updatePerson">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updatePerson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">person</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.PersonsUpdate" title="models.schemas.PersonsUpdate"><span class="pre">PersonsUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">person_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updatePerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updatePerson" title="Permalink to this definition"></a></dt>
+<dd><p>Update a person in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+person (schemas.PersonsUpdate): The updated information of the person.
+person_id (int): The ID of the person to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Persons]: The updated person object if found, or None if the person doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateProduct">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateProduct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateProductAmount">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_amount</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.ProductAmountUpdate" title="models.schemas.ProductAmountUpdate"><span class="pre">ProductAmountUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_amount_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateProductAmount" title="Permalink to this definition"></a></dt>
+<dd><p>Update a product amount in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+product_amount (schemas.ProductAmountUpdate): The updated product amount information.
+product_amount_id (int): The ID of the product amount to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>models.ProductAmount: The updated product amount object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateRole">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateRole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.RoleUpdate" title="models.schemas.RoleUpdate"><span class="pre">RoleUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">role_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateRole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateRole" title="Permalink to this definition"></a></dt>
+<dd><p>Update a role in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+role (schemas.RoleUpdate): The updated role information.
+role_id (int): The ID of the role to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Role]: The updated role object if it exists, or None if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="database.CRUD.updateWorkplace">
+<span class="sig-prename descclassname"><span class="pre">database.CRUD.</span></span><span class="sig-name descname"><span class="pre">updateWorkplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models.html#models.schemas.WorkplaceUpdate" title="models.schemas.WorkplaceUpdate"><span class="pre">WorkplaceUpdate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">workplace_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/CRUD.html#updateWorkplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.CRUD.updateWorkplace" title="Permalink to this definition"></a></dt>
+<dd><p>Update a workplace in the database.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>db (Session): The database session obtained from the getDB function.
+workplace (schemas.WorkplaceUpdate): The updated workplace information.
+workplace_id (int): The ID of the workplace to be updated.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[models.Workplace]: The updated workplace object if it exists, or None if it doesn’t exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-database.database">
+<span id="database-module"></span><h2>database module<a class="headerlink" href="#module-database.database" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-database.models">
+<span id="models-module"></span><h2>models module<a class="headerlink" href="#module-database.models" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.AttemptBlocker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">AttemptBlocker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#AttemptBlocker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.AttemptBlocker" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.AttemptBlocker.attempts">
+<span class="sig-name descname"><span class="pre">attempts</span></span><a class="headerlink" href="#database.models.AttemptBlocker.attempts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.AttemptBlocker.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.AttemptBlocker.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.AttemptBlocker.login">
+<span class="sig-name descname"><span class="pre">login</span></span><a class="headerlink" href="#database.models.AttemptBlocker.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.AttemptBlocker.time">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#database.models.AttemptBlocker.time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Category">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Category" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Category.category_product">
+<span class="sig-name descname"><span class="pre">category_product</span></span><a class="headerlink" href="#database.models.Category.category_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Category.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Category.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Category.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database.models.Category.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.ClientProduct">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">ClientProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#ClientProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.ClientProduct" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ClientProduct.clientProduct_client">
+<span class="sig-name descname"><span class="pre">clientProduct_client</span></span><a class="headerlink" href="#database.models.ClientProduct.clientProduct_client" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ClientProduct.clientProduct_product">
+<span class="sig-name descname"><span class="pre">clientProduct_product</span></span><a class="headerlink" href="#database.models.ClientProduct.clientProduct_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ClientProduct.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.ClientProduct.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ClientProduct.id_client">
+<span class="sig-name descname"><span class="pre">id_client</span></span><a class="headerlink" href="#database.models.ClientProduct.id_client" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ClientProduct.id_product">
+<span class="sig-name descname"><span class="pre">id_product</span></span><a class="headerlink" href="#database.models.ClientProduct.id_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Clients">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Clients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Clients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Clients" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Clients.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><a class="headerlink" href="#database.models.Clients.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Clients.client_clientProduct">
+<span class="sig-name descname"><span class="pre">client_clientProduct</span></span><a class="headerlink" href="#database.models.Clients.client_clientProduct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Clients.client_persons">
+<span class="sig-name descname"><span class="pre">client_persons</span></span><a class="headerlink" href="#database.models.Clients.client_persons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Clients.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Clients.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Clients.id_persons">
+<span class="sig-name descname"><span class="pre">id_persons</span></span><a class="headerlink" href="#database.models.Clients.id_persons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Employees">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Employees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Employees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Employees" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.employee_loginData">
+<span class="sig-name descname"><span class="pre">employee_loginData</span></span><a class="headerlink" href="#database.models.Employees.employee_loginData" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.employee_role">
+<span class="sig-name descname"><span class="pre">employee_role</span></span><a class="headerlink" href="#database.models.Employees.employee_role" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.employee_workplace">
+<span class="sig-name descname"><span class="pre">employee_workplace</span></span><a class="headerlink" href="#database.models.Employees.employee_workplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Employees.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.id_persons">
+<span class="sig-name descname"><span class="pre">id_persons</span></span><a class="headerlink" href="#database.models.Employees.id_persons" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.id_role">
+<span class="sig-name descname"><span class="pre">id_role</span></span><a class="headerlink" href="#database.models.Employees.id_role" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Employees.id_workplace">
+<span class="sig-name descname"><span class="pre">id_workplace</span></span><a class="headerlink" href="#database.models.Employees.id_workplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.LoginData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">LoginData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#LoginData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.LoginData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.disabled">
+<span class="sig-name descname"><span class="pre">disabled</span></span><a class="headerlink" href="#database.models.LoginData.disabled" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.LoginData.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.id_employee">
+<span class="sig-name descname"><span class="pre">id_employee</span></span><a class="headerlink" href="#database.models.LoginData.id_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.login">
+<span class="sig-name descname"><span class="pre">login</span></span><a class="headerlink" href="#database.models.LoginData.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.loginData_employee">
+<span class="sig-name descname"><span class="pre">loginData_employee</span></span><a class="headerlink" href="#database.models.LoginData.loginData_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.LoginData.password">
+<span class="sig-name descname"><span class="pre">password</span></span><a class="headerlink" href="#database.models.LoginData.password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="database.models.LoginData.verify_password">
+<span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#LoginData.verify_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.LoginData.verify_password" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Otp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Otp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Otp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Otp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Otp.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Otp.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Otp.login">
+<span class="sig-name descname"><span class="pre">login</span></span><a class="headerlink" href="#database.models.Otp.login" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Otp.otp_code">
+<span class="sig-name descname"><span class="pre">otp_code</span></span><a class="headerlink" href="#database.models.Otp.otp_code" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Persons">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Persons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Persons"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Persons" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.address">
+<span class="sig-name descname"><span class="pre">address</span></span><a class="headerlink" href="#database.models.Persons.address" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Persons.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database.models.Persons.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.persons_client">
+<span class="sig-name descname"><span class="pre">persons_client</span></span><a class="headerlink" href="#database.models.Persons.persons_client" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.phone">
+<span class="sig-name descname"><span class="pre">phone</span></span><a class="headerlink" href="#database.models.Persons.phone" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Persons.surname">
+<span class="sig-name descname"><span class="pre">surname</span></span><a class="headerlink" href="#database.models.Persons.surname" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Product">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Product" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.describe">
+<span class="sig-name descname"><span class="pre">describe</span></span><a class="headerlink" href="#database.models.Product.describe" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Product.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.id_category">
+<span class="sig-name descname"><span class="pre">id_category</span></span><a class="headerlink" href="#database.models.Product.id_category" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database.models.Product.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.product_amount">
+<span class="sig-name descname"><span class="pre">product_amount</span></span><a class="headerlink" href="#database.models.Product.product_amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.product_category">
+<span class="sig-name descname"><span class="pre">product_category</span></span><a class="headerlink" href="#database.models.Product.product_category" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Product.product_clientProduct">
+<span class="sig-name descname"><span class="pre">product_clientProduct</span></span><a class="headerlink" href="#database.models.Product.product_clientProduct" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.ProductAmount">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">ProductAmount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#ProductAmount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.ProductAmount" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ProductAmount.amount">
+<span class="sig-name descname"><span class="pre">amount</span></span><a class="headerlink" href="#database.models.ProductAmount.amount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ProductAmount.amount_product">
+<span class="sig-name descname"><span class="pre">amount_product</span></span><a class="headerlink" href="#database.models.ProductAmount.amount_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ProductAmount.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.ProductAmount.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.ProductAmount.id_product">
+<span class="sig-name descname"><span class="pre">id_product</span></span><a class="headerlink" href="#database.models.ProductAmount.id_product" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Role">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Role" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Role.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Role.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Role.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database.models.Role.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Role.role_employee">
+<span class="sig-name descname"><span class="pre">role_employee</span></span><a class="headerlink" href="#database.models.Role.role_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="database.models.Workplace">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">database.models.</span></span><span class="sig-name descname"><span class="pre">Workplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/database/models.html#Workplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#database.models.Workplace" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Base</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Workplace.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#database.models.Workplace.id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Workplace.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#database.models.Workplace.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="database.models.Workplace.workplace_employee">
+<span class="sig-name descname"><span class="pre">workplace_employee</span></span><a class="headerlink" href="#database.models.Workplace.workplace_employee" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-database">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-database" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Grzegorz Swajda &amp; Karol Wykrota.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
