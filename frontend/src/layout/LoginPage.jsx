@@ -9,32 +9,80 @@ import OtpInput from 'react-otp-input';
 import axios from 'axios';
 import endpoint from '../endpoint';
 
+const validateEmail = (email) => {
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	return emailRegex.test(email);
+};
+
 const LoginPage = () => {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
+	const [id, setId] = React.useState(null);
 	const [otp, setOtp] = React.useState('');
 	const [codeOpen, setCodeOpen] = React.useState(false);
 	const [disabled, setDisabled] = React.useState(false);
+	const [registerFlag, setRegisterFlag] = React.useState(false);
 
 	const login = useLogin();
 	const notify = useNotify();
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		setDisabled(true);
+		try {
+			e.preventDefault();
+			setDisabled(true);
 
-		axios
-			.post(endpoint.baseUrl + '/users/OTP_code', {
-				username: username,
-				password: password,
-			})
-			.then(() => {
-				setCodeOpen(true);
-			})
-			.catch(() => {
-				setDisabled(false);
-				notify('Invalid username or password');
-			});
+			if (!validateEmail(username)) {
+				throw new Error('Invalid email address.');
+			}
+
+			registerFlag
+				? axios
+						.post(endpoint.baseUrl + '/users/create', {
+							login: username,
+							password: password,
+							id_employee: parseInt(id),
+						})
+						.then(() => {
+							setUsername('');
+							setPassword('');
+							setId(null);
+							setRegisterFlag(false);
+							notify('Created new user.');
+						})
+						.catch(() => {
+							setDisabled(false);
+							setUsername('');
+							setPassword('');
+							setId(null);
+							notify('Invalid username or password.');
+						})
+				: axios
+						.post(endpoint.baseUrl + '/users/OTP_code', {
+							username: username,
+							password: password,
+						})
+						.then(() => {
+							setCodeOpen(true);
+						})
+						.catch(() => {
+							setDisabled(false);
+							notify('Invalid username or password.');
+						});
+		} catch (e) {
+			setOtp('');
+			setCodeOpen(false);
+			notify(
+				e.response?.data
+					? e.response.data.context.msg
+					: e.response
+					? `Error: ${e.response.status} ${e.response.statusText}`
+					: e.message,
+				{ type: 'error' },
+				false
+			);
+		} finally {
+			setDisabled(false);
+		}
 	};
 
 	React.useEffect(() => {
@@ -50,13 +98,23 @@ const LoginPage = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [otp]);
 
+	const handleRegisterClick = () => {
+		setRegisterFlag(true);
+	};
+
+	const handleBack = () => {
+		setRegisterFlag(false);
+	};
+
 	return (
 		<Root>
 			<BackgroundSVG />
 			<Notification />
 			<FormContainer onSubmit={handleSubmit}>
 				<LoginForm>
-					<LoginFormTitle>Sign In</LoginFormTitle>
+					<LoginFormTitle>
+						{registerFlag ? 'Register' : 'Sign In'}
+					</LoginFormTitle>
 					<LoginInput
 						label='Username'
 						variant='outlined'
@@ -78,6 +136,19 @@ const LoginPage = () => {
 						disabled={disabled}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
+					{registerFlag && (
+						<LoginInput
+							label='ID'
+							variant='outlined'
+							size='small'
+							margin='normal'
+							type='number'
+							required
+							value={id}
+							disabled={disabled}
+							onChange={(e) => setId(e.target.value)}
+						/>
+					)}
 					{codeOpen ? (
 						<>
 							<div>Client code:</div>
@@ -97,8 +168,26 @@ const LoginPage = () => {
 						color='primary'
 						type='submit'
 						disabled={disabled}>
-						Sign In
+						{registerFlag ? 'Register' : 'Sign In'}
 					</LoginButton>
+					{!codeOpen && !registerFlag && (
+						<RegisterButton
+							variant='text'
+							color='primary'
+							disabled={disabled}
+							onClick={handleRegisterClick}>
+							Register
+						</RegisterButton>
+					)}
+					{registerFlag && (
+						<BackButton
+							variant='text'
+							color='primary'
+							disabled={disabled}
+							onClick={handleBack}>
+							Back
+						</BackButton>
+					)}
 				</LoginForm>
 			</FormContainer>
 		</Root>
@@ -153,6 +242,16 @@ const LoginInput = styled(TextField)({
 const LoginButton = styled(Button)({
 	width: '100%',
 	marginTop: '32px',
+});
+
+const RegisterButton = styled(Button)({
+	width: '100%',
+	marginTop: '16px',
+});
+
+const BackButton = styled(Button)({
+	width: '100%',
+	marginTop: '16px',
 });
 
 export default LoginPage;

@@ -8,11 +8,11 @@ import {
 
 export const EmployeesList = (props) => (
 	<List {...props}>
-		<Datagrid>
+		<Datagrid bulkActionButtons={false}>
 			<TextField source='id' />
-			<TextField source='id_persons' />
-			<TextField source='id_role' />
-			<TextField source='id_workplace' />
+			<TextField source='Name' />
+			<TextField source='Role' />
+			<TextField source='Workplace' />
 			<EditButton />
 			<DeleteButton />
 		</Datagrid>

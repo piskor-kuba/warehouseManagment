@@ -8,7 +8,7 @@ import {
 
 export const CategoryList = (props) => (
 	<List {...props}>
-		<Datagrid>
+		<Datagrid bulkActionButtons={false}>
 			<TextField source='id' />
 			<TextField source='name' />
 			<EditButton />

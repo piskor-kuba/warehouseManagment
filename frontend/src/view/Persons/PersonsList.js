@@ -9,7 +9,7 @@ import {
 export const PersonsList = (props) => {
 	return (
 		<List {...props}>
-			<Datagrid>
+			<Datagrid bulkActionButtons={false}>
 				<TextField source='id' />
 				<TextField source='name' />
 				<TextField source='surname' />

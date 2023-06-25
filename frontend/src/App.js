@@ -10,7 +10,6 @@ import Clients from './view/Clients';
 import Employees from './view/Employees';
 import Persons from './view/Persons';
 import Product from './view/Product';
-import ProductAmount from './view/ProductAmount';
 import Role from './view/Role';
 import Workplace from './view/Workplace';
 
@@ -50,10 +49,9 @@ const App = () => {
 			dashboard={Dashboard}>
 			<Resource name='category' {...Category} />
 			<Resource name='clients' {...Clients} />
-			<Resource name='employees' {...Employees} />
+			<Resource name='employee' {...Employees} />
 			<Resource name='persons' {...Persons} />
 			<Resource name='product' {...Product} />
-			{/* <Resource name='ProductAmount' {...ProductAmount} /> */}
 			<Resource name='role' {...Role} />
 			<Resource name='workplace' {...Workplace} />
 		</Admin>

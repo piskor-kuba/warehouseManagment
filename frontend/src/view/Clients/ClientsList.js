@@ -9,10 +9,10 @@ import {
 export const ClientsList = (props) => {
 	return (
 		<List {...props}>
-			<Datagrid>
+			<Datagrid bulkActionButtons={false}>
 				<TextField source='id' />
-				<TextField source='id_persons' />
-				<TextField source='amount' />
+				<TextField source='Name' />
+				<TextField source='Amount' />
 				<EditButton />
 				<DeleteButton />
 			</Datagrid>

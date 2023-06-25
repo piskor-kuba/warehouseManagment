@@ -4,12 +4,7 @@ import { MenuItemLink } from 'react-admin';
 
 const Menu = ({ onMenuClick }) => {
 	return (
-		<div>
-			{/* <MenuItemLink
-				to='/dashboard'
-				primaryText='Dashboard'
-				onClick={onMenuClick}
-			/> */}
+		<>
 			<MenuItemLink
 				to='/category'
 				primaryText='Category'
@@ -17,8 +12,8 @@ const Menu = ({ onMenuClick }) => {
 			/>
 			<MenuItemLink to='/clients' primaryText='Clients' onClick={onMenuClick} />
 			<MenuItemLink
-				to='/employees'
-				primaryText='Employees'
+				to='/employee'
+				primaryText='Employee'
 				onClick={onMenuClick}
 			/>
 			<MenuItemLink to='/persons' primaryText='Persons' onClick={onMenuClick} />
@@ -29,7 +24,7 @@ const Menu = ({ onMenuClick }) => {
 				onClick={onMenuClick}
 			/>
 			<MenuItemLink to='/role' primaryText='Role' onClick={onMenuClick} />
-		</div>
+		</>
 	);
 };
 

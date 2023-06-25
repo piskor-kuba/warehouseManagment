@@ -14,7 +14,6 @@ import endpoint from '../endpoint';
 const API_URL = endpoint.baseUrl;
 
 const convertDataProviderRequestToHTTP = async (type, resource, params) => {
-	console.log(type);
 	switch (type) {
 		case GET_LIST: {
 			const query = { skip: 0, limit: 100 };
@@ -26,7 +25,7 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			if (resource === 'clients') {
 				addressUrl = `${API_URL}/client/?${stringify(query)}`;
 			}
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				addressUrl = `${API_URL}/employee/?${stringify(query)}`;
 			}
 			if (resource === 'persons') {
@@ -55,7 +54,7 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			if (resource === 'clients') {
 				urlGet = `${API_URL}/client/${params.id}`;
 			}
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				urlGet = `${API_URL}/employee/${params.id}`;
 			}
 			if (resource === 'persons') {
@@ -81,7 +80,7 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 
 			let method = 'PATCH';
 
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				addressUrlUpdate = `${API_URL}/employee/${params.id}`;
 			}
 			if (resource === 'clients') {
@@ -99,7 +98,7 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 		case CREATE:
 			let addressUrlCreate = `${API_URL}/${resource}/`;
 
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				addressUrlCreate = `${API_URL}/employee/`;
 			}
 			if (resource === 'clients') {
@@ -115,10 +114,9 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 			};
 
 		case DELETE:
-			console.log('XXDD');
 			let addressUrlDelete = `${API_URL}/${resource}/${params.id}`;
 
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				addressUrlDelete = `${API_URL}/employee/${params.id}`;
 			}
 			if (resource === 'clients') {
@@ -136,7 +134,7 @@ const convertDataProviderRequestToHTTP = async (type, resource, params) => {
 		case DELETE_MANY:
 			let addressUrlDeleteMany = `${API_URL}/${resource}/${params.ids[0]}`;
 
-			if (resource === 'employees') {
+			if (resource === 'employee') {
 				addressUrlDeleteMany = `${API_URL}/employee/${params.ids[0]}`;
 			}
 			if (resource === 'clients') {
@@ -167,14 +165,65 @@ const convertHTTPResponseToDataProvider = (
 
 		switch (type) {
 			case GET_LIST:
-				return {
-					data: json,
-					total: json.length,
-				};
+				if (resource === 'clients') {
+					const ClientsData = json.map((obj) => {
+						const { Clinet_id, ...rest } = obj;
+						return { id: Clinet_id, ...rest };
+					});
+					return {
+						data: ClientsData,
+						total: ClientsData.length,
+					};
+				} else if (resource === 'product') {
+					const ProductData = json.map((obj) => {
+						const { product_id, ...rest } = obj;
+						return { id: product_id, ...rest };
+					});
+					return {
+						data: ProductData,
+						total: ProductData.length,
+					};
+				} else if (resource === 'employee') {
+					const EmployeeData = json.map((obj) => {
+						const { Employee_id, ...rest } = obj;
+						return { id: Employee_id, ...rest };
+					});
+					return {
+						data: EmployeeData,
+						total: EmployeeData.length,
+					};
+				} else {
+					return {
+						data: json,
+						total: json.length,
+					};
+				}
+
 			case GET_ONE:
-				return {
-					data: json,
-				};
+				if (resource === 'product') {
+					const { product_id, ...rest } = json;
+					const ProductData = { id: product_id, ...rest };
+					return {
+						data: ProductData,
+					};
+				} else if (resource === 'clients') {
+					const { Clinet_id, ...rest } = json;
+					const ClientsData = { id: Clinet_id, ...rest };
+					return {
+						data: ClientsData,
+					};
+				} else if (resource === 'employee') {
+					const { Employee_id, ...rest } = json;
+					const EmployeeData = { id: Employee_id, ...rest };
+					return {
+						data: EmployeeData,
+					};
+				} else {
+					return {
+						data: json,
+					};
+				}
+
 			case CREATE:
 				return { data: { ...params.data, id: json.id } };
 			default:
