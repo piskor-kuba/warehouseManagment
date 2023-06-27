@@ -1,4 +1,7 @@
 # warehouseManagment
+## WYMAGANIA
+- Python >[3.10.11](https://www.python.org/downloads/release/python-31011/)
+- Node.js [v18.15.0](https://nodejs.org/en/download)
 ## KONFIGURACJA BACKEND
 1. Otwieramy projekt w wybranym IDE
 2. W terminalu (w folderze z projektem) uruchamiamy:  `pip install -r requirements.txt` zainstaluje wymagane rzeczy 
